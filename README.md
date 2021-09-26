@@ -11,6 +11,8 @@ Fixit Ticket is a ticketing system that allows residents in University of the Pa
 ## Project Components
 
 - Software Modules - creating, updating, organizing, and deleting tickets; role handling; authorization
+-   C#, ASP.NET
 - External Systems - web server and database management system
+-   AWS EC2, IIS, Windows Server
 - User Interface - web page display for users
 
