@@ -16,3 +16,6 @@ Fixit Ticket is a ticketing system that allows residents in University of the Pa
     - AWS EC2, IIS, Windows Server
 - User Interface - web page display for users
 
+## Documents
+
+[System Design Document](https://github.com/comp195/senior-project-implementation-fix-it-ticket/tree/master/Design%20Documents)
