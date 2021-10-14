@@ -23,14 +23,14 @@ namespace FixitTicket.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets()
         {
-            return await _context.Tickets.ToListAsync();
+            return await _context.Ticket.ToListAsync();
         }
 
         // GET: api/Tickets/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Ticket>> GetTicket(int id)
         {
-            var ticket = await _context.Tickets.FindAsync(id);
+            var ticket = await _context.Ticket.FindAsync(id);
 
             if (ticket == null)
             {
@@ -76,13 +76,14 @@ namespace FixitTicket.Controllers
         [HttpPost]
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
-            var resident = await _context.Residents.FindAsync(ticket.Id);
+            var resident = await _context.Resident.FindAsync(ticket.Id);
+            var ticketCheck = await _context.Ticket.FindAsync(ticket.Id);
             if (resident == null)
             {
                 return BadRequest("Resident ID must belong to an existing user");
             }
             ticket.CreationDate = DateTime.Now;
-            _context.Tickets.Add(ticket);
+            _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetTicket), new { id = ticket.Id }, ticket);
@@ -92,13 +93,13 @@ namespace FixitTicket.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTicket(int id)
         {
-            var ticket = await _context.Tickets.FindAsync(id);
+            var ticket = await _context.Ticket.FindAsync(id);
             if (ticket == null)
             {
                 return NotFound();
             }
 
-            _context.Tickets.Remove(ticket);
+            _context.Ticket.Remove(ticket);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -106,7 +107,7 @@ namespace FixitTicket.Controllers
 
         private bool TicketExists(int id)
         {
-            return _context.Tickets.Any(e => e.Id == id);
+            return _context.Ticket.Any(e => e.Id == id);
         }
     }
 }
