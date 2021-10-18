@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FixitTicket.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using FixitTicket.Models;
 
 namespace FixitTicket.Controllers
 {
@@ -74,14 +76,19 @@ namespace FixitTicket.Controllers
         // POST: api/Tickets
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
             var resident = await _context.Resident.FindAsync(ticket.Id);
-            var ticketCheck = await _context.Ticket.FindAsync(ticket.Id);
             if (resident == null)
             {
-                return BadRequest("Resident ID must belong to an existing user");
+                // for testing purposes
+                _context.Resident.Add(new Resident() { Id = ticket.Id, Name = "Name", Email = "g_bick@u.pacific.edu"});
+                //return BadRequest("Resident ID must belong to an existing user");
             }
+            await ValidateTicket(ticket);
+            //TODO serialize errors to JSON
             ticket.CreationDate = DateTime.Now;
             _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
@@ -108,6 +115,53 @@ namespace FixitTicket.Controllers
         private bool TicketExists(int id)
         {
             return _context.Ticket.Any(e => e.Id == id);
+        }
+
+        private async Task<bool> IsValidResident(int residentId) 
+        {
+            return await _context.Resident.FindAsync(residentId) != null;
+        }
+
+        private bool IsValidCategory(RepairCategory repairCategory) 
+        {
+            return repairCategory != RepairCategory.None;
+        }
+
+        private bool IsValidStatus(RepairStatus status) 
+        {
+            return status != RepairStatus.None;
+        }
+
+        private bool IsValidCreationDate(DateTime? creationDate) 
+        {
+            return creationDate == null;
+        }
+
+        private async Task<List<string>> ValidateTicket(Ticket ticket) 
+        {
+            List<string> ticketErrors = new List<string>();
+
+            if (!await IsValidResident(ticket.Id)) 
+            {
+                ticketErrors.Add(TicketValidationErrors.ResidentNotFoundError(ticket.Id));
+            }
+
+            if (!IsValidCategory(ticket.RepairCategory)) 
+            {
+                ticketErrors.Add(TicketValidationErrors.CategoryNotSetError());
+            }
+
+            if (!IsValidStatus(ticket.Status)) 
+            {
+                ticketErrors.Add(TicketValidationErrors.StatusNotSetError());
+            }
+
+            if (!IsValidCreationDate(ticket.CreationDate)) 
+            {
+                ticketErrors.Add(TicketValidationErrors.CreationDateSetError());
+            }
+
+            return ticketErrors;
         }
     }
 }
