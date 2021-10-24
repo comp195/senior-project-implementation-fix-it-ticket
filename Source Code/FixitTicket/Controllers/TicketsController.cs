@@ -80,12 +80,12 @@ namespace FixitTicket.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
-            var resident = await _context.Resident.FindAsync(ticket.Id);
+            var resident = await _context.User.FindAsync(ticket.Id);
             if (resident == null)
             {
                 // for testing purposes
-                _context.Resident.Add(new Resident() { Id = ticket.Id, Name = "Name", Email = "g_bick@u.pacific.edu"});
-                //return BadRequest("Resident ID must belong to an existing user");
+                _context.User.Add(new User() { Id = ticket.Id, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = 1});
+                //return BadRequest("User ID must belong to an existing user");
             }
             await ValidateTicket(ticket);
             //TODO serialize errors to JSON
