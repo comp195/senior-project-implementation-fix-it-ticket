@@ -4,16 +4,16 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web 1920 – 1</title>
+<title>Fixit Ticket Home</title>
 <style id="applicationStylesheet" type="text/css">
 	.mediaViewInfo {
-		--web-view-name: Web 1920 – 1;
-		--web-view-id: Web_1920__1;
+		--web-view-name: Fixit Ticket Home;
+		--web-view-id: Fixit_Ticket_Home;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
 	:root {
-		--web-view-ids: Web_1920__1;
+		--web-view-ids: Fixit_Ticket_Home;
 	}
 	* {
 		margin: 0;
@@ -21,284 +21,239 @@
 		box-sizing: border-box;
 		border: none;
 	}
-	#Web_1920__1 {
+	#Fixit_Ticket_Home {
 		position: absolute;
-		width: 1920px;
-		height: 1080px;
+		width: 1440px;
+		height: 900px;
 		background-color: rgba(255,255,255,1);
 		overflow: hidden;
-		--web-view-name: Web 1920 – 1;
-		--web-view-id: Web_1920__1;
+		--web-view-name: Fixit Ticket Home;
+		--web-view-id: Fixit_Ticket_Home;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
-	#Rectangle_1 {
-		fill: rgba(252,176,73,1);
+	@keyframes fadein {
+	
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	
 	}
-	.Rectangle_1 {
-		filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.161));
+	#Video {
+		fill: rgba(241,249,255,1);
+	}
+	.Video {
 		position: absolute;
 		overflow: visible;
-		width: 371px;
-		height: 1110px;
+		width: 1400px;
+		height: 860px;
+		left: 20px;
+		top: 20px;
+	}
+	#Navigation_Bar {
+		position: absolute;
+		width: 1360px;
+		height: 70px;
+		left: 40px;
+		top: 40px;
+		overflow: visible;
+	}
+	#Base {
+		opacity: 0.9;
+		fill: rgba(38,153,251,1);
+	}
+	.Base {
+		position: absolute;
+		overflow: visible;
+		width: 1360px;
+		height: 70px;
 		left: 0px;
 		top: 0px;
 	}
-	#Resident_Dashboard {
-		left: 421px;
-		top: 58px;
+	#AUTHORS {
+		left: 172px;
+		top: 30px;
 		position: absolute;
 		overflow: visible;
-		width: 682px;
+		width: 50px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#CONTACT {
+		left: 269px;
+		top: 30px;
+		position: absolute;
+		overflow: visible;
+		width: 49px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#Component {
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		left: 1324px;
+		top: 27px;
+		overflow: visible;
+	}
+	#Union_1 {
+		fill: rgba(255,255,255,1);
+	}
+	.Union_1 {
+		overflow: visible;
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Fixit_Ticket {
+		left: 27px;
+		top: 27px;
+		position: absolute;
+		overflow: visible;
+		width: 84px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Helvetica Neue;
+		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 70px;
-		color: rgba(252,176,73,1);
-	}
-	#Line_1 {
-		fill: transparent;
-		stroke: rgba(255,255,255,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Line_1 {
-		overflow: visible;
-		position: absolute;
-		width: 296px;
-		height: 1px;
-		left: 22.75px;
-		top: 182px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Line_2 {
-		fill: transparent;
-		stroke: rgba(255,255,255,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Line_2 {
-		overflow: visible;
-		position: absolute;
-		width: 296px;
-		height: 1px;
-		left: 22.75px;
-		top: 262px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Your_Tickets {
-		left: 102.25px;
-		top: 209.5px;
-		position: absolute;
-		overflow: visible;
-		width: 138px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Helvetica Neue;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 25px;
+		font-size: 16px;
 		color: rgba(255,255,255,1);
 	}
-	#Line_3 {
-		fill: transparent;
-		stroke: rgba(255,255,255,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Line_3 {
-		overflow: visible;
+	#Header {
 		position: absolute;
-		width: 296px;
-		height: 1px;
-		left: 22.25px;
-		top: 289.5px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Line_4 {
-		fill: transparent;
-		stroke: rgba(255,255,255,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Line_4 {
+		width: 760px;
+		height: 306px;
+		left: 340px;
+		top: 328px;
 		overflow: visible;
-		position: absolute;
-		width: 296px;
-		height: 1px;
-		left: 22.25px;
-		top: 369.5px;
-		transform: matrix(1,0,0,1,0,0);
 	}
-	#Create_Ticket {
-		left: 100.75px;
-		top: 317px;
+	#A_ticketing_system_for_fulfill {
+		left: 0px;
+		top: 94px;
 		position: absolute;
 		overflow: visible;
-		width: 150px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Helvetica Neue;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 25px;
-		color: rgba(255,255,255,1);
-	}
-	#Line_5 {
-		fill: transparent;
-		stroke: rgba(255,255,255,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Line_5 {
-		overflow: visible;
-		position: absolute;
-		width: 296px;
-		height: 1px;
-		left: 22.25px;
-		top: 397px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Line_6 {
-		fill: transparent;
-		stroke: rgba(255,255,255,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Line_6 {
-		overflow: visible;
-		position: absolute;
-		width: 296px;
-		height: 1px;
-		left: 22.25px;
-		top: 477px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Update_Information {
-		left: 67.25px;
-		top: 424.5px;
-		position: absolute;
-		overflow: visible;
-		width: 217px;
-		white-space: nowrap;
+		width: 761px;
+		height: 114px;
+		line-height: 40px;
+		margin-top: -5px;
 		text-align: center;
-		font-family: Helvetica Neue;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 25px;
-		color: rgba(255,255,255,1);
-	}
-	#Line_7 {
-		fill: transparent;
-		stroke: rgba(255,255,255,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Line_7 {
-		overflow: visible;
-		position: absolute;
-		width: 296px;
-		height: 1px;
-		left: 23px;
-		top: 940px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Line_8 {
-		fill: transparent;
-		stroke: rgba(255,255,255,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Line_8 {
-		overflow: visible;
-		position: absolute;
-		width: 296px;
-		height: 1px;
-		left: 23px;
-		top: 1020px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Log_Out {
-		left: 131px;
-		top: 967.5px;
-		position: absolute;
-		overflow: visible;
-		width: 91px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Helvetica Neue;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 25px;
-		color: rgba(255,255,255,1);
-	}
-	#Rectangle_2 {
-		fill: rgba(252,176,73,1);
-		stroke: rgba(252,176,73,1);
-		stroke-width: 1px;
-		stroke-linejoin: round;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_2 {
-		position: absolute;
-		overflow: visible;
-		width: 1173px;
-		height: 1259px;
-		left: 537px;
-		top: 239px;
-	}
-	#Your_Tickets_v {
-		left: 1043px;
-		top: 272px;
-		position: absolute;
-		overflow: visible;
-		width: 165px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Helvetica Neue;
+		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 30px;
-		color: rgba(255,255,255,1);
+		color: rgba(127,127,127,1);
 	}
-	#Rectangle_4 {
-		fill: rgba(255,217,165,1);
-	}
-	.Rectangle_4 {
+	#Welcome_to_Fixit_Ticket {
+		left: 166px;
+		top: 0px;
 		position: absolute;
 		overflow: visible;
-		width: 1105px;
-		height: 66px;
-		left: 572px;
-		top: 330px;
+		width: 445px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 40px;
+		color: rgba(38,153,251,1);
+	}
+	#Button {
+		position: absolute;
+		width: 120px;
+		height: 40px;
+		left: 223px;
+		top: 265px;
+		overflow: visible;
+		--web-animation: fadein 0.4s ease-in;
+		--web-action-type: page;
+		--web-action-target: Student_Log_In_Page_1.html;
+		cursor: pointer;
+	}
+	#Rectangle_1 {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_1 {
+		position: absolute;
+		overflow: visible;
+		width: 120px;
+		height: 40px;
+		left: 0px;
+		top: 0px;
+	}
+	#STUDENT_LOG_IN {
+		left: 18px;
+		top: 15px;
+		position: absolute;
+		overflow: visible;
+		width: 85px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#Button_ec {
+		position: absolute;
+		width: 120px;
+		height: 40px;
+		left: 418px;
+		top: 266px;
+		overflow: visible;
+		--web-animation: fadein 0.4s ease-in;
+		--web-action-type: page;
+		--web-action-target: Employee_Log_In_Page_1.html;
+		cursor: pointer;
+	}
+	#Rectangle_1_ed {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_1_ed {
+		position: absolute;
+		overflow: visible;
+		width: 120px;
+		height: 40px;
+		left: 0px;
+		top: 0px;
+	}
+	#EMPLOYEE_LOG_IN {
+		left: 14px;
+		top: 15px;
+		position: absolute;
+		overflow: visible;
+		width: 93px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
 	}
 </style>
 <script id="applicationScript">
@@ -3213,69 +3168,58 @@ window.application = new Application();
 </script>
 </head>
 <body>
-<div id="Web_1920__1">
-	<svg class="Rectangle_1">
-		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="341" height="1080">
+<div id="Fixit_Ticket_Home">
+	<svg class="Video">
+		<rect id="Video" rx="0" ry="0" x="0" y="0" width="1400" height="860">
 		</rect>
 	</svg>
-	<div id="Resident_Dashboard">
-		<span>Resident Dashboard</span>
+	<div id="Navigation_Bar" class="Navigation_Bar">
+		<svg class="Base">
+			<rect id="Base" rx="0" ry="0" x="0" y="0" width="1360" height="70">
+			</rect>
+		</svg>
+		<div id="AUTHORS">
+			<span>AUTHORS</span>
+		</div>
+		<div id="CONTACT">
+			<span>CONTACT</span>
+		</div>
+		<div id="Component" class="Component">
+			<svg class="Union_1" viewBox="0 354 16 16">
+				<path id="Union_1" d="M 0 369.9999084472656 L 0 368.0001220703125 C 0 365.7996215820312 3.600000143051147 363.9996032714844 8.000100135803223 363.9996032714844 C 12.40019989013672 363.9996032714844 16.00020027160645 365.7996215820312 16.00020027160645 368.0001220703125 L 16.00020027160645 369.9999084472656 L 0 369.9999084472656 Z M 3.999600172042847 358.0002136230469 C 3.999600172042847 355.7907104492188 5.790600299835205 353.9996948242188 8.000100135803223 353.9996948242188 C 10.20870018005371 353.9996948242188 11.99970054626465 355.7907104492188 11.99970054626465 358.0002136230469 C 11.99970054626465 360.2088012695312 10.20870018005371 361.9998168945312 8.000100135803223 361.9998168945312 C 5.790600299835205 361.9998168945312 3.999600172042847 360.2088012695312 3.999600172042847 358.0002136230469 Z">
+				</path>
+			</svg>
+		</div>
+		<div id="Fixit_Ticket">
+			<span>Fixit Ticket</span>
+		</div>
 	</div>
-	<svg class="Line_1" viewBox="0 0 296 1">
-		<path id="Line_1" d="M 0 0 L 296 0">
-		</path>
-	</svg>
-	<svg class="Line_2" viewBox="0 0 296 1">
-		<path id="Line_2" d="M 0 0 L 296 0">
-		</path>
-	</svg>
-	<div id="Your_Tickets">
-		<span>Your Tickets</span>
+	<div id="Header">
+		<div id="A_ticketing_system_for_fulfill">
+			<span>A ticketing system for fulfilling work orders in residence halls at the University of the Pacific, created by Pacific students.</span>
+		</div>
+		<div id="Welcome_to_Fixit_Ticket">
+			<span>Welcome to Fixit Ticket</span>
+		</div>
+		<div onclick="application.goToTargetView(event)" id="Button" class="Button">
+			<svg class="Rectangle_1">
+				<rect id="Rectangle_1" rx="4" ry="4" x="0" y="0" width="120" height="40">
+				</rect>
+			</svg>
+			<div id="STUDENT_LOG_IN">
+				<span>STUDENT LOG IN</span>
+			</div>
+		</div>
+		<div onclick="application.goToTargetView(event)" id="Button_ec" class="Button">
+			<svg class="Rectangle_1_ed">
+				<rect id="Rectangle_1_ed" rx="4" ry="4" x="0" y="0" width="120" height="40">
+				</rect>
+			</svg>
+			<div id="EMPLOYEE_LOG_IN">
+				<span>EMPLOYEE LOG IN</span>
+			</div>
+		</div>
 	</div>
-	<svg class="Line_3" viewBox="0 0 296 1">
-		<path id="Line_3" d="M 0 0 L 296 0">
-		</path>
-	</svg>
-	<svg class="Line_4" viewBox="0 0 296 1">
-		<path id="Line_4" d="M 0 0 L 296 0">
-		</path>
-	</svg>
-	<div id="Create_Ticket">
-		<span>Create Ticket</span>
-	</div>
-	<svg class="Line_5" viewBox="0 0 296 1">
-		<path id="Line_5" d="M 0 0 L 296 0">
-		</path>
-	</svg>
-	<svg class="Line_6" viewBox="0 0 296 1">
-		<path id="Line_6" d="M 0 0 L 296 0">
-		</path>
-	</svg>
-	<div id="Update_Information">
-		<span>Update Information</span>
-	</div>
-	<svg class="Line_7" viewBox="0 0 296 1">
-		<path id="Line_7" d="M 0 0 L 296 0">
-		</path>
-	</svg>
-	<svg class="Line_8" viewBox="0 0 296 1">
-		<path id="Line_8" d="M 0 0 L 296 0">
-		</path>
-	</svg>
-	<div id="Log_Out">
-		<span>Log Out</span>
-	</div>
-	<svg class="Rectangle_2">
-		<rect id="Rectangle_2" rx="0" ry="0" x="0" y="0" width="1173" height="1259">
-		</rect>
-	</svg>
-	<div id="Your_Tickets_v">
-		<span>Your Tickets</span>
-	</div>
-	<svg class="Rectangle_4">
-		<rect id="Rectangle_4" rx="10" ry="10" x="0" y="0" width="1105" height="66">
-		</rect>
-	</svg>
 </div>
 </body>
 </html>
