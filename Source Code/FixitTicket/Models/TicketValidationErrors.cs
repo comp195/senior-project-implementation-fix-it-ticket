@@ -12,6 +12,10 @@ namespace FixitTicket.Models
             return $"Resident {id} does not exist. Enter the id of an existing resident.";
         }
 
+        public static string EmployeeSetError() 
+        {
+            return $"The assigned employee may not be set in the body of the request. Remove the assigned employee.";
+        }
         public static string CategoryNotSetError() 
         {
             return "The ticket repair category was not set to a valid value. Enter a valid repair category.";

@@ -6,7 +6,6 @@ using FixitTicket.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using FixitTicket.Models;
 
 namespace FixitTicket.Controllers
 {
@@ -23,8 +22,11 @@ namespace FixitTicket.Controllers
 
         // GET: api/Tickets
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets()
         {
+
             return await _context.Ticket.ToListAsync();
         }
 
@@ -80,15 +82,18 @@ namespace FixitTicket.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
-            var resident = await _context.User.FindAsync(ticket.Id);
+            var resident = await _context.User.FindAsync(ticket.ResidentId);
             if (resident == null)
             {
                 // for testing purposes
-                _context.User.Add(new User() { Id = ticket.Id, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = 1});
+                _context.User.Add(new User() { Id = ticket.ResidentId, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = UserRole.Resident});
                 //return BadRequest("User ID must belong to an existing user");
             }
-            await ValidateTicket(ticket);
-            //TODO serialize errors to JSON
+            var errors = await ValidateTicket(ticket);
+            if (errors.Count != 0) 
+            {
+                return BadRequest(new { title = "One or more validation errors occurred.", status = 400, errors = errors });
+            }
             ticket.CreationDate = DateTime.Now;
             _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
@@ -117,9 +122,9 @@ namespace FixitTicket.Controllers
             return _context.Ticket.Any(e => e.Id == id);
         }
 
-        private async Task<bool> IsValidResident(int residentId) 
+        private async Task<bool> IsValidUser(int residentId) 
         {
-            return await _context.Resident.FindAsync(residentId) != null;
+            return await _context.User.FindAsync(residentId) != null;
         }
 
         private bool IsValidCategory(RepairCategory repairCategory) 
@@ -141,9 +146,14 @@ namespace FixitTicket.Controllers
         {
             List<string> ticketErrors = new List<string>();
 
-            if (!await IsValidResident(ticket.Id)) 
+            if (!await IsValidUser(ticket.ResidentId)) 
             {
-                ticketErrors.Add(TicketValidationErrors.ResidentNotFoundError(ticket.Id));
+                ticketErrors.Add(TicketValidationErrors.ResidentNotFoundError(ticket.ResidentId));
+            }
+
+            if (await IsValidUser(ticket.AssignedId)) 
+            {
+                ticketErrors.Add(TicketValidationErrors.EmployeeSetError());
             }
 
             if (!IsValidCategory(ticket.RepairCategory)) 
