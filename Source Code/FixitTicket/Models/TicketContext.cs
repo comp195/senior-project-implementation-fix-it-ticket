@@ -8,6 +8,6 @@ namespace FixitTicket.Models
         {
         }
         public DbSet<Ticket> Ticket { get; set; }
-        public DbSet<Resident> Resident { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }
