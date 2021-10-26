@@ -4,16 +4,16 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fixit Ticket Home</title>
+<title>fixit ticket landing</title>
 <style id="applicationStylesheet" type="text/css">
 	.mediaViewInfo {
-		--web-view-name: Fixit Ticket Home;
-		--web-view-id: Fixit_Ticket_Home;
+		--web-view-name: fixit ticket landing;
+		--web-view-id: fixit_ticket_landing;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
 	:root {
-		--web-view-ids: Fixit_Ticket_Home;
+		--web-view-ids: fixit_ticket_landing;
 	}
 	* {
 		margin: 0;
@@ -21,14 +21,14 @@
 		box-sizing: border-box;
 		border: none;
 	}
-	#Fixit_Ticket_Home {
+	#fixit_ticket_landing {
 		position: absolute;
 		width: 1440px;
 		height: 900px;
 		background-color: rgba(255,255,255,1);
 		overflow: hidden;
-		--web-view-name: Fixit Ticket Home;
-		--web-view-id: Fixit_Ticket_Home;
+		--web-view-name: fixit ticket landing;
+		--web-view-id: fixit_ticket_landing;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
@@ -181,12 +181,12 @@
 		position: absolute;
 		width: 120px;
 		height: 40px;
-		left: 223px;
-		top: 265px;
+		left: 316px;
+		top: 266px;
 		overflow: visible;
-		--web-animation: fadein 0.4s ease-in;
+		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: Student_Log_In_Page_1.html;
+		--web-action-target: login.html;
 		cursor: pointer;
 	}
 	#Rectangle_1 {
@@ -200,51 +200,12 @@
 		left: 0px;
 		top: 0px;
 	}
-	#STUDENT_LOG_IN {
-		left: 18px;
+	#LOG_IN {
+		left: 43px;
 		top: 15px;
 		position: absolute;
 		overflow: visible;
-		width: 85px;
-		white-space: nowrap;
-		line-height: 12px;
-		margin-top: -1px;
-		text-align: center;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 10px;
-		color: rgba(255,255,255,1);
-	}
-	#Button_ec {
-		position: absolute;
-		width: 120px;
-		height: 40px;
-		left: 418px;
-		top: 266px;
-		overflow: visible;
-		--web-animation: fadein 0.4s ease-in;
-		--web-action-type: page;
-		--web-action-target: Employee_Log_In_Page_1.html;
-		cursor: pointer;
-	}
-	#Rectangle_1_ed {
-		fill: rgba(38,153,251,1);
-	}
-	.Rectangle_1_ed {
-		position: absolute;
-		overflow: visible;
-		width: 120px;
-		height: 40px;
-		left: 0px;
-		top: 0px;
-	}
-	#EMPLOYEE_LOG_IN {
-		left: 14px;
-		top: 15px;
-		position: absolute;
-		overflow: visible;
-		width: 93px;
+		width: 35px;
 		white-space: nowrap;
 		line-height: 12px;
 		margin-top: -1px;
@@ -3168,7 +3129,7 @@ window.application = new Application();
 </script>
 </head>
 <body>
-<div id="Fixit_Ticket_Home">
+<div id="fixit_ticket_landing">
 	<svg class="Video">
 		<rect id="Video" rx="0" ry="0" x="0" y="0" width="1400" height="860">
 		</rect>
@@ -3206,17 +3167,8 @@ window.application = new Application();
 				<rect id="Rectangle_1" rx="4" ry="4" x="0" y="0" width="120" height="40">
 				</rect>
 			</svg>
-			<div id="STUDENT_LOG_IN">
-				<span>STUDENT LOG IN</span>
-			</div>
-		</div>
-		<div onclick="application.goToTargetView(event)" id="Button_ec" class="Button">
-			<svg class="Rectangle_1_ed">
-				<rect id="Rectangle_1_ed" rx="4" ry="4" x="0" y="0" width="120" height="40">
-				</rect>
-			</svg>
-			<div id="EMPLOYEE_LOG_IN">
-				<span>EMPLOYEE LOG IN</span>
+			<div id="LOG_IN">
+				<span>LOG IN</span>
 			</div>
 		</div>
 	</div>

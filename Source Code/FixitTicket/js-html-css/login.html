@@ -4,16 +4,16 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Employee Log In Page 1</title>
+<title>login</title>
 <style id="applicationStylesheet" type="text/css">
 	.mediaViewInfo {
-		--web-view-name: Employee Log In Page 1;
-		--web-view-id: Employee_Log_In_Page_1;
+		--web-view-name: login;
+		--web-view-id: login;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
 	:root {
-		--web-view-ids: Employee_Log_In_Page_1;
+		--web-view-ids: login;
 	}
 	* {
 		margin: 0;
@@ -21,14 +21,14 @@
 		box-sizing: border-box;
 		border: none;
 	}
-	#Employee_Log_In_Page_1 {
+	#login {
 		position: absolute;
 		width: 1440px;
 		height: 900px;
 		background-color: rgba(255,255,255,1);
 		overflow: hidden;
-		--web-view-name: Employee Log In Page 1;
-		--web-view-id: Employee_Log_In_Page_1;
+		--web-view-name: login;
+		--web-view-id: login;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
@@ -46,13 +46,38 @@
 		fill: rgba(241,249,255,1);
 	}
 	.Video {
-		overflow: visible;
 		position: absolute;
+		overflow: visible;
 		width: 1400px;
 		height: 860px;
 		left: 20px;
 		top: 20px;
-		transform: matrix(1,0,0,1,0,0);
+	}
+	.login-form-field{ 
+		width: 310px; height: 20px; padding: 5px; background-color: #F1F9FF;
+	}
+	
+	#login-error-msg-holder {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		justify-items: center;
+		align-items: center;
+	}
+	#login-error-msg {
+		width: 23%;
+		text-align: center;
+		margin: 0;
+		padding: 5px;
+		font-size: 12px;
+		font-weight: bold;
+		color: #8a0000;
+		border: 1px solid #8a0000;
+		background-color: #e58f8f;
+		opacity: 0;
+	}
+	#error-msg-second-line {
+		display: block;
 	}
 	#Name {
 		position: absolute;
@@ -61,10 +86,6 @@
 		left: 540px;
 		top: 361px;
 		overflow: visible;
-		--web-animation: fadein 0.4s ease-in;
-		--web-action-type: page;
-		--web-action-target: Log_In_Page__Username_Filled____3.html;
-		cursor: pointer;
 	}
 	#Rectangle_598 {
 		fill: rgba(241,249,255,1);
@@ -118,10 +139,6 @@
 		left: 540px;
 		top: 466px;
 		overflow: visible;
-		--web-animation: fadein 0.3s ease-out;
-		--web-action-type: page;
-		--web-action-target: Log_In_Page__Password_Filled____2.html;
-		cursor: pointer;
 	}
 	#Rectangle_600 {
 		fill: rgba(241,249,255,1);
@@ -168,12 +185,12 @@
 		font-size: 14px;
 		color: rgba(38,153,251,1);
 	}
-	#EMPLOYEE_LOG_IN {
-		left: 442px;
-		top: 178px;
+	#LOG_IN {
+		left: 617px;
+		top: 183px;
 		position: absolute;
 		overflow: visible;
-		width: 558px;
+		width: 208px;
 		white-space: nowrap;
 		text-align: left;
 		font-family: Arial;
@@ -182,17 +199,13 @@
 		font-size: 60px;
 		color: rgba(38,153,251,1);
 	}
-	#Button_CTA {
+	#Button_Submit {
 		position: absolute;
 		width: 148px;
 		height: 48px;
 		left: 646px;
 		top: 617px;
 		overflow: visible;
-		--web-animation: fadein 0.3s ease-out;
-		--web-action-type: page;
-		--web-action-target: Log_In_Page__Empty_Fields____4.html;
-		cursor: pointer;
 	}
 	#Rectangle_1090 {
 		fill: rgba(38,153,251,1);
@@ -244,9 +257,9 @@
 		left: 85px;
 		top: 81px;
 		overflow: visible;
-		--web-animation: fadein 0.4s ease-in;
+		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: Fixit_Ticket_Home.html;
+		--web-action-target: fixit_ticket_landing.html;
 		cursor: pointer;
 	}
 	#Rectangle_1067 {
@@ -3198,52 +3211,59 @@ var Application = function() {
 }
 
 window.application = new Application();
+
 </script>
+	<script defer src="StudentLogIn.js"></script>
 </head>
 <body>
-<div id="Employee_Log_In_Page_1">
-	<svg class="Video" viewBox="0 0 1400 860">
-		<path id="Video" d="M 0 0 L 1400 0 L 1400 860 L 0 860 L 0 0 Z">
-		</path>
+<div id="login">
+	<svg class="Video">
+		<rect id="Video" rx="0" ry="0" x="0" y="0" width="1400" height="860">
+		</rect>
 	</svg>
-	<div onclick="application.goToTargetView(event)" id="Name">
+	<div id="Name">
 		<svg class="Rectangle_598">
 			<rect id="Rectangle_598" rx="10" ry="10" x="0" y="0" width="360" height="50">
 			</rect>
 		</svg>
 		<div id="Enter_your_username">
-			<span>Enter your username</span>
+			<input type="text" name="username" id="username-field" class="login-form-field" placeholder="Enter your username">
 		</div>
 		<div id="Username">
 			<span>Username</span>
 		</div>
-	</div>
-	<div onclick="application.goToTargetView(event)" id="Password">
-		<svg class="Rectangle_600">
-			<rect id="Rectangle_600" rx="10" ry="10" x="0" y="0" width="360" height="50">
-			</rect>
-		</svg>
-		<div id="Enter_your_passwords">
-			<span>Enter your passwords</span>
+	</div> 
+	<form id="login-form">
+		<div id="Password">
+			<svg class="Rectangle_600">
+				<rect id="Rectangle_600" rx="10" ry="10" x="0" y="0" width="360" height="50">
+				</rect>
+			</svg>
+			<div id="Enter_your_passwords">
+				<input type="password" name="password" id="password-field" class="login-form-field" placeholder="Enter your password">
+			</div>
+			<div id="Password_d">
+				<span>Password</span>
+			</div>
 		</div>
-		<div id="Password_d">
-			<span>Password</span>
+		<div id="LOG_IN">
+			<span>LOG IN</span>
 		</div>
-	</div>
-	<div id="EMPLOYEE_LOG_IN">
-		<span>EMPLOYEE LOG IN</span>
-	</div>
-	<div onclick="application.goToTargetView(event)" id="Button_CTA" class="Button_CTA">
-		<svg class="Rectangle_1090">
-			<rect id="Rectangle_1090" rx="4" ry="4" x="0" y="0" width="148" height="48">
-			</rect>
-		</svg>
-		<div id="SUBMIT">
-			<span>SUBMIT</span>
+		<div id="Button_Submit" class="Button_Submit">
+			<svg class="Rectangle_1090">
+				<rect id="Rectangle_1090" rx="4" ry="4" x="0" y="0" width="148" height="48">
+				</rect>
+			</svg>
+			<div id="SUBMIT">
+				<input type="submit" value="Login" id="login-form-submit">
+			</div>
 		</div>
-	</div>
+	</form>
 	<div id="Log_in_to_access_your_tickets">
 		<span>Log in to access your tickets</span>
+	</div>
+	<div id="login-error-msg-holder">
+		<p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
 	</div>
 	<div onclick="application.goToTargetView(event)" id="Arrow_Left" class="Arrow_Left">
 		<svg class="Rectangle_1067">
