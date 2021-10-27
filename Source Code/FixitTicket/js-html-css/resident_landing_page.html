@@ -4,16 +4,16 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>login</title>
+<title>resident landing page</title>
 <style id="applicationStylesheet" type="text/css">
 	.mediaViewInfo {
-		--web-view-name: login;
-		--web-view-id: login;
+		--web-view-name: resident landing page;
+		--web-view-id: resident_landing_page;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
 	:root {
-		--web-view-ids: login;
+		--web-view-ids: resident_landing_page;
 	}
 	* {
 		margin: 0;
@@ -21,327 +21,1187 @@
 		box-sizing: border-box;
 		border: none;
 	}
-	#login {
+	#resident_landing_page {
 		position: absolute;
 		width: 1440px;
 		height: 900px;
 		background-color: rgba(255,255,255,1);
 		overflow: hidden;
-		--web-view-name: login;
-		--web-view-id: login;
+		--web-view-name: resident landing page;
+		--web-view-id: resident_landing_page;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
-	#Rectangle_1095 {
-		fill: rgba(255,227,227,1);
+	#Navigation_Bar {
+		position: absolute;
+		width: 220px;
+		height: 900px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
 	}
-	.Rectangle_1095 {
+	#Base {
+		fill: rgba(38,153,251,1);
+	}
+	.Base {
 		position: absolute;
 		overflow: visible;
-		width: 329px;
-		height: 60px;
-		left: 556px;
-		top: 725px;
-		opacity: 0;
+		width: 220px;
+		height: 900px;
+		left: 0px;
+		top: 0px;
 	}
-	#Your_username_andor_password__ {
-		left: 607px;
-		top: 737px;
+	#YOUR_TICKETS {
+		left: 40px;
+		top: 116px;
 		position: absolute;
 		overflow: visible;
-		width: 229px;
+		width: 75px;
 		white-space: nowrap;
-		line-height: 20px;
-		margin-top: -4px;
-		text-align: center;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#CREATE_TICKET {
+		left: 41px;
+		top: 157px;
+		position: absolute;
+		overflow: visible;
+		width: 79px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#UPDATE_PROFILE {
+		left: 40px;
+		top: 198px;
+		position: absolute;
+		overflow: visible;
+		width: 86px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#LOG_OUT {
+		left: 40px;
+		top: 239px;
+		position: absolute;
+		overflow: visible;
+		width: 46px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#Fixit_Ticket_Student {
+		left: 40px;
+		top: 42px;
+		position: absolute;
+		overflow: visible;
+		width: 95px;
+		white-space: nowrap;
+		line-height: 24px;
+		margin-top: -3px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 18px;
+		color: rgba(255,255,255,1);
+	}
+	#Student_Dashboard {
+		left: 312px;
+		top: 44px;
+		position: absolute;
+		overflow: visible;
+		width: 370px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 40px;
+		color: rgba(38,153,251,1);
+	}
+	#Your_Tickets {
+		left: 312px;
+		top: 103px;
+		position: absolute;
+		overflow: visible;
+		width: 119px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -5px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(127,127,127,1);
+	}
+	#Rectangle_1094 {
+		fill: rgba(232,244,255,1);
+	}
+	.Rectangle_1094 {
+		position: absolute;
+		overflow: visible;
+		width: 899px;
+		height: 628px;
+		left: 371px;
+		top: 188px;
+	}
+	#TABLES {
+		position: absolute;
+		width: 830px;
+		height: 558px;
+		left: 412px;
+		top: 220px;
+		overflow: visible;
+	}
+	#Bg {
+		fill: rgba(255,255,255,1);
+	}
+	.Bg {
+		filter: drop-shadow(0px 1px 4px rgba(21, 34, 50, 0.078));
+		position: absolute;
+		overflow: visible;
+		width: 837px;
+		height: 570px;
+		left: 0px;
+		top: 0px;
+	}
+	#Scroll_Group {
+		mix-blend-mode: normal;
+		position: absolute;
+		width: 830px;
+		height: 516px;
+		left: 0px;
+		top: 42px;
+		overflow: hidden;
+	}
+	#Row_-_Table {
+		position: absolute;
+		width: 830px;
+		height: 432px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+		padding: 0px;
+	}
+	#Row {
+		position: absolute;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 384px;
+		overflow: visible;
+	}
+	#Background {
+		fill: transparent;
+	}
+	.Background {
+		position: absolute;
+		overflow: visible;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#Mar_21_2019_330pm {
+		left: 234px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 27px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
 		font-family: Poppins;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 12px;
-		color: rgba(255,136,136,1);
-		letter-spacing: 0.727272720336914px;
-		opacity: 0;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
 	}
-	@keyframes fadein {
-	
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	
-	}
-	#Video {
-		fill: rgba(241,249,255,1);
-	}
-	.Video {
+	#Mar_21_2019_330pm_ei {
+		left: 413px;
+		top: 14px;
 		position: absolute;
 		overflow: visible;
-		width: 1400px;
-		height: 860px;
-		left: 20px;
-		top: 20px;
-	}
-	.login-form-field{ 
-		width: 310px; height: 20px; padding: 5px; background-color: #F1F9FF;
-	}
-	
-	#login-error-msg-holder {
-		width: 100%;
-		height: 100%;
-		display: grid;
-		justify-items: center;
-		align-items: center;
-	}
-	#login-error-msg {
-		width: 23%;
-		text-align: center;
-		margin: 0;
-		padding: 5px;
-		font-size: 12px;
-		font-weight: bold;
-		color: #8a0000;
-		border: 1px solid #8a0000;
-		background-color: #e58f8f;
-		opacity: 0;
-	}
-	#error-msg-second-line {
-		display: block;
-	}
-	#Name {
-		position: absolute;
-		width: 360px;
-		height: 74px;
-		left: 540px;
-		top: 361px;
-		overflow: visible;
-	}
-	#Rectangle_598 {
-		fill: rgba(241,249,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 2px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_598 {
-		position: absolute;
-		overflow: visible;
-		width: 360px;
-		height: 50px;
-		left: 0px;
-		top: 24px;
-	}
-	#Enter_your_username {
-		left: 20px;
-		top: 41px;
-		position: absolute;
-		overflow: visible;
-		width: 132px;
+		width: 23px;
 		white-space: nowrap;
+		line-height: 14px;
+		margin-top: -2.5px;
 		text-align: left;
-		font-family: Arial;
+		font-family: Poppins;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 14px;
-		color: rgba(112,112,112,1);
+		font-size: 9px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
 	}
-	#Username {
-		left: 0px;
-		top: 0px;
+	#Payment_from_10321 {
+		left: 32px;
+		top: 14px;
 		position: absolute;
 		overflow: visible;
-		width: 69px;
+		width: 35px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 14px;
-		color: rgba(38,153,251,1);
-	}
-	#Password {
-		position: absolute;
-		width: 360px;
-		height: 74px;
-		left: 540px;
-		top: 466px;
-		overflow: visible;
-	}
-	#Rectangle_600 {
-		fill: rgba(241,249,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 2px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_600 {
-		position: absolute;
-		overflow: visible;
-		width: 360px;
-		height: 50px;
-		left: 0px;
-		top: 24px;
-	}
-	#Enter_your_passwords {
-		left: 20px;
-		top: 41px;
-		position: absolute;
-		overflow: visible;
-		width: 136px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Arial;
+		font-family: Poppins-Regular;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 14px;
-		color: rgba(102,102,102,1);
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
 	}
-	#Password_d {
-		left: 0px;
-		top: 0px;
+	#n_25000 {
+		left: 578.35px;
+		top: 14px;
 		position: absolute;
 		overflow: visible;
-		width: 67px;
+		width: 17px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
+		font-family: Poppins;
 		font-style: normal;
-		font-weight: bold;
-		font-size: 14px;
-		color: rgba(38,153,251,1);
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
 	}
-	#login-form-submit {
-		overflow: visible;
-		white-space: nowrap;
-		background-color: rgba(255,255,255,0);
-		text-align: center;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 12px;
-		color: rgba(255,255,255,1);
-	}
-	
-	#LOG_IN {
-		left: 617px;
-		top: 183px;
+	#n_25000_el {
+		left: 728.91px;
+		top: 14px;
 		position: absolute;
 		overflow: visible;
-		width: 208px;
+		width: 16px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
+		font-family: Poppins;
 		font-style: normal;
-		font-weight: bold;
-		font-size: 60px;
-		color: rgba(38,153,251,1);
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
 	}
-	#Button_Submit {
+	#Row_em {
 		position: absolute;
-		width: 148px;
+		width: 830px;
 		height: 48px;
-		left: 646px;
-		top: 617px;
+		left: 0px;
+		top: 336px;
 		overflow: visible;
 	}
-	#Rectangle_1090 {
+	#Background_en {
+		fill: transparent;
+	}
+	.Background_en {
+		position: absolute;
+		overflow: visible;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#Mar_21_2019_330pm_eo {
+		left: 234px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 30px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Mar_21_2019_330pm_ep {
+		left: 413px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 21px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Payment_from_10321_eq {
+		left: 32px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 76px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins-Regular;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_er {
+		left: 578.35px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 17px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_es {
+		left: 728.91px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 19px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#Row_et {
+		position: absolute;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 288px;
+		overflow: visible;
+	}
+	#Background_eu {
+		fill: transparent;
+	}
+	.Background_eu {
+		position: absolute;
+		overflow: visible;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#Mar_21_2019_330pm_ev {
+		left: 234px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 24px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Mar_21_2019_330pm_ew {
+		left: 413px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 24px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Payment_from_10321_ex {
+		left: 32px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 37px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins-Regular;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_ey {
+		left: 578.35px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 17px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_ez {
+		left: 728.91px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 16px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 6px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#Row_e {
+		position: absolute;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 240px;
+		overflow: visible;
+	}
+	#Background_e {
+		fill: transparent;
+	}
+	.Background_e {
+		position: absolute;
+		overflow: visible;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#Mar_21_2019_330pm_e {
+		left: 234px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 25px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Mar_21_2019_330pm_fa {
+		left: 413px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 19px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Payment_from_10321_e {
+		left: 32px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 29px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins-Regular;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_e {
+		left: 578.35px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 16px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_fa {
+		left: 728.91px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 15px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 6px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#Row_fa {
+		position: absolute;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 192px;
+		overflow: visible;
+	}
+	#Background_fa {
+		fill: transparent;
+	}
+	.Background_fa {
+		position: absolute;
+		overflow: visible;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#Mar_21_2019_330pm_fb {
+		left: 234px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 24px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Mar_21_2019_330pm_fc {
+		left: 413px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 24px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Payment_from_10321_fb {
+		left: 32px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 23px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins-Regular;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_fc {
+		left: 578.35px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 17px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_fd {
+		left: 728.91px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 16px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 6px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#Row_fe {
+		position: absolute;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 144px;
+		overflow: visible;
+	}
+	#Background_ff {
+		fill: transparent;
+	}
+	.Background_ff {
+		position: absolute;
+		overflow: visible;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#Mar_21_2019_330pm_fg {
+		left: 234px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 29px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Mar_21_2019_330pm_fh {
+		left: 413px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 24px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Payment_from_10321_fi {
+		left: 32px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 64px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins-Regular;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_fj {
+		left: 578.35px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 16px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_fk {
+		left: 728.91px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 14px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 6px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#Row_fl {
+		position: absolute;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 96px;
+		overflow: visible;
+	}
+	#Background_fm {
+		fill: transparent;
+	}
+	.Background_fm {
+		position: absolute;
+		overflow: visible;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#Mar_21_2019_330pm_fn {
+		left: 234px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 26px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Mar_21_2019_330pm_fo {
+		left: 413px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 19px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Payment_from_10321_fp {
+		left: 32px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 49px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins-Regular;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_fq {
+		left: 578.35px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 15px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 6px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_fr {
+		left: 728.91px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 15px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 6px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#Row_fs {
+		position: absolute;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 48px;
+		overflow: visible;
+	}
+	#Background_ft {
+		fill: transparent;
+	}
+	.Background_ft {
+		position: absolute;
+		overflow: visible;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#Mar_21_2019_330pm_fu {
+		left: 234px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 28px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -2px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Mar_21_2019_330pm_fv {
+		left: 413px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 24px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Payment_from_10321_fw {
+		left: 32px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 30px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins-Regular;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 9px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_fx {
+		left: 578.35px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 15px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_fy {
+		left: 728.91px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 15px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 6px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#Widgets__Table__Table_Row {
+		position: absolute;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#Background_f {
+		fill: transparent;
+	}
+	.Background_f {
+		position: absolute;
+		overflow: visible;
+		width: 830px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#Mar_21_2019_330pm_f {
+		left: 235.141px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 24px;
+		white-space: nowrap;
+		line-height: 11px;
+		margin-top: -2px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Mar_21_2019_330pm_ga {
+		left: 414px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 21px;
+		white-space: nowrap;
+		line-height: 13px;
+		margin-top: -2.5px;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 8px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.07142857074737549px;
+	}
+	#Payment_from_10321_f {
+		left: 32.145px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 22px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins-Regular;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_f {
+		left: 578.35px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 17px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#n_25000_ga {
+		left: 728.91px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 16px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 7px;
+		color: rgba(19,21,35,1);
+		letter-spacing: 0.14285714149475098px;
+	}
+	#Widgets__Table__Table_Header {
+		position: absolute;
+		width: 825.366px;
+		height: 42.554px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#Shape {
 		fill: rgba(38,153,251,1);
 	}
-	.Rectangle_1090 {
-		position: absolute;
+	.Shape {
 		overflow: visible;
-		width: 148px;
-		height: 48px;
+		position: absolute;
+		width: 825.367px;
+		height: 42.554px;
 		left: 0px;
 		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
 	}
-	#SUBMIT {
-		left: 51px;
-		top: 17px;
+	#Payment_Number {
+		left: 31px;
+		top: 14px;
+		position: absolute;
+		overflow: visible;
+		width: 37px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.727272720336914px;
+		text-transform: uppercase;
+	}
+	#Date__time {
+		left: 233px;
+		top: 14px;
 		position: absolute;
 		overflow: visible;
 		width: 47px;
 		white-space: nowrap;
-		line-height: 30px;
-		margin-top: -9px;
-		text-align: center;
-		font-family: Arial;
+		text-align: left;
+		font-family: Poppins;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 12px;
+		font-size: 7px;
 		color: rgba(255,255,255,1);
+		letter-spacing: 0.727272720336914px;
+		text-transform: uppercase;
 	}
-	#Log_in_to_access_your_tickets {
-		left: 595px;
-		top: 262px;
+	#Date__time_ga {
+		left: 410px;
+		top: 14px;
 		position: absolute;
 		overflow: visible;
-		width: 252px;
+		width: 72px;
 		white-space: nowrap;
-		line-height: 40px;
-		margin-top: -10px;
 		text-align: left;
-		font-family: Arial;
+		font-family: Poppins;
 		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		color: rgba(127,127,127,1);
+		font-weight: bold;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.727272720336914px;
+		text-transform: uppercase;
 	}
-	#Arrow_Left {
-		position: absolute;
-		width: 50px;
-		height: 50px;
-		left: 85px;
-		top: 81px;
-		overflow: visible;
-		--web-animation: fadein 0.3s ease-out;
-		--web-action-type: page;
-		--web-action-target: fixit_ticket_landing.html;
-		cursor: pointer;
-	}
-	#Rectangle_1067 {
-		fill: rgba(250,250,250,1);
-		stroke: rgba(241,249,255,1);
-		stroke-width: 2px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_1067 {
+	#amount {
+		left: 575.035px;
+		top: 14.185px;
 		position: absolute;
 		overflow: visible;
-		width: 50px;
-		height: 50px;
-		left: 0px;
-		top: 0px;
+		width: 30px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.727272720336914px;
+		text-transform: uppercase;
 	}
-	#Symbol_83 {
-		transform: translate(0px, 0px) matrix(1,0,0,1,18,17) rotate(180deg);
-		transform-origin: center;
+	#amount_gc {
+		left: 724.732px;
+		top: 14.185px;
 		position: absolute;
-		width: 16px;
-		height: 16px;
-		left: 0px;
-		top: 0px;
 		overflow: visible;
+		width: 62px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.727272720336914px;
+		text-transform: uppercase;
 	}
-	#Path_10 {
-		fill: rgba(38,153,251,1);
+	#Scroll {
+		fill: rgba(230,233,244,1);
 	}
-	.Path_10 {
-		overflow: visible;
+	.Scroll {
 		position: absolute;
-		width: 16px;
-		height: 16px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
+		overflow: visible;
+		width: 4px;
+		height: 71px;
+		left: 818px;
+		top: 50px;
 	}
 </style>
 <script id="applicationScript">
@@ -3253,76 +4113,264 @@ var Application = function() {
 }
 
 window.application = new Application();
-
 </script>
-	<script defer src="StudentLogIn.js"></script>
 </head>
 <body>
-<div id="login">
-	<svg class="Video">
-		<rect id="Video" rx="0" ry="0" x="0" y="0" width="1400" height="860">
+<div id="resident_landing_page">
+	<div id="Navigation_Bar" class="Navigation_Bar">
+		<svg class="Base">
+			<rect id="Base" rx="0" ry="0" x="0" y="0" width="220" height="900">
+			</rect>
+		</svg>
+		<div id="YOUR_TICKETS">
+			<span>YOUR TICKETS</span>
+		</div>
+		<div id="CREATE_TICKET">
+			<span>CREATE TICKET</span>
+		</div>
+		<div id="UPDATE_PROFILE">
+			<span>UPDATE PROFILE</span>
+		</div>
+		<div id="LOG_OUT">
+			<span>LOG OUT</span>
+		</div>
+		<div id="Fixit_Ticket_Student">
+			<span>Fixit Ticket<br/>Student</span>
+		</div>
+	</div>
+	<div id="Student_Dashboard">
+		<span>Student Dashboard</span>
+	</div>
+	<div id="Your_Tickets">
+		<span>Your Tickets</span>
+	</div>
+	<svg class="Rectangle_1094">
+		<rect id="Rectangle_1094" rx="10" ry="10" x="0" y="0" width="899" height="628">
 		</rect>
 	</svg>
-	<div id="Name">
-		<svg class="Rectangle_598">
-			<rect id="Rectangle_598" rx="10" ry="10" x="0" y="0" width="360" height="50">
+	<div id="TABLES">
+		<svg class="Bg">
+			<rect id="Bg" rx="6" ry="6" x="0" y="0" width="825" height="558">
 			</rect>
 		</svg>
-		<div id="Enter_your_username">
-			<input type="text" name="username" id="username-field" class="login-form-field" placeholder="Enter your username">
-		</div>
-		<div id="Username">
-			<span>Username</span>
-		</div>
-	</div> 
-	<form id="login-form">
-		<div id="Password">
-			<svg class="Rectangle_600">
-				<rect id="Rectangle_600" rx="10" ry="10" x="0" y="0" width="360" height="50">
-				</rect>
-			</svg>
-			<div id="Enter_your_passwords">
-				<input type="password" name="password" id="password-field" class="login-form-field" placeholder="Enter your password">
+		<div id="Scroll_Group">
+			<div id="Row_-_Table">
+				<div id="Row" class="Row">
+					<svg class="Background">
+						<rect id="Background" rx="0" ry="0" x="0" y="0" width="830" height="48">
+						</rect>
+					</svg>
+					<div id="Mar_21_2019_330pm">
+						<span>45,759</span>
+					</div>
+					<div id="Mar_21_2019_330pm_ei">
+						<span>32.1%</span>
+					</div>
+					<div id="Payment_from_10321">
+						<span>Partners</span>
+					</div>
+					<div id="n_25000">
+						<span>3.5%</span>
+					</div>
+					<div id="n_25000_el">
+						<span>1765</span>
+					</div>
+				</div>
+				<div id="Row_em" class="Row">
+					<svg class="Background_en">
+						<rect id="Background_en" rx="0" ry="0" x="0" y="0" width="830" height="48">
+						</rect>
+					</svg>
+					<div id="Mar_21_2019_330pm_eo">
+						<span>102,768</span>
+					</div>
+					<div id="Mar_21_2019_330pm_ep">
+						<span>51.2%</span>
+					</div>
+					<div id="Payment_from_10321_eq">
+						<span>Marketing campaign</span>
+					</div>
+					<div id="n_25000_er">
+						<span>4.3%</span>
+					</div>
+					<div id="n_25000_es">
+						<span>2456</span>
+					</div>
+				</div>
+				<div id="Row_et" class="Row">
+					<svg class="Background_eu">
+						<rect id="Background_eu" rx="0" ry="0" x="0" y="0" width="830" height="48">
+						</rect>
+					</svg>
+					<div id="Mar_21_2019_330pm_ev">
+						<span>92,179</span>
+					</div>
+					<div id="Mar_21_2019_330pm_ew">
+						<span>48.2%</span>
+					</div>
+					<div id="Payment_from_10321_ex">
+						<span>Proposal</span>
+					</div>
+					<div id="n_25000_ey">
+						<span>4.2%</span>
+					</div>
+					<div id="n_25000_ez">
+						<span>2029</span>
+					</div>
+				</div>
+				<div id="Row_e" class="Row">
+					<svg class="Background_e">
+						<rect id="Background_e" rx="0" ry="0" x="0" y="0" width="830" height="48">
+						</rect>
+					</svg>
+					<div id="Mar_21_2019_330pm_e">
+						<span>15,875</span>
+					</div>
+					<div id="Mar_21_2019_330pm_fa">
+						<span>31.1%</span>
+					</div>
+					<div id="Payment_from_10321_e">
+						<span>Referal</span>
+					</div>
+					<div id="n_25000_e">
+						<span>3.2%</span>
+					</div>
+					<div id="n_25000_fa">
+						<span>1689</span>
+					</div>
+				</div>
+				<div id="Row_fa" class="Row">
+					<svg class="Background_fa">
+						<rect id="Background_fa" rx="0" ry="0" x="0" y="0" width="830" height="48">
+						</rect>
+					</svg>
+					<div id="Mar_21_2019_330pm_fb">
+						<span>92,179</span>
+					</div>
+					<div id="Mar_21_2019_330pm_fc">
+						<span>48.2%</span>
+					</div>
+					<div id="Payment_from_10321_fb">
+						<span>Email</span>
+					</div>
+					<div id="n_25000_fc">
+						<span>4.2%</span>
+					</div>
+					<div id="n_25000_fd">
+						<span>2029</span>
+					</div>
+				</div>
+				<div id="Row_fe" class="Row">
+					<svg class="Background_ff">
+						<rect id="Background_ff" rx="0" ry="0" x="0" y="0" width="830" height="48">
+						</rect>
+					</svg>
+					<div id="Mar_21_2019_330pm_fg">
+						<span>123,879</span>
+					</div>
+					<div id="Mar_21_2019_330pm_fh">
+						<span>45.9%</span>
+					</div>
+					<div id="Payment_from_10321_fi">
+						<span>Organic search</span>
+					</div>
+					<div id="n_25000_fj">
+						<span>7.5%</span>
+					</div>
+					<div id="n_25000_fk">
+						<span>1432</span>
+					</div>
+				</div>
+				<div id="Row_fl" class="Row">
+					<svg class="Background_fm">
+						<rect id="Background_fm" rx="0" ry="0" x="0" y="0" width="830" height="48">
+						</rect>
+					</svg>
+					<div id="Mar_21_2019_330pm_fn">
+						<span>62,767</span>
+					</div>
+					<div id="Mar_21_2019_330pm_fo">
+						<span>9.3%</span>
+					</div>
+					<div id="Payment_from_10321_fp">
+						<span>Paid search</span>
+					</div>
+					<div id="n_25000_fq">
+						<span>6.0%</span>
+					</div>
+					<div id="n_25000_fr">
+						<span>1449</span>
+					</div>
+				</div>
+				<div id="Row_fs" class="Row">
+					<svg class="Background_ft">
+						<rect id="Background_ft" rx="0" ry="0" x="0" y="0" width="830" height="48">
+						</rect>
+					</svg>
+					<div id="Mar_21_2019_330pm_fu">
+						<span>89,298</span>
+					</div>
+					<div id="Mar_21_2019_330pm_fv">
+						<span>49.2%</span>
+					</div>
+					<div id="Payment_from_10321_fw">
+						<span>Call In</span>
+					</div>
+					<div id="n_25000_fx">
+						<span>1.5%</span>
+					</div>
+					<div id="n_25000_fy">
+						<span>1856</span>
+					</div>
+				</div>
+				<div id="Widgets__Table__Table_Row" class="Widgets___Table___Table_Row">
+					<svg class="Background_f">
+						<rect id="Background_f" rx="0" ry="0" x="0" y="0" width="830" height="48">
+						</rect>
+					</svg>
+					<div id="Mar_21_2019_330pm_f">
+						<span>45,759</span>
+					</div>
+					<div id="Mar_21_2019_330pm_ga">
+						<span>32.1%</span>
+					</div>
+					<div id="Payment_from_10321_f">
+						<span>Direct</span>
+					</div>
+					<div id="n_25000_f">
+						<span>3.5%</span>
+					</div>
+					<div id="n_25000_ga">
+						<span>1765</span>
+					</div>
+				</div>
 			</div>
-			<div id="Password_d">
-				<span>Password</span>
-			</div>
 		</div>
-		<div id="LOG_IN">
-			<span>LOG IN</span>
-		</div>
-		<div id="Button_Submit" class="Button_Submit">
-			<svg class="Rectangle_1090">
-				<rect id="Rectangle_1090" rx="4" ry="4" x="0" y="0" width="148" height="48">
-				</rect>
-			</svg>
-			<div id="SUBMIT">
-				<input type="submit" value="SUBMIT" id="login-form-submit">
-			</div>
-		</div>
-	</form>
-	<div id="Log_in_to_access_your_tickets">
-		<span>Log in to access your tickets</span>
-	</div>
-	<div onclick="application.goToTargetView(event)" id="Arrow_Left" class="Arrow_Left">
-		<svg class="Rectangle_1067">
-			<rect id="Rectangle_1067" rx="10" ry="10" x="0" y="0" width="50" height="50">
-			</rect>
-		</svg>
-		<div id="Symbol_83">
-			<svg class="Path_10" viewBox="0 0 16 16">
-				<path id="Path_10" d="M 8 0 L 6.545454978942871 1.454545497894287 L 12.05194854736328 6.961039066314697 L 0 6.961039066314697 L 0 9.038961410522461 L 12.05194854736328 9.038961410522461 L 6.545454978942871 14.54545497894287 L 8 16 L 16 8 L 8 0 Z">
+		<div id="Widgets__Table__Table_Header" class="Widgets___Table___Table_Header">
+			<svg class="Shape" viewBox="0 0 825.366 42.554">
+				<path id="Shape" d="M 0 0 L 825.3662719726562 0 L 825.3662719726562 42.55379486083984 L 0 42.55379486083984 L 0 0 Z">
 				</path>
 			</svg>
+			<div id="Payment_Number">
+				<span>Ticket Id</span>
+			</div>
+			<div id="Date__time">
+				<span>resident id</span>
+			</div>
+			<div id="Date__time_ga">
+				<span>rEPAIR CATEGORY</span>
+			</div>
+			<div id="amount">
+				<span>sTATUS</span>
+			</div>
+			<div id="amount_gc">
+				<span>cREATION dATE</span>
+			</div>
 		</div>
-		</div>
-		<svg class="Rectangle_1095">
-			<rect id="Rectangle_1095" rx="0" ry="0" x="0" y="0" width="329" height="60">
+		<svg class="Scroll">
+			<rect id="Scroll" rx="2" ry="2" x="0" y="0" width="4" height="71">
 			</rect>
 		</svg>
-		<div id="Your_username_andor_password__">
-			<span>Your username and/or password <br/>is invalid. Try again.</span>
-		</div>
 	</div>
 </div>
 </body>
