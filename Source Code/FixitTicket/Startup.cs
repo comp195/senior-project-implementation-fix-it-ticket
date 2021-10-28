@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace FixitTicket
 {
@@ -36,18 +38,20 @@ namespace FixitTicket
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            DefaultFilesOptions DefaultFile = new DefaultFilesOptions();  
-            DefaultFile.DefaultFileNames.Clear();  
-            DefaultFile.DefaultFileNames.Add("js-html-css/fixit_ticket_landing.html");  
-            app.UseDefaultFiles(DefaultFile);  
-            app.UseStaticFiles(); 
-            
+            DefaultFilesOptions DefaultFile = new DefaultFilesOptions();
+            DefaultFile.DefaultFileNames.Clear();
+            DefaultFile.DefaultFileNames.Add("fixit_ticket_landing.html");
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 //app.UseSwagger();
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SeniorProjectTest v1"));
             }
+
+            app.UseDefaultFiles(DefaultFile);
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 
