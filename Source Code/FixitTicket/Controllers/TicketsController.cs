@@ -83,12 +83,12 @@ namespace FixitTicket.Controllers
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
             var resident = await _context.User.FindAsync(ticket.ResidentId);
-            if (resident == null)
-            {
-                // for testing purposes
-                _context.User.Add(new User() { Id = ticket.ResidentId, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = UserRole.Resident});
-                //return BadRequest("User ID must belong to an existing user");
-            }
+            //if (resident == null)
+            //{
+            //    // for testing purposes
+            //    _context.User.Add(new User() { Id = ticket.ResidentId, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = UserRole.Resident});
+            //    //return BadRequest("User ID must belong to an existing user");
+            //}
             var errors = await ValidateTicket(ticket);
             if (errors.Count != 0) 
             {
@@ -151,7 +151,7 @@ namespace FixitTicket.Controllers
                 ticketErrors.Add(TicketValidationErrors.ResidentNotFoundError(ticket.ResidentId));
             }
 
-            if (await IsValidUser(ticket.AssignedId)) 
+            if (ticket.AssignedId != null) 
             {
                 ticketErrors.Add(TicketValidationErrors.EmployeeSetError());
             }
