@@ -30,6 +30,70 @@ namespace FixitTicket.Controllers
             return await _context.Ticket.ToListAsync();
         }
 
+        // GET: api/Tickets/assigned/989271487
+        // gets tickets assigned to an employee id
+
+        [HttpGet("assigned/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsAssigned(int id) 
+        {
+            return await _context.Ticket.Where(ticket => ticket.ResidentId == id).ToListAsync();
+        }
+
+        // GET: api/Tickets/assigned
+        // sorts tickets by assigned employee
+
+        [HttpGet("assigned")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsByAssigned() 
+        {
+            return await _context.Ticket.OrderBy(ticket => ticket.AssignedId).ToListAsync();
+        }
+
+
+        // GET: api/Tickets/location/2
+        // gets tickets for a particular building
+
+        [HttpGet("location/{location}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsLocation(int location) 
+        {
+            var tickets = await _context.Ticket.ToListAsync();
+            var ticketIds = tickets.Select(t => t.ResidentId);
+            var users = await _context.User.Where(u => ticketIds.Contains(u.Id))
+                                            .Where(u => u.BuildingID == location)
+                                            .ToListAsync();
+
+            return new ActionResult<IEnumerable<Ticket>>(tickets.Where(t => users.Select(u => u.Id).Contains(t.ResidentId)));
+        }
+
+        //[HttpGet("location")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsByLocation() 
+        //{
+        //}
+
+
+        // GET: api/Tickets/status
+        // get tickets with a certain status
+
+        [HttpGet("status/{status}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsWithStatus(RepairStatus status) 
+        {
+            return await _context.Ticket.Where(ticket => ticket.Status == status).ToListAsync();
+        }
+
+        // GET: api/Tickets/status
+        // orders tickets by status
+
+        [HttpGet("status")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsStatus()
+        {
+            return await _context.Ticket.OrderBy(ticket => ticket.Status).ToListAsync();
+        }
+
         // GET: api/Tickets/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Ticket>> GetTicket(int id)
