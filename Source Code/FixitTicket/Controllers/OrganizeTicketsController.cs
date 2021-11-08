@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FixitTicket.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Tickets")]
     [ApiController]
     public class OrganizeTicketsController : ControllerBase
     {
@@ -57,11 +57,21 @@ namespace FixitTicket.Controllers
             return new ActionResult<IEnumerable<Ticket>>(tickets.Where(t => users.Select(u => u.Id).Contains(t.ResidentId)));
         }
 
-        //[HttpGet("location")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsByLocation() 
-        //{
-        //}
+        // GET: api/Tickets/location
+        // orders tickets by location
+        [HttpGet("location")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<IEnumerable<Ticket>> GetTicketsByLocation()
+        {
+            IEnumerable<Ticket> tickets = from ticket in _context.Ticket
+                                          join user in _context.User
+                                          on ticket.ResidentId
+                                          equals user.Id
+                                          orderby user.BuildingID
+                                          select ticket;
+
+            return new ActionResult<IEnumerable<Ticket>>(tickets);
+        }
 
 
         // GET: api/Tickets/status
