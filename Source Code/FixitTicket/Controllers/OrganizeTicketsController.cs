@@ -46,12 +46,12 @@ namespace FixitTicket.Controllers
 
         [HttpGet("location/{location}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsLocation(int location)
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsLocation(Building location)
         {
             var tickets = await _context.Ticket.ToListAsync();
             var ticketIds = tickets.Select(t => t.ResidentId);
             var users = await _context.User.Where(u => ticketIds.Contains(u.Id))
-                                            .Where(u => u.BuildingID == location)
+                                            .Where(u => u.Building == location)
                                             .ToListAsync();
 
             return new ActionResult<IEnumerable<Ticket>>(tickets.Where(t => users.Select(u => u.Id).Contains(t.ResidentId)));
@@ -67,7 +67,7 @@ namespace FixitTicket.Controllers
                                           join user in _context.User
                                           on ticket.ResidentId
                                           equals user.Id
-                                          orderby user.BuildingID
+                                          orderby user.Building
                                           select ticket;
 
             return new ActionResult<IEnumerable<Ticket>>(tickets);
