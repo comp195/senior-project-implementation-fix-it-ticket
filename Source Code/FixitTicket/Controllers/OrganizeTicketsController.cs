@@ -107,7 +107,7 @@ namespace FixitTicket.Controllers
         // GET: api/Tickets/category
         // orders tickets by category
 
-        [HttpGet("status")]
+        [HttpGet("category")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsCategory()
         {
