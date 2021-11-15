@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="">
 <head>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -31,6 +31,40 @@
 		--web-view-id: resident_landing_page;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
+	}
+	table.paleBlueRows {
+		font-family: Arial, Helvetica, sans-serif;
+		width: 60%;
+		height: 10%;
+		text-align: center;
+		border-collapse: collapse;
+	}
+	table.paleBlueRows td, table.paleBlueRows th {
+		border: 0px solid #AAAAAA;
+		padding: 3px 2px;
+	}
+	table.paleBlueRows tbody td {
+		font-size: 13px;
+	}
+	table.paleBlueRows tr:nth-child(even) {
+		background: #D0E4F5;
+	}
+	table.paleBlueRows thead {
+		background: #1C6EA4;
+	}
+	table.paleBlueRows thead th {
+		font-size: 14px;
+		font-weight: bold;
+		color: #FFFFFF;
+		text-align: center;
+		border-left: 1px solid #D0E4F5;
+	}
+	table.paleBlueRows thead th:first-child {
+		border-left: none;
+	}
+
+	table.paleBlueRows tfoot td {
+		font-size: 14px;
 	}
 	#Navigation_Bar {
 		position: absolute;
@@ -4115,6 +4149,7 @@ var Application = function() {
 window.application = new Application();
 </script>
 </head>
+<script defer src="TicketTable.js"></script>
 <body>
 <div id="resident_landing_page">
 	<div id="Navigation_Bar" class="Navigation_Bar">
@@ -4148,229 +4183,22 @@ window.application = new Application();
 		<rect id="Rectangle_1094" rx="10" ry="10" x="0" y="0" width="899" height="628">
 		</rect>
 	</svg>
-	<div id="TABLES">
-		<svg class="Bg">
-			<rect id="Bg" rx="6" ry="6" x="0" y="0" width="825" height="558">
-			</rect>
-		</svg>
-		<div id="Scroll_Group">
-			<div id="Row_-_Table">
-				<div id="Row" class="Row">
-					<svg class="Background">
-						<rect id="Background" rx="0" ry="0" x="0" y="0" width="830" height="48">
-						</rect>
-					</svg>
-					<div id="Mar_21_2019_330pm">
-						<span>45,759</span>
-					</div>
-					<div id="Mar_21_2019_330pm_ei">
-						<span>32.1%</span>
-					</div>
-					<div id="Payment_from_10321">
-						<span>Partners</span>
-					</div>
-					<div id="n_25000">
-						<span>3.5%</span>
-					</div>
-					<div id="n_25000_el">
-						<span>1765</span>
-					</div>
-				</div>
-				<div id="Row_em" class="Row">
-					<svg class="Background_en">
-						<rect id="Background_en" rx="0" ry="0" x="0" y="0" width="830" height="48">
-						</rect>
-					</svg>
-					<div id="Mar_21_2019_330pm_eo">
-						<span>102,768</span>
-					</div>
-					<div id="Mar_21_2019_330pm_ep">
-						<span>51.2%</span>
-					</div>
-					<div id="Payment_from_10321_eq">
-						<span>Marketing campaign</span>
-					</div>
-					<div id="n_25000_er">
-						<span>4.3%</span>
-					</div>
-					<div id="n_25000_es">
-						<span>2456</span>
-					</div>
-				</div>
-				<div id="Row_et" class="Row">
-					<svg class="Background_eu">
-						<rect id="Background_eu" rx="0" ry="0" x="0" y="0" width="830" height="48">
-						</rect>
-					</svg>
-					<div id="Mar_21_2019_330pm_ev">
-						<span>92,179</span>
-					</div>
-					<div id="Mar_21_2019_330pm_ew">
-						<span>48.2%</span>
-					</div>
-					<div id="Payment_from_10321_ex">
-						<span>Proposal</span>
-					</div>
-					<div id="n_25000_ey">
-						<span>4.2%</span>
-					</div>
-					<div id="n_25000_ez">
-						<span>2029</span>
-					</div>
-				</div>
-				<div id="Row_e" class="Row">
-					<svg class="Background_e">
-						<rect id="Background_e" rx="0" ry="0" x="0" y="0" width="830" height="48">
-						</rect>
-					</svg>
-					<div id="Mar_21_2019_330pm_e">
-						<span>15,875</span>
-					</div>
-					<div id="Mar_21_2019_330pm_fa">
-						<span>31.1%</span>
-					</div>
-					<div id="Payment_from_10321_e">
-						<span>Referal</span>
-					</div>
-					<div id="n_25000_e">
-						<span>3.2%</span>
-					</div>
-					<div id="n_25000_fa">
-						<span>1689</span>
-					</div>
-				</div>
-				<div id="Row_fa" class="Row">
-					<svg class="Background_fa">
-						<rect id="Background_fa" rx="0" ry="0" x="0" y="0" width="830" height="48">
-						</rect>
-					</svg>
-					<div id="Mar_21_2019_330pm_fb">
-						<span>92,179</span>
-					</div>
-					<div id="Mar_21_2019_330pm_fc">
-						<span>48.2%</span>
-					</div>
-					<div id="Payment_from_10321_fb">
-						<span>Email</span>
-					</div>
-					<div id="n_25000_fc">
-						<span>4.2%</span>
-					</div>
-					<div id="n_25000_fd">
-						<span>2029</span>
-					</div>
-				</div>
-				<div id="Row_fe" class="Row">
-					<svg class="Background_ff">
-						<rect id="Background_ff" rx="0" ry="0" x="0" y="0" width="830" height="48">
-						</rect>
-					</svg>
-					<div id="Mar_21_2019_330pm_fg">
-						<span>123,879</span>
-					</div>
-					<div id="Mar_21_2019_330pm_fh">
-						<span>45.9%</span>
-					</div>
-					<div id="Payment_from_10321_fi">
-						<span>Organic search</span>
-					</div>
-					<div id="n_25000_fj">
-						<span>7.5%</span>
-					</div>
-					<div id="n_25000_fk">
-						<span>1432</span>
-					</div>
-				</div>
-				<div id="Row_fl" class="Row">
-					<svg class="Background_fm">
-						<rect id="Background_fm" rx="0" ry="0" x="0" y="0" width="830" height="48">
-						</rect>
-					</svg>
-					<div id="Mar_21_2019_330pm_fn">
-						<span>62,767</span>
-					</div>
-					<div id="Mar_21_2019_330pm_fo">
-						<span>9.3%</span>
-					</div>
-					<div id="Payment_from_10321_fp">
-						<span>Paid search</span>
-					</div>
-					<div id="n_25000_fq">
-						<span>6.0%</span>
-					</div>
-					<div id="n_25000_fr">
-						<span>1449</span>
-					</div>
-				</div>
-				<div id="Row_fs" class="Row">
-					<svg class="Background_ft">
-						<rect id="Background_ft" rx="0" ry="0" x="0" y="0" width="830" height="48">
-						</rect>
-					</svg>
-					<div id="Mar_21_2019_330pm_fu">
-						<span>89,298</span>
-					</div>
-					<div id="Mar_21_2019_330pm_fv">
-						<span>49.2%</span>
-					</div>
-					<div id="Payment_from_10321_fw">
-						<span>Call In</span>
-					</div>
-					<div id="n_25000_fx">
-						<span>1.5%</span>
-					</div>
-					<div id="n_25000_fy">
-						<span>1856</span>
-					</div>
-				</div>
-				<div id="Widgets__Table__Table_Row" class="Widgets___Table___Table_Row">
-					<svg class="Background_f">
-						<rect id="Background_f" rx="0" ry="0" x="0" y="0" width="830" height="48">
-						</rect>
-					</svg>
-					<div id="Mar_21_2019_330pm_f">
-						<span>45,759</span>
-					</div>
-					<div id="Mar_21_2019_330pm_ga">
-						<span>32.1%</span>
-					</div>
-					<div id="Payment_from_10321_f">
-						<span>Direct</span>
-					</div>
-					<div id="n_25000_f">
-						<span>3.5%</span>
-					</div>
-					<div id="n_25000_ga">
-						<span>1765</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="Widgets__Table__Table_Header" class="Widgets___Table___Table_Header">
-			<svg class="Shape" viewBox="0 0 825.366 42.554">
-				<path id="Shape" d="M 0 0 L 825.3662719726562 0 L 825.3662719726562 42.55379486083984 L 0 42.55379486083984 L 0 0 Z">
-				</path>
-			</svg>
-			<div id="Payment_Number">
-				<span>Ticket Id</span>
-			</div>
-			<div id="Date__time">
-				<span>resident id</span>
-			</div>
-			<div id="Date__time_ga">
-				<span>rEPAIR CATEGORY</span>
-			</div>
-			<div id="amount">
-				<span>sTATUS</span>
-			</div>
-			<div id="amount_gc">
-				<span>cREATION dATE</span>
-			</div>
-		</div>
-		<svg class="Scroll">
-			<rect id="Scroll" rx="2" ry="2" x="0" y="0" width="4" height="71">
-			</rect>
-		</svg>
+	<table class="paleBlueRows" style="position: absolute; top:215px; left:390px">
+		<thead>
+		<tr>
+			<th>Ticket ID</th>
+			<th>Resident ID</th>
+			<th>Repair Category</th>
+			<th>Status</th>
+			<th>Creation Date</th>
+			<th>Assigned ID</th>
+		</tr>
+		</thead>
+		<tbody>
+		
+		</tbody>
+		</tr>
+	</table>
 	</div>
 </div>
 </body>
