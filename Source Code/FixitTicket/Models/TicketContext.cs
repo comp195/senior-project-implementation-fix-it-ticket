@@ -7,7 +7,7 @@ namespace FixitTicket.Models
         public TicketContext(DbContextOptions<TicketContext> options) : base(options) 
         {
         }
-        public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<Resident> Residents { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }
