@@ -4,17 +4,106 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>login</title>
+<title>create ticket</title>
 <style id="applicationStylesheet" type="text/css">
+	/* Dropdown Button */
+	.dropbtn {
+		background-color: rgba(255, 255, 255, 0);
+		color: white;
+		font-size: 16px;
+		border: none;
+		cursor: pointer;
+		position: absolute;
+		right: 0px;
+		bottom: 0px;
+		padding-right: 19px;
+		padding-top: 19px;
+		padding-left: 315px;
+		padding-bottom: 19px;
+	}
+	input { outline: none; }
+	textarea {
+		outline: none;
+		font-family: "Arial";
+		resize: none;
+	}
+	.dropbtn2 {
+		background-color: rgba(255, 255, 255, 0);
+		color: white;
+		font-size: 16px;
+		border: none;
+		cursor: pointer;
+		position: absolute;
+		right: -16px;
+		bottom: -16px;
+		padding-right: 19px;
+		padding-top: 19px;
+		padding-left: 315px;
+		padding-bottom: 19px;
+	}
+	/* Dropdown button on hover & focus */
+	.dropbtn:hover, .dropbtn:focus {
+		background-color: rgba(212, 212, 212, 0.2);
+	}
+	.dropbtn2:hover, .dropbtn2:focus {
+		background-color: rgba(212, 212, 212, 0.2);
+	}
+	/* Dropdown Content (Hidden by Default) */
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #ffffff;
+		min-width: 160px;
+		right: 100px;
+		top: 20px;
+		z-index: 1;
+		font-family: "Arial";
+		font-size: 10px;
+	}
+	
+	.dropdown-content2 {
+		display: none;
+		position: absolute;
+		background-color: #ffffff;
+		min-width: 160px;
+		right: 115px;
+		top: 37px;
+		z-index: 1;
+		font-family: "Arial";
+		font-size: 10px;
+	}
+
+	/* Links inside the dropdown */
+	.dropdown-content a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	.dropdown-content2 a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	/* Change color of dropdown links on hover */
+	.dropdown-content a:hover {background-color: #f1f1f1}
+
+	.dropdown-content2 a:hover {background-color: #f1f1f1}
+
+	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+	.show {display:block;}
+	
 	.mediaViewInfo {
-		--web-view-name: login;
-		--web-view-id: login;
+		--web-view-name: create ticket;
+		--web-view-id: create_ticket;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
-	input { outline: none; }
 	:root {
-		--web-view-ids: login;
+		--web-view-ids: create_ticket;
 	}
 	* {
 		margin: 0;
@@ -22,46 +111,16 @@
 		box-sizing: border-box;
 		border: none;
 	}
-	#login {
+	#create_ticket {
 		position: absolute;
 		width: 1440px;
 		height: 900px;
 		background-color: rgba(255,255,255,1);
 		overflow: hidden;
-		--web-view-name: login;
-		--web-view-id: login;
+		--web-view-name: create ticket;
+		--web-view-id: create_ticket;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
-	}
-	#Rectangle_1095 {
-		fill: rgba(255,227,227,1);
-	}
-	.Rectangle_1095 {
-		position: absolute;
-		overflow: visible;
-		width: 329px;
-		height: 60px;
-		left: 556px;
-		top: 725px;
-		opacity: 0;
-	}
-	#Your_username_andor_password__ {
-		left: 607px;
-		top: 737px;
-		position: absolute;
-		overflow: visible;
-		width: 229px;
-		white-space: nowrap;
-		line-height: 20px;
-		margin-top: -4px;
-		text-align: center;
-		font-family: Poppins;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 12px;
-		color: rgba(255,136,136,1);
-		letter-spacing: 0.727272720336914px;
-		opacity: 0;
 	}
 	@keyframes fadein {
 	
@@ -73,279 +132,630 @@
 		}
 	
 	}
-	#Video {
-		fill: rgba(241,249,255,1);
-	}
-	.Video {
+	#Navigation_Bar {
 		position: absolute;
-		overflow: visible;
-		width: 1400px;
-		height: 860px;
-		left: 20px;
-		top: 20px;
-	}
-	.login-form-field{ 
-		width: 310px; height: 20px; padding: 5px; background-color: #F1F9FF;
-	}
-	
-	#login-error-msg-holder {
-		width: 100%;
-		height: 100%;
-		display: grid;
-		justify-items: center;
-		align-items: center;
-	}
-	#login-error-msg {
-		width: 23%;
-		text-align: center;
-		margin: 0;
-		padding: 5px;
-		font-size: 12px;
-		font-weight: bold;
-		color: #8a0000;
-		border: 1px solid #8a0000;
-		background-color: #e58f8f;
-		opacity: 0;
-	}
-	#error-msg-second-line {
-		display: block;
-	}
-	#Name {
-		position: absolute;
-		width: 360px;
-		height: 74px;
-		left: 540px;
-		top: 361px;
-		overflow: visible;
-	}
-	#Rectangle_598 {
-		fill: rgba(241,249,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 2px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_598 {
-		position: absolute;
-		overflow: visible;
-		width: 360px;
-		height: 50px;
-		left: 0px;
-		top: 24px;
-	}
-	#Enter_your_username {
-		left: 20px;
-		top: 41px;
-		position: absolute;
-		overflow: visible;
-		width: 132px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		color: rgba(112,112,112,1);
-	}
-	#Username {
+		width: 220px;
+		height: 900px;
 		left: 0px;
 		top: 0px;
-		position: absolute;
-		overflow: visible;
-		width: 69px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 14px;
-		color: rgba(38,153,251,1);
-	}
-	#Password {
-		position: absolute;
-		width: 360px;
-		height: 74px;
-		left: 540px;
-		top: 466px;
 		overflow: visible;
 	}
-	#Rectangle_600 {
-		fill: rgba(241,249,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 2px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_600 {
-		position: absolute;
-		overflow: visible;
-		width: 360px;
-		height: 50px;
-		left: 0px;
-		top: 24px;
-	}
-	#Enter_your_passwords {
-		left: 20px;
-		top: 41px;
-		position: absolute;
-		overflow: visible;
-		width: 136px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		color: rgba(102,102,102,1);
-	}
-	#Password_d {
-		left: 0px;
-		top: 0px;
-		position: absolute;
-		overflow: visible;
-		width: 67px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 14px;
-		color: rgba(38,153,251,1);
-	}
-	#login-form-submit {
-		overflow: visible;
-		white-space: nowrap;
-		background-color: rgba(255,255,255,0);
-		text-align: center;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 12px;
-		color: rgba(255,255,255,1);
-	}
-	
-	#LOG_IN {
-		left: 617px;
-		top: 183px;
-		position: absolute;
-		overflow: visible;
-		width: 208px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 60px;
-		color: rgba(38,153,251,1);
-	}
-	#Button_Submit {
-		position: absolute;
-		width: 148px;
-		height: 48px;
-		left: 646px;
-		top: 617px;
-		overflow: visible;
-	}
-	#Rectangle_1090 {
+	#Base {
 		fill: rgba(38,153,251,1);
 	}
-	.Rectangle_1090 {
+	.Base {
 		position: absolute;
 		overflow: visible;
-		width: 148px;
-		height: 48px;
+		width: 220px;
+		height: 900px;
 		left: 0px;
 		top: 0px;
 	}
-	#SUBMIT {
-		left: 51px;
-		top: 17px;
+	#YOUR_TICKETS {
+		left: 40px;
+		top: 116px;
 		position: absolute;
 		overflow: visible;
-		width: 47px;
+		width: 75px;
 		white-space: nowrap;
-		line-height: 30px;
-		margin-top: -9px;
-		text-align: center;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 12px;
-		color: rgba(255,255,255,1);
-	}
-	#Log_in_to_access_your_tickets {
-		left: 595px;
-		top: 262px;
-		position: absolute;
-		overflow: visible;
-		width: 252px;
-		white-space: nowrap;
-		line-height: 40px;
-		margin-top: -10px;
+		--web-animation: fadein 0.3s ease-out;
+		--web-action-type: page;
+		--web-action-target: resident_landing_page.html;
+		cursor: pointer;
+		line-height: 12px;
+		margin-top: -1px;
 		text-align: left;
 		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#CREATE_TICKET_d {
+		left: 41px;
+		top: 157px;
+		position: absolute;
+		overflow: visible;
+		width: 79px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#LOG_OUT {
+		left: 40px;
+		top: 239px;
+		position: absolute;
+		overflow: visible;
+		width: 46px;
+		white-space: nowrap;
+		line-height: 12px;
+		margin-top: -1px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#Fixit_Ticket {
+		left: 40px;
+		top: 42px;
+		position: absolute;
+		overflow: visible;
+		width: 95px;
+		white-space: nowrap;
+		line-height: 24px;
+		margin-top: -3px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 18px;
+		color: rgba(255,255,255,1);
+	}
+	#Dashboard {
+		left: 312px;
+		top: 44px;
+		position: absolute;
+		overflow: visible;
+		width: 210px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 40px;
+		color: rgba(38,153,251,1);
+	}
+	#Create_Ticket_eb {
+		left: 312px;
+		top: 103px;
+		position: absolute;
+		overflow: visible;
+		width: 126px;
+		white-space: nowrap;
+		line-height: 30px;
+		margin-top: -5px;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
 		font-size: 20px;
 		color: rgba(127,127,127,1);
 	}
-	#Arrow_Left {
-		position: absolute;
-		width: 50px;
-		height: 50px;
-		left: 85px;
-		top: 81px;
-		overflow: visible;
-		--web-animation: fadein 0.3s ease-out;
-		--web-action-type: page;
-		--web-action-target: fixit_ticket_landing.html;
-		cursor: pointer;
+	#Rectangle_1094 {
+		fill: rgba(232,244,255,1);
 	}
-	#Rectangle_1067 {
-		fill: rgba(250,250,250,1);
-		stroke: rgba(241,249,255,1);
-		stroke-width: 2px;
+	.Rectangle_1094 {
+		position: absolute;
+		overflow: visible;
+		width: 899px;
+		height: 732px;
+		left: 371px;
+		top: 188px;
+	}
+	#Input_-_Required_Field {
+		position: absolute;
+		width: 353px;
+		height: 38px;
+		left: 425px;
+		top: 240px;
+		overflow: visible;
+	}
+	#Rectangle_555 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(188,224,253,1);
+		stroke-width: 1px;
 		stroke-linejoin: miter;
 		stroke-linecap: butt;
 		stroke-miterlimit: 4;
 		shape-rendering: auto;
 	}
-	.Rectangle_1067 {
+	.Rectangle_555 {
 		position: absolute;
 		overflow: visible;
-		width: 50px;
-		height: 50px;
-		left: 0px;
+		width: 276px;
+		height: 38px;
+		left: 77px;
 		top: 0px;
 	}
-	#Symbol_83 {
-		transform: translate(0px, 0px) matrix(1,0,0,1,18,17) rotate(180deg);
-		transform-origin: center;
-		position: absolute;
-		width: 16px;
-		height: 16px;
-		left: 0px;
-		top: 0px;
-		overflow: visible;
-	}
-	#Path_10 {
+	#Rectangle_582 {
 		fill: rgba(38,153,251,1);
 	}
-	.Path_10 {
+	.Rectangle_582 {
+		position: absolute;
+		overflow: visible;
+		width: 77px;
+		height: 38px;
+		left: 0px;
+		top: 0px;
+	}
+	#n_381203103820193 {
+		left: 92px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 90px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(0,0,0,1);
+	}
+	#TICKET_ID {
+		left: 15px;
+		top: 15px;
+		position: absolute;
+		overflow: visible;
+		width: 35px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+	}
+	#Input_-_Required_Field_ei {
+		position: absolute;
+		width: 353px;
+		height: 38px;
+		left: 425px;
+		top: 307px;
+		overflow: visible;
+	}
+	#Rectangle_555_ej {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(188,224,253,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_555_ej {
+		position: absolute;
+		overflow: visible;
+		width: 276px;
+		height: 38px;
+		left: 77px;
+		top: 0px;
+	}
+	#Rectangle_582_ek {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_582_ek {
+		position: absolute;
+		overflow: visible;
+		width: 77px;
+		height: 38px;
+		left: 0px;
+		top: 0px;
+	}
+	#n_89306958 {
+		left: 92px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 51px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(0,0,0,1);
+	}
+	#RESIDENT_ID {
+		left: 15px;
+		top: 15px;
+		position: absolute;
+		overflow: visible;
+		width: 45px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+	}
+	#Dropdown_-_Empty {
+		position: absolute;
+		width: 353px;
+		height: 38px;
+		left: 872px;
+		top: 372px;
+		overflow: visible;
+	}
+	#Rectangle_563 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(188,224,253,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_563 {
+		position: absolute;
+		overflow: visible;
+		width: 276px;
+		height: 38px;
+		left: 77px;
+		top: 0px;
+	}
+	#Select_an_option {
+		left: 92px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 73px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12px;
+		color: rgba(0,0,0,1);
+	}
+	#Dropdown {
+		position: absolute;
+		width: 7.213px;
+		height: 4.681px;
+		left: 329.211px;
+		top: 16.884px;
+		overflow: visible;
+	}
+	#Path_36 {
+		fill: rgba(38,153,251,1);
+	}
+	.Path_36 {
 		overflow: visible;
 		position: absolute;
-		width: 16px;
-		height: 16px;
+		width: 7.213px;
+		height: 4.681px;
 		left: 0px;
 		top: 0px;
 		transform: matrix(1,0,0,1,0,0);
 	}
+	#Rectangle_587 {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_587 {
+		position: absolute;
+		overflow: visible;
+		width: 77px;
+		height: 38px;
+		left: 0px;
+		top: 0px;
+	}
+	#REPAIR_CATEGORY {
+		left: 15px;
+		top: 12px;
+		position: absolute;
+		overflow: visible;
+		width: 40px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+	}
+	#Dropdown_-_Empty_eu {
+		position: absolute;
+		width: 353px;
+		height: 38px;
+		left: 872px;
+		top: 439px;
+		overflow: visible;
+	}
+	#Rectangle_563_ev {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(188,224,253,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_563_ev {
+		position: absolute;
+		overflow: visible;
+		width: 276px;
+		height: 38px;
+		left: 77px;
+		top: 0px;
+	}
+	#Select_an_option_ew {
+		left: 92px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 73px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12px;
+		color: rgba(0,0,0,1);
+	}
+	#Dropdown_ex {
+		position: absolute;
+		width: 7.213px;
+		height: 4.681px;
+		left: 329.211px;
+		top: 16.884px;
+		overflow: visible;
+	}
+	#Path_36_ey {
+		fill: rgba(38,153,251,1);
+	}
+	.Path_36_ey {
+		overflow: visible;
+		position: absolute;
+		width: 7.213px;
+		height: 4.681px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Rectangle_587_ez {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_587_ez {
+		position: absolute;
+		overflow: visible;
+		width: 77px;
+		height: 38px;
+		left: 0px;
+		top: 0px;
+	}
+	#STATUS {
+		left: 12px;
+		top: 16px;
+		position: absolute;
+		overflow: visible;
+		width: 28px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+	}
+	#Input_-_Required_Field_e {
+		position: absolute;
+		width: 353px;
+		height: 38px;
+		left: 425px;
+		top: 439px;
+		overflow: visible;
+	}
+	#Rectangle_555_e {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(188,224,253,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_555_e {
+		position: absolute;
+		overflow: visible;
+		width: 276px;
+		height: 38px;
+		left: 77px;
+		top: 0px;
+	}
+	#Rectangle_582_e {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_582_e {
+		position: absolute;
+		overflow: visible;
+		width: 77px;
+		height: 38px;
+		left: 0px;
+		top: 0px;
+	}
+	#n_89306958_e {
+		left: 92px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 51px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(0,0,0,1);
+	}
+	#ASSIGNED_TO {
+		left: 15px;
+		top: 15px;
+		position: absolute;
+		overflow: visible;
+		width: 49px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+	}
+	#Textbox_-_Empty {
+		position: absolute;
+		width: 721px;
+		height: 253px;
+		left: 460px;
+		top: 558px;
+		overflow: visible;
+	}
+	#Rectangle_581 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(188,224,253,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_581 {
+		position: absolute;
+		overflow: visible;
+		width: 721px;
+		height: 207px;
+		left: 0px;
+		top: 46px;
+	}
+	#Type_something {
+		left: 20px;
+		top: 64px;
+		position: absolute;
+		overflow: visible;
+		width: 114px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(0,0,0,1);
+	}
+	#Rectangle_589 {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_589 {
+		position: absolute;
+		overflow: visible;
+		width: 165px;
+		height: 46px;
+		left: 0px;
+		top: 0px;
+	}
+	#Rectangle_5892 {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_5892 {
+		position: absolute;
+		overflow: visible;
+		width: 165px;
+		height: 46px;
+		left: 755px;
+		top: 839px;
+	}
+	#DESCRIBE_THE_PROBLEM {
+		left: 20px;
+		top: 18px;
+		position: absolute;
+		overflow: visible;
+		width: 128px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+	}
+	#DESCRIBE_THE_PROBLEM2 {
+		left: 818px;
+		top: 857px;
+		position: absolute;
+		overflow: visible;
+		width: 128px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 10px;
+		color: rgba(255, 255, 255, 1);
+	}
 </style>
+<script src="require.js"></script>
 <script id="applicationScript">
+const tempDataHolder = "http://localhost:8000/temp-data.json"
+function loadNewTicket(ticket) {
+	const request = new XMLHttpRequest();
+	request.open("GET", tempDataHolder);
+	request.onload = ()=>{
+		try {
+			const json = JSON.parse(request.responseText);
+			console.log(ticket)
+			json.push(ticket)
+			console.log(json)
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', tempDataHolder);
+			xhr.send(JSON.stringify(json))
+		}
+		catch(e) {
+			console.warn("Could not load new ticket!");
+		}
+	};
+	request.send();
+}
+
+function SubmitNewTicket() {
+	const d = new Date();
+	const ticketNum = document.getElementById("ticketNum").textContent;
+	const resID = document.getElementById("resid").value
+	const category = document.getElementById("Select_an_option").textContent
+	const status = document.getElementById("Select_an_option_ew").textContent
+	const date = d.getDate();
+	const assID = document.getElementById("assignedid").value
+	const tick = [ticketNum, resID, category, status, date, assID]
+	console.log(tick);
+	loadNewTicket(tick);
+	//window.location.href = "resident_landing_page.html";
+}
+
+function SelectStatus(field, status, name) {
+	document.getElementById(field).textContent = status;
+	ToggleDropdown(name);
+}
+
+function ToggleDropdown(name) {
+	document.getElementById(name).classList.toggle("show");
+}
+
 ///////////////////////////////////////
 // INITIALIZATION
 ///////////////////////////////////////
@@ -3246,6 +3656,26 @@ var Application = function() {
 	self.log = function(value) {
 		console.log.apply(this, [value]);
 	}
+
+	/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+	
+
+// Close the dropdown menu if the user clicks outside of it
+	window.onclick = function(event) {
+		if (event.target.matches('.dropbtn')) {
+
+			var dropdowns = document.getElementByClass("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
 	
 	// initialize on load
 	// sometimes the body size is 0 so we call this now and again later
@@ -3254,75 +3684,160 @@ var Application = function() {
 }
 
 window.application = new Application();
-
 </script>
-	<script defer src="StudentLogIn.js"></script>
 </head>
 <body>
-<div id="login">
-	<svg class="Video">
-		<rect id="Video" rx="0" ry="0" x="0" y="0" width="1400" height="860">
+<div id="create_ticket">
+	<div id="Navigation_Bar" class="Navigation_Bar">
+		<svg class="Base">
+			<rect id="Base" rx="0" ry="0" x="0" y="0" width="220" height="900">
+			</rect>
+		</svg>
+		<div onclick="application.goToTargetView(event)" id="YOUR_TICKETS">
+			<span>YOUR TICKETS</span>
+		</div>
+		<div id="CREATE_TICKET_d">
+			<span>CREATE TICKET</span>
+		</div>
+		<div id="LOG_OUT">
+			<span>LOG OUT</span>
+		</div>
+		<div id="Fixit_Ticket">
+			<span>Fixit Ticket</span>
+		</div>
+	</div>
+	<div id="Dashboard">
+		<span>Dashboard</span>
+	</div>
+	<div id="Create_Ticket_eb">
+		<span>Create Ticket</span>
+	</div>
+	<svg class="Rectangle_1094">
+		<rect id="Rectangle_1094" rx="10" ry="10" x="0" y="0" width="899" height="732">
 		</rect>
 	</svg>
-	<div id="Name">
-		<svg class="Rectangle_598">
-			<rect id="Rectangle_598" rx="10" ry="10" x="0" y="0" width="360" height="50">
+	<div id="Input_-_Required_Field">
+		<svg class="Rectangle_555">
+			<rect id="Rectangle_555" rx="0" ry="0" x="0" y="0" width="276" height="38">
 			</rect>
 		</svg>
-		<div id="Enter_your_username">
-			<input type="text" name="username" id="username-field" class="login-form-field" placeholder="Enter your username">
+		<svg class="Rectangle_582">
+			<rect id="Rectangle_582" rx="0" ry="0" x="0" y="0" width="77" height="38">
+			</rect>
+		</svg>
+		<div id="n_381203103820193">
+			<span id="ticketNum">9381203103820193</span>
 		</div>
-		<div id="Username">
-			<span>Username</span>
+		<div id="TICKET_ID">
+			<span>TICKET ID</span>
 		</div>
-	</div> 
-	<form id="login-form">
-		<div id="Password">
-			<svg class="Rectangle_600">
-				<rect id="Rectangle_600" rx="10" ry="10" x="0" y="0" width="360" height="50">
-				</rect>
-			</svg>
-			<div id="Enter_your_passwords">
-				<input type="password" name="password" id="password-field" class="login-form-field" placeholder="Enter your password">
-			</div>
-			<div id="Password_d">
-				<span>Password</span>
-			</div>
-		</div>
-		<div id="LOG_IN">
-			<span>LOG IN</span>
-		</div>
-		<div id="Button_Submit" class="Button_Submit">
-			<svg class="Rectangle_1090">
-				<rect id="Rectangle_1090" rx="4" ry="4" x="0" y="0" width="148" height="48">
-				</rect>
-			</svg>
-			<div id="SUBMIT">
-				<input type="submit" value="SUBMIT" id="login-form-submit">
-			</div>
-		</div>
-	</form>
-	<div id="Log_in_to_access_your_tickets">
-		<span>Log in to access your tickets</span>
 	</div>
-	<div onclick="application.goToTargetView(event)" id="Arrow_Left" class="Arrow_Left">
-		<svg class="Rectangle_1067">
-			<rect id="Rectangle_1067" rx="10" ry="10" x="0" y="0" width="50" height="50">
+	<div id="Input_-_Required_Field_ei">
+		<svg class="Rectangle_555_ej">
+			<rect id="Rectangle_555_ej" rx="0" ry="0" x="0" y="0" width="276" height="38">
 			</rect>
 		</svg>
-		<div id="Symbol_83">
-			<svg class="Path_10" viewBox="0 0 16 16">
-				<path id="Path_10" d="M 8 0 L 6.545454978942871 1.454545497894287 L 12.05194854736328 6.961039066314697 L 0 6.961039066314697 L 0 9.038961410522461 L 12.05194854736328 9.038961410522461 L 6.545454978942871 14.54545497894287 L 8 16 L 16 8 L 8 0 Z">
-				</path>
-			</svg>
-		</div>
-		</div>
-		<svg class="Rectangle_1095">
-			<rect id="Rectangle_1095" rx="0" ry="0" x="0" y="0" width="329" height="60">
+		<svg class="Rectangle_582_ek">
+			<rect id="Rectangle_582_ek" rx="0" ry="0" x="0" y="0" width="77" height="38">
 			</rect>
 		</svg>
-		<div id="Your_username_andor_password__">
-			<span>Your username and/or password <br/>is invalid. Try again.</span>
+		<div id="n_89306958">
+			<textarea rows="1" cols="30" name="resid" id="resid" placeholder="( empty )"></textarea>
+		</div>
+		<div id="RESIDENT_ID">
+			<span>RESIDENT ID</span>
+		</div>
+	</div>
+	<div id="Dropdown_-_Empty">
+		<svg class="Rectangle_563">
+			<rect id="Rectangle_563" rx="0" ry="0" x="0" y="0" width="276" height="38">
+				<div id="Dropdown" class="Dropdown" >
+					<button onclick="ToggleDropdown('myDropdown')" class="dropbtn2"></button>
+					<div id="myDropdown" class="dropdown-content">
+						<a onclick=SelectStatus("Select_an_option","Plumbing","myDropdown")>Plumbing</a>
+						<a onclick=SelectStatus("Select_an_option","Replacement","myDropdown")>Replacement</a>
+						<a onclick=SelectStatus("Select_an_option","WallDamage","myDropdown")>Wall Damage</a>
+					</div>
+				</div>
+			</rect>
+		</svg>
+		<div id="Select_an_option">
+			<span>Select an option</span>
+		</div>
+		
+		<svg class="Rectangle_587">
+			<rect id="Rectangle_587" rx="0" ry="0" x="0" y="0" width="77" height="38">
+			</rect>
+		</svg>
+		<div id="REPAIR_CATEGORY">
+			<span>REPAIR<br/>CATEGORY</span>
+		</div>
+	</div>
+	<div id="Dropdown_-_Empty_eu">
+		<svg class="Rectangle_563_ev">
+			<rect id="Rectangle_563_ev" rx="0" ry="0" x="0" y="0" width="276" height="38">
+				<div id="Dropdown2" class="Dropdown" >
+					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn"></button>
+					<div id="myDropdown2" class="dropdown-content2">
+						<a onclick=SelectStatus("Select_an_option_ew","Open","myDropdown2")>Open</a>
+						<a onclick=SelectStatus("Select_an_option_ew","InProgress","myDropdown2")>In Progress</a>
+						<a onclick=SelectStatus("Select_an_option_ew","Closed(Resolved)","myDropdown2")>Closed (Resolved)</a>
+						<a onclick=SelectStatus("Select_an_option_ew","Closed(Workaround)","myDropdown2")>Closed (Workaround)</a>
+					</div>
+				</div>
+			</rect>
+		</svg>
+		<div id="Select_an_option_ew">
+			<span>Select an option</span>
+		</div>
+		
+		<svg class="Rectangle_587_ez">
+			<rect id="Rectangle_587_ez" rx="0" ry="0" x="0" y="0" width="77" height="38">
+			</rect>
+		</svg>
+		<div id="STATUS">
+			<span>STATUS</span>
+		</div>
+	</div>
+	<div id="Input_-_Required_Field_e">
+		<svg class="Rectangle_555_e">
+			<rect id="Rectangle_555_e" rx="0" ry="0" x="0" y="0" width="276" height="38">
+			</rect>
+		</svg>
+		<svg class="Rectangle_582_e">
+			<rect id="Rectangle_582_e" rx="0" ry="0" x="0" y="0" width="77" height="38">
+			</rect>
+		</svg>
+		<div id="n_89306958_e">
+			<textarea rows="1" cols="30" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
+		</div>
+		<div id="ASSIGNED_TO">
+			<span>ASSIGNED TO</span>
+		</div>
+	</div>
+	<div id="Textbox_-_Empty">
+		<svg class="Rectangle_581">
+			<rect id="Rectangle_581" rx="0" ry="0" x="0" y="0" width="721" height="207">
+			</rect>
+		</svg>
+		<div id="Type_something">
+			<textarea font-family="Arial" rows="12" cols="95" name="description" id="description" placeholder="Describe your problem"></textarea>
+		</div>
+		<svg class="Rectangle_589">
+			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">
+			</rect>
+		</svg>
+		<div id="DESCRIBE_THE_PROBLEM">
+			<span>DESCRIBE THE PROBLEM</span>
+		</div>
+	</div>
+	<div id="Textbox_-_Empty2">
+		<svg class="Rectangle_5892">
+			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">
+			</rect>
+		</svg>
+		<div id="DESCRIBE_THE_PROBLEM2" onclick=SubmitNewTicket()>
+			<span>SUBMIT</span>
 		</div>
 	</div>
 </div>

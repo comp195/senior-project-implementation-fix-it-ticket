@@ -6,8 +6,8 @@ const loginErrorMsgText = document.getElementById("Your_username_andor_password_
 
 loginButton.addEventListener("click", (e) => {
     e.preventDefault();
-    const username = user.value;
-    const password = pass.value;
+    const username = user.value.trim(" ");
+    const password = pass.value.trim(" ");
 
     if (username === "user" && password === "web_dev") {
         window.location.href = "resident_landing_page.html";
