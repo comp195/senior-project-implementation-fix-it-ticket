@@ -21,6 +21,12 @@
 		padding-left: 315px;
 		padding-bottom: 19px;
 	}
+	input { outline: none; }
+	textarea {
+		outline: none;
+		font-family: "Arial";
+		resize: none;
+	}
 	.dropbtn2 {
 		background-color: rgba(255, 255, 255, 0);
 		color: white;
@@ -418,7 +424,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 10px;
+		font-size: 12px;
 		color: rgba(0,0,0,1);
 	}
 	#Dropdown {
@@ -502,7 +508,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 10px;
+		font-size: 12px;
 		color: rgba(0,0,0,1);
 	}
 	#Dropdown_ex {
@@ -672,7 +678,7 @@
 		overflow: visible;
 		width: 165px;
 		height: 46px;
-		left: 762px;
+		left: 755px;
 		top: 839px;
 	}
 	#DESCRIBE_THE_PROBLEM {
@@ -690,7 +696,7 @@
 		color: rgba(255,255,255,1);
 	}
 	#DESCRIBE_THE_PROBLEM2 {
-		left: 824px;
+		left: 818px;
 		top: 857px;
 		position: absolute;
 		overflow: visible;
@@ -704,7 +710,44 @@
 		color: rgba(255, 255, 255, 1);
 	}
 </style>
-<script id="applicationScript">function SelectStatus(field, status, name) {
+<script src="require.js"></script>
+<script id="applicationScript">
+const tempDataHolder = "http://localhost:8000/temp-data.json"
+function loadNewTicket(ticket) {
+	const request = new XMLHttpRequest();
+	request.open("GET", tempDataHolder);
+	request.onload = ()=>{
+		try {
+			const json = JSON.parse(request.responseText);
+			console.log(ticket)
+			json.push(ticket)
+			console.log(json)
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', tempDataHolder);
+			xhr.send(JSON.stringify(json))
+		}
+		catch(e) {
+			console.warn("Could not load new ticket!");
+		}
+	};
+	request.send();
+}
+
+function SubmitNewTicket() {
+	const d = new Date();
+	const ticketNum = document.getElementById("ticketNum").textContent;
+	const resID = document.getElementById("resid").value
+	const category = document.getElementById("Select_an_option").textContent
+	const status = document.getElementById("Select_an_option_ew").textContent
+	const date = d.getDate();
+	const assID = document.getElementById("assignedid").value
+	const tick = [ticketNum, resID, category, status, date, assID]
+	console.log(tick);
+	loadNewTicket(tick);
+	//window.location.href = "resident_landing_page.html";
+}
+
+function SelectStatus(field, status, name) {
 	document.getElementById(field).textContent = status;
 	ToggleDropdown(name);
 }
@@ -3620,7 +3663,7 @@ toggle between hiding and showing the dropdown content */
 
 // Close the dropdown menu if the user clicks outside of it
 	window.onclick = function(event) {
-		if (!event.target.matches('.dropbtn')) {
+		if (event.target.matches('.dropbtn')) {
 
 			var dropdowns = document.getElementByClass("dropdown-content");
 			var i;
@@ -3683,7 +3726,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_381203103820193">
-			<span>9381203103820193</span>
+			<span id="ticketNum">9381203103820193</span>
 		</div>
 		<div id="TICKET_ID">
 			<span>TICKET ID</span>
@@ -3699,7 +3742,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958">
-			<span>989306958</span>
+			<textarea rows="1" cols="30" name="resid" id="resid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="RESIDENT_ID">
 			<span>RESIDENT ID</span>
@@ -3766,7 +3809,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958_e">
-			<span>989306958</span>
+			<textarea rows="1" cols="30" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="ASSIGNED_TO">
 			<span>ASSIGNED TO</span>
@@ -3778,7 +3821,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="Type_something">
-			<span>Type something…</span>
+			<textarea font-family="Arial" rows="12" cols="95" name="description" id="description" placeholder="Describe your problem"></textarea>
 		</div>
 		<svg class="Rectangle_589">
 			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">
@@ -3793,7 +3836,7 @@ window.application = new Application();
 			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">
 			</rect>
 		</svg>
-		<div id="DESCRIBE_THE_PROBLEM2">
+		<div id="DESCRIBE_THE_PROBLEM2" onclick=SubmitNewTicket()>
 			<span>SUBMIT</span>
 		</div>
 	</div>
