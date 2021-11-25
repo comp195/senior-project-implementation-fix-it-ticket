@@ -7363,11 +7363,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ArshitaSandhiparthi/Desktop/senior-project-implementation-fix-it-ticket/Source Code/FixitTicket/FixitTicket.csproj",
+      "projectUniqueName": "/Users/ArshitaSandhiparthi/RiderProjects/FixitTicket/FixitTicket/FixitTicket.csproj",
       "projectName": "FixitTicket",
-      "projectPath": "/Users/ArshitaSandhiparthi/Desktop/senior-project-implementation-fix-it-ticket/Source Code/FixitTicket/FixitTicket.csproj",
+      "projectPath": "/Users/ArshitaSandhiparthi/RiderProjects/FixitTicket/FixitTicket/FixitTicket.csproj",
       "packagesPath": "/Users/ArshitaSandhiparthi/.nuget/packages/",
-      "outputPath": "/Users/ArshitaSandhiparthi/Desktop/senior-project-implementation-fix-it-ticket/Source Code/FixitTicket/obj/",
+      "outputPath": "/Users/ArshitaSandhiparthi/RiderProjects/FixitTicket/FixitTicket/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gMSme3992RaENqSikZB8eklcdN4Fz+JFRs7R9/NMm44lvp0mxzDuC6nLtez3KVTfUs8uqlQrWLgxr5MfWzVEYw==",
+  "dgSpecHash": "4RQ4msUIDnOW6QPsOmDSzY7bMYzKGXmLfCXMy8Ks5V6GE4UEsT+pYmkLRmAQBZlyOjXG9Oil0kcxHPDwYh/8LA==",
   "success": true,
-  "projectFilePath": "/Users/ArshitaSandhiparthi/Desktop/senior-project-implementation-fix-it-ticket/Source Code/FixitTicket/FixitTicket.csproj",
+  "projectFilePath": "/Users/ArshitaSandhiparthi/RiderProjects/FixitTicket/FixitTicket/FixitTicket.csproj",
   "expectedPackageFiles": [
     "/Users/ArshitaSandhiparthi/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/ArshitaSandhiparthi/.nuget/packages/microsoft.aspnetcore.html.abstractions/2.2.0/microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
