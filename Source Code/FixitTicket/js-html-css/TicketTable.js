@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     loadTickets(); });
 document.addEventListener("load", () => {
     loadTickets(); });
-const tempDataHolder = "http://localhost:8000/temp-data.json"
 
 function loadTickets() {
+    console.log("hello")
     const request = new XMLHttpRequest();
     request.open("GET", "http://localhost:8000/temp-data.json");
     request.onload = ()=>{
