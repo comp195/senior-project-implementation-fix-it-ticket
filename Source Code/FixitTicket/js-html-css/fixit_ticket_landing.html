@@ -31,6 +31,7 @@
 		--web-view-id: fixit_ticket_landing;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
+		transform: scale(var(--s))
 	}
 	@keyframes fadein {
 	
@@ -226,6 +227,23 @@
  * Functionality for scaling, showing by media query, and navigation between multiple pages on a single page. 
  * Code subject to change.
  **/
+
+window.onload = function() {
+	var s = Math.min(
+			window.innerWidth / document.getElementById('fixit_ticket_landing').scrollWidth,
+			window.innerHeight / document.getElementById('fixit_ticket_landing').scrollHeight
+	);
+	console.log(s);
+	document.getElementById('fixit_ticket_landing').style.setProperty("--s", s);
+}
+window.addEventListener('resize', function() {
+	var s = Math.min(
+			window.innerWidth / document.getElementById('fixit_ticket_landing').scrollWidth,
+			window.innerHeight / document.getElementById('fixit_ticket_landing').scrollHeight
+	);
+	console.log(s);
+	document.getElementById('fixit_ticket_landing').style.setProperty("--s", s);
+});
 
 if (window.console==null) { window["console"] = { log : function() {} } }; // some browsers do not set console
 
@@ -3129,7 +3147,7 @@ window.application = new Application();
 </script>
 </head>
 <body>
-<div id="fixit_ticket_landing">
+<div id="fixit_ticket_landing" style="margin: auto">
 	<svg class="Video">
 		<rect id="Video" rx="0" ry="0" x="0" y="0" width="1400" height="860">
 		</rect>
