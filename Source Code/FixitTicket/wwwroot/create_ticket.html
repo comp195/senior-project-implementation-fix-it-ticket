@@ -58,7 +58,7 @@
 		top: 20px;
 		z-index: 1;
 		font-family: "Arial";
-		font-size: 10px;
+		font-size: 13px;
 	}
 	
 	.dropdown-content2 {
@@ -70,7 +70,7 @@
 		top: 37px;
 		z-index: 1;
 		font-family: "Arial";
-		font-size: 10px;
+		font-size: 13px;
 	}
 
 	/* Links inside the dropdown */
@@ -121,6 +121,7 @@
 		--web-view-id: create_ticket;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
+		transform: scale(var(--s))
 	}
 	@keyframes fadein {
 	
@@ -307,13 +308,13 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 12px;
+		font-size: 13px;
 		color: rgba(0,0,0,1);
 	}
 	#TICKET_ID {
-		left: 15px;
-		top: 15px;
-		position: absolute;
+		left: 7px;
+		top: 7px;
+		position: relative;
 		overflow: visible;
 		width: 35px;
 		white-space: nowrap;
@@ -321,7 +322,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 7px;
+		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Input_-_Required_Field_ei {
@@ -375,9 +376,9 @@
 		color: rgba(0,0,0,1);
 	}
 	#RESIDENT_ID {
-		left: 15px;
-		top: 15px;
-		position: absolute;
+		left: 7px;
+		top: 7px;
+		position: relative;
 		overflow: visible;
 		width: 45px;
 		white-space: nowrap;
@@ -385,7 +386,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 7px;
+		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Dropdown_-_Empty {
@@ -424,7 +425,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 12px;
+		font-size: 13px;
 		color: rgba(0,0,0,1);
 	}
 	#Dropdown {
@@ -459,9 +460,9 @@
 		top: 0px;
 	}
 	#REPAIR_CATEGORY {
-		left: 15px;
-		top: 12px;
-		position: absolute;
+		left: 7px;
+		top: 7px;
+		position: relative;
 		overflow: visible;
 		width: 40px;
 		white-space: nowrap;
@@ -469,7 +470,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 7px;
+		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Dropdown_-_Empty_eu {
@@ -508,7 +509,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 12px;
+		font-size: 13px;
 		color: rgba(0,0,0,1);
 	}
 	#Dropdown_ex {
@@ -543,9 +544,9 @@
 		top: 0px;
 	}
 	#STATUS {
-		left: 12px;
-		top: 16px;
-		position: absolute;
+		left: 7px;
+		top: -25px;
+		position: relative;
 		overflow: visible;
 		width: 28px;
 		white-space: nowrap;
@@ -553,7 +554,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 7px;
+		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Input_-_Required_Field_e {
@@ -607,9 +608,9 @@
 		color: rgba(0,0,0,1);
 	}
 	#ASSIGNED_TO {
-		left: 15px;
-		top: 15px;
-		position: absolute;
+		left: 7px;
+		top: 7px;
+		position: relative;
 		overflow: visible;
 		width: 49px;
 		white-space: nowrap;
@@ -617,7 +618,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 7px;
+		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Textbox_-_Empty {
@@ -682,7 +683,7 @@
 		top: 839px;
 	}
 	#DESCRIBE_THE_PROBLEM {
-		left: 20px;
+		left: 12px;
 		top: 18px;
 		position: absolute;
 		overflow: visible;
@@ -692,7 +693,7 @@
 		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 10px;
+		font-size: 11px;
 		color: rgba(255,255,255,1);
 	}
 	#DESCRIBE_THE_PROBLEM2 {
@@ -755,7 +756,6 @@ function SelectStatus(field, status, name) {
 function ToggleDropdown(name) {
 	document.getElementById(name).classList.toggle("show");
 }
-
 ///////////////////////////////////////
 // INITIALIZATION
 ///////////////////////////////////////
@@ -764,6 +764,23 @@ function ToggleDropdown(name) {
  * Functionality for scaling, showing by media query, and navigation between multiple pages on a single page. 
  * Code subject to change.
  **/
+
+window.onload = function() {
+	var s = Math.min(
+			window.innerWidth / document.getElementById('create_ticket').scrollWidth,
+			window.innerHeight / document.getElementById('create_ticket').scrollHeight
+	);
+	console.log(s);
+	document.getElementById('create_ticket').style.setProperty("--s", s);
+}
+window.addEventListener('resize', function() {
+	var s = Math.min(
+			window.innerWidth / document.getElementById('create_ticket').scrollWidth,
+			window.innerHeight / document.getElementById('create_ticket').scrollHeight
+	);
+	console.log(s);
+	document.getElementById('create_ticket').style.setProperty("--s", s);
+});
 
 if (window.console==null) { window["console"] = { log : function() {} } }; // some browsers do not set console
 
@@ -3352,7 +3369,6 @@ var Application = function() {
 				self.scaleViewIfNeeded(view);
 			}
 		}
-
 		window.dispatchEvent(new Event(self.APPLICATION_RESIZE));
 	}
 
@@ -3663,14 +3679,25 @@ toggle between hiding and showing the dropdown content */
 
 // Close the dropdown menu if the user clicks outside of it
 	window.onclick = function(event) {
-		if (event.target.matches('.dropbtn')) {
-
-			var dropdowns = document.getElementByClass("dropdown-content");
+		if (!event.target.matches('.dropbtn')) {
+			
+			var dropdowns = document.getElementsByClassName("dropdown-content2");
 			var i;
 			for (i = 0; i < dropdowns.length; i++) {
 				var openDropdown = dropdowns[i];
 				if (openDropdown.classList.contains('show')) {
 					
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+		if(!event.target.matches('.dropbtn2')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+
 					openDropdown.classList.remove('show');
 				}
 			}
@@ -3729,7 +3756,7 @@ window.application = new Application();
 			<span id="ticketNum">9381203</span>
 		</div>
 		<div id="TICKET_ID">
-			<span>TICKET ID</span>
+			<span>TICKET<br/>ID</span>
 		</div>
 	</div>
 	<div id="Input_-_Required_Field_ei">
@@ -3745,7 +3772,7 @@ window.application = new Application();
 			<textarea rows="1" cols="30" name="resid" id="resid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="RESIDENT_ID">
-			<span>RESIDENT ID</span>
+			<span>RESIDENT<br/>ID</span>
 		</div>
 	</div>
 	<div id="Dropdown_-_Empty">
@@ -3812,7 +3839,7 @@ window.application = new Application();
 			<textarea rows="1" cols="30" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="ASSIGNED_TO">
-			<span>ASSIGNED TO</span>
+			<span>ASSIGNED<br />TO</span>
 		</div>
 	</div>
 	<div id="Textbox_-_Empty">
