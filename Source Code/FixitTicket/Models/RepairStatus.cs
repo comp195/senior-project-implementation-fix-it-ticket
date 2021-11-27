@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace FixitTicket.Models
@@ -9,6 +10,7 @@ namespace FixitTicket.Models
     {
         None,
         Open,
+        [EnumMember(Value = "In Progress")]
         InProgress,
         New,
         Resolved,
