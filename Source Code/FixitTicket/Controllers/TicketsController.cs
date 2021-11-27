@@ -66,6 +66,7 @@ namespace FixitTicket.Controllers
                 return BadRequest(new { title = "One or more validation errors occurred.", status = 400, errors = errors });
             }
             ticket.CreationDate = DateTime.Now;
+            ticket.Status = RepairStatus.Open;
             _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
 
