@@ -21,9 +21,9 @@ namespace FixitTicket.Models
             return "The ticket repair category was not set to a valid value. Enter a valid repair category.";
         }
 
-        public static string StatusNotSetError() 
+        public static string StatusSetError() 
         {
-            return "The ticket status was not set to a valid value. Enter a valid ticket status.";
+            return "The ticket status may not be set in the body of the request. Remove the set status.";
         }
 
         public static string CreationDateSetError() 

@@ -12,7 +12,7 @@ namespace FixitTicket.Models
         public string Name { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        public int? BuildingID { get; set; }
+        public Building Building { get; set; }
         public int? RoomNumber { get; set; }
         public UserRole UserRole { get; set; }
     }

@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System.IO;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace FixitTicket
 {
@@ -26,7 +29,11 @@ namespace FixitTicket
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers()
+                    .AddNewtonsoftJson(jsonOptions => 
+                    {
+                        jsonOptions.SerializerSettings.Converters.Add(new StringEnumConverter());
+                    });
 
             services.AddDbContext<TicketContext>(opt => opt.UseSqlServer(connectionString));
             //services.AddSwaggerGen(c =>

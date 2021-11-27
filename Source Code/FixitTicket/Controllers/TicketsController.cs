@@ -30,6 +30,7 @@ namespace FixitTicket.Controllers
             return await _context.Ticket.ToListAsync();
         }
 
+
         // GET: api/Tickets/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Ticket>> GetTicket(int id)
@@ -44,36 +45,6 @@ namespace FixitTicket.Controllers
             return ticket;
         }
 
-        // PUT: api/Tickets/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTicket(int id, Ticket ticket)
-        {
-            if (id != ticket.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(ticket).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TicketExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
 
         // POST: api/Tickets
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -83,18 +54,19 @@ namespace FixitTicket.Controllers
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
             var resident = await _context.User.FindAsync(ticket.ResidentId);
-            if (resident == null)
-            {
-                // for testing purposes
-                _context.User.Add(new User() { Id = ticket.ResidentId, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = UserRole.Resident});
-                //return BadRequest("User ID must belong to an existing user");
-            }
+            //if (resident == null)
+            //{
+            //    // for testing purposes
+            //    _context.User.Add(new User() { Id = ticket.ResidentId, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = UserRole.Resident});
+            //    //return BadRequest("User ID must belong to an existing user");
+            //}
             var errors = await ValidateTicket(ticket);
             if (errors.Count != 0) 
             {
                 return BadRequest(new { title = "One or more validation errors occurred.", status = 400, errors = errors });
             }
             ticket.CreationDate = DateTime.Now;
+            ticket.Status = RepairStatus.Open;
             _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
 
@@ -117,11 +89,6 @@ namespace FixitTicket.Controllers
             return NoContent();
         }
 
-        private bool TicketExists(int id)
-        {
-            return _context.Ticket.Any(e => e.Id == id);
-        }
-
         private async Task<bool> IsValidUser(int residentId) 
         {
             return await _context.User.FindAsync(residentId) != null;
@@ -132,9 +99,9 @@ namespace FixitTicket.Controllers
             return repairCategory != RepairCategory.None;
         }
 
-        private bool IsValidStatus(RepairStatus status) 
+        private bool IsValidStatus(RepairStatus? status) 
         {
-            return status != RepairStatus.None;
+            return status == null;
         }
 
         private bool IsValidCreationDate(DateTime? creationDate) 
@@ -151,7 +118,7 @@ namespace FixitTicket.Controllers
                 ticketErrors.Add(TicketValidationErrors.ResidentNotFoundError(ticket.ResidentId));
             }
 
-            if (await IsValidUser(ticket.AssignedId)) 
+            if (ticket.AssignedId != null) 
             {
                 ticketErrors.Add(TicketValidationErrors.EmployeeSetError());
             }
@@ -163,7 +130,7 @@ namespace FixitTicket.Controllers
 
             if (!IsValidStatus(ticket.Status)) 
             {
-                ticketErrors.Add(TicketValidationErrors.StatusNotSetError());
+                ticketErrors.Add(TicketValidationErrors.StatusSetError());
             }
 
             if (!IsValidCreationDate(ticket.CreationDate)) 
