@@ -714,36 +714,37 @@
 <script id="applicationScript">
 const tempDataHolder = "http://localhost:8000/temp-data.json"
 function loadNewTicket(ticket) {
-	const request = new XMLHttpRequest();
-	request.open("GET", tempDataHolder);
-	request.onload = ()=>{
-		try {
-			const json = JSON.parse(request.responseText);
-			console.log(ticket)
-			json.push(ticket)
-			console.log(json)
-			var xhr = new XMLHttpRequest();
-			xhr.open('POST', tempDataHolder);
-			xhr.send(JSON.stringify(json))
-		}
-		catch(e) {
-			console.warn("Could not load new ticket!");
-		}
-	};
-	request.send();
+    const uri = 'api/Tickets';
+    fetch(uri, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(ticket)
+	})
+		.then(response => response.json())
+        .catch(error => console.error('Unable to add ticket.', error));
+
 }
 
-function SubmitNewTicket() {
+	function SubmitNewTicket() {
 	const d = new Date();
-	const ticketNum = document.getElementById("ticketNum").textContent;
-	const resID = document.getElementById("resid").value
-	const category = document.getElementById("Select_an_option").textContent
+	//const ticketNum = document.getElementById("ticketNum").textContent;
+	var residentId = document.getElementById("resid").value
+	residentId = residentId.toString();
+	const repairCategory = document.getElementById("Select_an_option").textContent
 	const status = document.getElementById("Select_an_option_ew").textContent
 	const date = d.getDate();
 	const assID = document.getElementById("assignedid").value
-	const tick = [ticketNum, resID, category, status, date, assID]
-	console.log(tick);
-	loadNewTicket(tick);
+	const description = document.getElementById("description").value
+    const ticket = {
+        ResidentId: residentId,
+		RepairCategory: repairCategory,
+		Description: description
+    };
+	console.log(ticket);
+	loadNewTicket(ticket);
 	//window.location.href = "resident_landing_page.html";
 }
 
