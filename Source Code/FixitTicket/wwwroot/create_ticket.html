@@ -735,9 +735,6 @@ function SubmitNewTicket() {
 	var residentId = document.getElementById("resid").value
 	residentId = residentId.toString();
 	const repairCategory = document.getElementById("Select_an_option").textContent
-	const status = document.getElementById("Select_an_option_ew").textContent
-	const date = d.getDate();
-	const assID = document.getElementById("assignedid").value
 	const description = document.getElementById("description").value
     const ticket = {
         ResidentId: residentId,
@@ -3725,22 +3722,6 @@ window.application = new Application();
 		<rect id="Rectangle_1094" rx="10" ry="10" x="0" y="0" width="899" height="732">
 		</rect>
 	</svg>
-	<div id="Input_-_Required_Field">
-		<svg class="Rectangle_555">
-			<rect id="Rectangle_555" rx="0" ry="0" x="0" y="0" width="276" height="38">
-			</rect>
-		</svg>
-		<svg class="Rectangle_582">
-			<rect id="Rectangle_582" rx="0" ry="0" x="0" y="0" width="77" height="38">
-			</rect>
-		</svg>
-		<div id="n_381203103820193">
-			<span id="ticketNum">9381203103820193</span>
-		</div>
-		<div id="TICKET_ID">
-			<span>TICKET ID</span>
-		</div>
-	</div>
 	<div id="Input_-_Required_Field_ei">
 		<svg class="Rectangle_555_ej">
 			<rect id="Rectangle_555_ej" rx="0" ry="0" x="0" y="0" width="276" height="38">
@@ -3785,48 +3766,6 @@ window.application = new Application();
 		</svg>
 		<div id="REPAIR_CATEGORY">
 			<span>REPAIR<br/>CATEGORY</span>
-		</div>
-	</div>
-	<div id="Dropdown_-_Empty_eu">
-		<svg class="Rectangle_563_ev">
-			<rect id="Rectangle_563_ev" rx="0" ry="0" x="0" y="0" width="276" height="38">
-				<div id="Dropdown2" class="Dropdown" >
-					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn"></button>
-					<div id="myDropdown2" class="dropdown-content2">
-						<a onclick=SelectStatus("Select_an_option_ew","Open","myDropdown2")>Open</a>
-						<a onclick=SelectStatus("Select_an_option_ew","InProgress","myDropdown2")>In Progress</a>
-						<a onclick=SelectStatus("Select_an_option_ew","Closed(Resolved)","myDropdown2")>Closed (Resolved)</a>
-						<a onclick=SelectStatus("Select_an_option_ew","Closed(Workaround)","myDropdown2")>Closed (Workaround)</a>
-					</div>
-				</div>
-			</rect>
-		</svg>
-		<div id="Select_an_option_ew">
-			<span>Select an option</span>
-		</div>
-		
-		<svg class="Rectangle_587_ez">
-			<rect id="Rectangle_587_ez" rx="0" ry="0" x="0" y="0" width="77" height="38">
-			</rect>
-		</svg>
-		<div id="STATUS">
-			<span>STATUS</span>
-		</div>
-	</div>
-	<div id="Input_-_Required_Field_e">
-		<svg class="Rectangle_555_e">
-			<rect id="Rectangle_555_e" rx="0" ry="0" x="0" y="0" width="276" height="38">
-			</rect>
-		</svg>
-		<svg class="Rectangle_582_e">
-			<rect id="Rectangle_582_e" rx="0" ry="0" x="0" y="0" width="77" height="38">
-			</rect>
-		</svg>
-		<div id="n_89306958_e">
-			<textarea rows="1" cols="30" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
-		</div>
-		<div id="ASSIGNED_TO">
-			<span>ASSIGNED TO</span>
 		</div>
 	</div>
 	<div id="Textbox_-_Empty">
