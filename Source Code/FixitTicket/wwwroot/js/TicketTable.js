@@ -7,7 +7,7 @@ const tempDataHolder = "http://localhost:8000/temp-data.json"
 
 function loadTickets() {
     const request = new XMLHttpRequest();
-    request.open("GET", "http://localhost:8000/temp-data.json");
+    request.open("GET", "api/Tickets");
     request.onload = ()=>{
         try {
             const json = JSON.parse(request.responseText);
@@ -27,12 +27,28 @@ function populateTickets(json) {
     console.log(json);
     json.forEach((row) => {
         const tr = document.createElement("tr");
-        
-        row.forEach((cell) => {
-            const td = document.createElement("td");
-            td.textContent = cell;
-            tr.appendChild(td);
-        })
+
+        var id = document.createElement("td");
+        var residentId = document.createElement("td");
+        var repairCategory = document.createElement("td");
+        var status = document.createElement("td");
+        var creationDate = document.createElement("td");
+        var assignedId = document.createElement("td");
+        id.textContent = row.id;
+        residentId.textContent = row.residentId;
+        repairCategory.textContent = row.repairCategory;
+        status.textContent = row.status;
+        var dateDiff = Date.parse(row.creationDate);
+        var date = new Date(dateDiff);
+        creationDate.textContent = date;
+        assignedId.textContent = row.assignedId ?? "";
+        tr.appendChild(id);
+        tr.appendChild(residentId);
+        tr.appendChild(repairCategory);
+        tr.appendChild(status);
+        tr.appendChild(creationDate);
+        tr.appendChild(assignedId);
+
         ticketsBody.appendChild(tr);
     });
 } 
