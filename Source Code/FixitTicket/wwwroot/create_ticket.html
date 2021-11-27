@@ -713,22 +713,23 @@
 <script src="require.js"></script>
 <script id="applicationScript">
 const tempDataHolder = "http://localhost:8000/temp-data.json"
-function loadNewTicket(ticket) {
+async function loadNewTicket(ticket) {
     const uri = 'api/Tickets';
-    fetch(uri, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(ticket)
+	let response = await fetch(uri, {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(ticket)
 	})
-		.then(response => response.json())
         .catch(error => console.error('Unable to add ticket.', error));
+
+	return await response.json();
 
 }
 
-	function SubmitNewTicket() {
+function SubmitNewTicket() {
 	const d = new Date();
 	//const ticketNum = document.getElementById("ticketNum").textContent;
 	var residentId = document.getElementById("resid").value
@@ -744,8 +745,15 @@ function loadNewTicket(ticket) {
 		Description: description
     };
 	console.log(ticket);
-	loadNewTicket(ticket);
-	//window.location.href = "resident_landing_page.html";
+	var result = loadNewTicket(ticket);
+	result.then((response) => {
+		if (response.status === 400) {
+			alert("Invalid ticket. Please fill out the form again.");
+		}
+		else {
+            window.location.href = "resident_landing_page.html";
+		}
+	});
 }
 
 function SelectStatus(field, status, name) {
