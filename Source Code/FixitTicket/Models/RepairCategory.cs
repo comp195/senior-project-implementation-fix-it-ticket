@@ -17,6 +17,7 @@ namespace FixitTicket.Models
         Ceiling,
         Paint,
         Carpentry,
-        Replacement
+        Replacement,
+        Other
     }
 }
