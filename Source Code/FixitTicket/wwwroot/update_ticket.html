@@ -4,9 +4,26 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>update ticket</title>
+<title>Update Your Ticket</title>
 <style id="applicationStylesheet" type="text/css">
 	/* Dropdown Button */
+	textarea {
+		outline: none;
+		resize: none;
+		font-size: 14px;
+	}
+	button {
+		position: relative;
+		font-size: 18px;
+		transition: color 0.5s, transform 0.2s, background-color 0.2s;
+		outline: none;
+		border-radius: 3px;
+		margin: 0 10px;
+		border: 3px solid transparent; }
+	button:active {
+		transform: translateY(3px); }
+	button::after, button::before {
+		border-radius: 3px; }
 	.dropbtn {
 		background-color: rgba(255, 255, 255, 0);
 		color: white;
@@ -14,7 +31,7 @@
 		border: none;
 		cursor: pointer;
 		position: relative;
-		right: -18px;
+		right: -8px;
 		bottom: 0px;
 		padding-right: 19px;
 		padding-top: 19px;
@@ -22,11 +39,6 @@
 		padding-bottom: 19px;
 	}
 	input { outline: none; }
-	textarea {
-		outline: none;
-		font-family: "Arial";
-		resize: none;
-	}
 	.dropbtn2 {
 		background-color: rgba(255, 255, 255, 0);
 		color: white;
@@ -34,7 +46,7 @@
 		border: none;
 		cursor: pointer;
 		position: relative;
-		right: 310px;
+		right: 320px;
 		bottom: 16px;
 		padding-right: 19px;
 		padding-top: 19px;
@@ -54,11 +66,10 @@
 		position: absolute;
 		background-color: #ffffff;
 		min-width: 160px;
-		right: 100px;
+		right: 98px;
 		top: 20px;
 		z-index: 1;
-		font-family: "Arial";
-		font-size: 13px;
+		font-size: 14px;
 	}
 	
 	.dropdown-content2 {
@@ -66,11 +77,10 @@
 		position: absolute;
 		background-color: #ffffff;
 		min-width: 160px;
-		right: 115px;
+		right: 112px;
 		top: 37px;
 		z-index: 1;
-		font-family: "Arial";
-		font-size: 13px;
+		font-size: 14px;
 	}
 
 	/* Links inside the dropdown */
@@ -97,7 +107,7 @@
 	.show {display:block;}
 	
 	.mediaViewInfo {
-		--web-view-name: update ticket;
+		--web-view-name: Update Your Ticket;
 		--web-view-id: update_ticket;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
@@ -110,6 +120,7 @@
 		padding: 0;
 		box-sizing: border-box;
 		border: none;
+		font-family: 'Montserrat', sans-serif;
 	}
 	#update_ticket {
 		position: absolute;
@@ -134,7 +145,7 @@
 	
 	}
 	#Navigation_Bar {
-		position: absolute;
+		position: relative;
 		width: 220px;
 		height: 900px;
 		left: 0px;
@@ -166,11 +177,13 @@
 		line-height: 12px;
 		margin-top: -1px;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 10px;
+		font-size: 13px;
 		color: rgba(255,255,255,1);
+	}
+	#YOUR_TICKETS:hover {
+		color: #494958;
 	}
 	#CREATE_TICKET_d {
 		left: 41px;
@@ -182,11 +195,10 @@
 		line-height: 12px;
 		margin-top: -1px;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 10px;
-		color: rgba(255,255,255,1);
+		font-size: 13px;
+		color: #494958;
 	}
 	#LOG_OUT {
 		left: 40px;
@@ -198,11 +210,13 @@
 		line-height: 12px;
 		margin-top: -1px;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 10px;
+		font-size: 13px;
 		color: rgba(255,255,255,1);
+	}
+	#LOG_OUT:hover {
+		color: #494958;
 	}
 	#Fixit_Ticket {
 		left: 40px;
@@ -214,7 +228,6 @@
 		line-height: 24px;
 		margin-top: -3px;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 18px;
@@ -222,29 +235,27 @@
 	}
 	#Dashboard {
 		left: 312px;
-		top: 44px;
-		position: absolute;
+		top: -875px;
+		position: relative;
 		overflow: visible;
 		width: 210px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 40px;
 		color: rgba(38,153,251,1);
 	}
-	#Create_Ticket_eb {
+	#Update_Ticket_eb {
 		left: 312px;
-		top: 103px;
-		position: absolute;
+		top: -861px;
+		position: relative;
 		overflow: visible;
 		width: 126px;
 		white-space: nowrap;
 		line-height: 30px;
 		margin-top: -5px;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 20px;
@@ -254,19 +265,19 @@
 		fill: rgba(232,244,255,1);
 	}
 	.Rectangle_1094 {
-		position: absolute;
+		position: relative;
 		overflow: visible;
 		width: 899px;
 		height: 732px;
 		left: 371px;
-		top: 188px;
+		top: -801px;
 	}
 	#Input_-_Required_Field {
-		position: absolute;
+		position: relative;
 		width: 353px;
 		height: 38px;
 		left: 425px;
-		top: 240px;
+		top: -1494px;
 		overflow: visible;
 	}
 	#Rectangle_555 {
@@ -305,32 +316,30 @@
 		width: 90px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
+		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 13px;
 		color: rgba(0,0,0,1);
 	}
 	#TICKET_ID {
-		left: 7px;
-		top: 7px;
+		left: 10px;
+		top: 12px;
 		position: relative;
 		overflow: visible;
 		width: 35px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
-		font-weight: bold;
 		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Input_-_Required_Field_ei {
-		position: absolute;
+		position: relative;
 		width: 353px;
 		height: 38px;
 		left: 425px;
-		top: 307px;
+		top: -1461px;
 		overflow: visible;
 	}
 	#Rectangle_555_ej {
@@ -369,32 +378,30 @@
 		width: 51px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
+		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 10px;
 		color: rgba(0,0,0,1);
 	}
 	#RESIDENT_ID {
-		left: 7px;
-		top: 7px;
+		left: 8px;
+		top: 12px;
 		position: relative;
 		overflow: visible;
 		width: 45px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
-		font-weight: bold;
 		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Dropdown_-_Empty {
-		position: absolute;
+		position: relative;
 		width: 353px;
 		height: 38px;
-		left: 872px;
-		top: 372px;
+		left: 854px;
+		top: -1448px;
 		overflow: visible;
 	}
 	#Rectangle_563 {
@@ -422,10 +429,10 @@
 		width: 73px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
+		;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 13px;
+		font-size: 14px;
 		color: rgba(0,0,0,1);
 	}
 	#Dropdown {
@@ -460,26 +467,24 @@
 		top: 0px;
 	}
 	#REPAIR_CATEGORY {
-		left: 7px;
-		top: 7px;
+		left: 6px;
+		top: 12px;
 		position: relative;
 		overflow: visible;
 		width: 40px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
-		font-weight: bold;
 		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Dropdown_-_Empty_eu {
-		position: absolute;
+		position: relative;
 		width: 353px;
 		height: 38px;
-		left: 872px;
-		top: 439px;
-		overflow: visible;
+		left: 853px;
+		top: -1415px;
+		overflow: visible
 	}
 	#Rectangle_563_ev {
 		fill: rgba(255,255,255,1);
@@ -506,10 +511,10 @@
 		width: 73px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
+		;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 13px;
+		font-size: 14px;
 		color: rgba(0,0,0,1);
 	}
 	#Dropdown_ex {
@@ -544,25 +549,23 @@
 		top: 0px;
 	}
 	#STATUS {
-		left: 7px;
+		left: 15px;
 		top: -25px;
 		position: relative;
 		overflow: visible;
 		width: 28px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
-		font-weight: bold;
 		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Input_-_Required_Field_e {
-		position: absolute;
+		position: relative;
 		width: 353px;
 		height: 38px;
 		left: 425px;
-		top: 439px;
+		top: -1454px;
 		overflow: visible;
 	}
 	#Rectangle_555_e {
@@ -601,7 +604,7 @@
 		width: 51px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
+		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 10px;
@@ -609,25 +612,23 @@
 	}
 	#ASSIGNED_TO {
 		left: 7px;
-		top: 7px;
+		top: 12px;
 		position: relative;
 		overflow: visible;
 		width: 49px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
 		font-style: normal;
-		font-weight: bold;
 		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
 	#Textbox_-_Empty {
-		position: absolute;
+		position: relative;
 		width: 721px;
 		height: 253px;
 		left: 460px;
-		top: 558px;
-		overflow: visible;
+		top: -1393px;
+		overflow: hidden;
 	}
 	#Rectangle_581 {
 		fill: rgba(255,255,255,1);
@@ -654,7 +655,7 @@
 		width: 114px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Arial;
+		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 14px;
@@ -666,55 +667,92 @@
 	.Rectangle_589 {
 		position: absolute;
 		overflow: visible;
-		width: 165px;
+		width: 203px;
 		height: 46px;
+		background-color: rgb(37 153 251);
 		left: 0px;
 		top: 0px;
 	}
-	#Rectangle_5892 {
-		fill: rgba(38,153,251,1);
-	}
 	.Rectangle_5892 {
 		position: absolute;
-		overflow: visible;
 		width: 165px;
+		background-color: #04AA6D;
 		height: 46px;
 		left: 755px;
 		top: 839px;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+		text-decoration: none;
+		overflow: hidden;
+		cursor: pointer;
 	}
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100vh;
+		width: 100vw;
+		text-align: center; }
+	
+	.material-bubble {
+		background-color: #2599fb;
+		color: #ffffff;
+		border: none;
+		overflow: hidden;
+		box-shadow: none;
+		width: 125px;
+		height: 50px;
+		top: -1710px;
+		left: 737px;
+		font-size: 13px;
+	}
+	.material-bubble:hover {
+		color: #e6e6e6; }
+	.material-bubble::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: transparent;
+		transition: opacity 0.3s, border 0.3s; }
+	.material-bubble:hover::before {
+		opacity: 0; }
+	.material-bubble::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 200px;
+		height: 200px;
+		background-color: #494958;
+		border-color: transparent;
+		border-radius: 50%;
+		transform: translate(-10px, -70px) scale(0.1);
+		opacity: 0;
+		z-index: -1;
+		transition: transform 0.3s, opacity 0.3s, background-color 0.3s; }
+	.material-bubble:hover::after {
+		opacity: 1;
+		transform-origin: 100px 100px;
+		transform: scale(1) translate(-10px, -70px); }
 	#DESCRIBE_THE_PROBLEM {
-		left: 12px;
-		top: 18px;
+		left: 16px;
+		top: 16px;
 		position: absolute;
 		overflow: visible;
 		width: 128px;
 		white-space: nowrap;
-		text-align: left;
-		font-family: Arial;
+		text-align: center;
 		font-style: normal;
-		font-weight: bold;
-		font-size: 11px;
+		font-size: 13px;
 		color: rgba(255,255,255,1);
 	}
-	#DESCRIBE_THE_PROBLEM2 {
-		left: 818px;
-		top: 857px;
-		position: absolute;
-		overflow: visible;
-		width: 128px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 10px;
-		color: rgba(255, 255, 255, 1);
-	}
 </style>
-<script src="js/require.js"></script>
-<script src="js/UpdateTicket.js"></script>
+<script src="require.js"></script>
+<script defer src="js/UpdateTicket.js"></script>
 <script id="applicationScript">
-
 const tempDataHolder = "http://localhost:8000/temp-data.json"
 function loadNewTicket(ticket) {
     const uri = 'api/Tickets';
@@ -746,6 +784,7 @@ function loadNewTicket(ticket) {
 		RepairCategory: repairCategory,
 		Description: description
     };
+	console.log(ticket);
 	loadNewTicket(ticket);
 	//window.location.href = "resident_landing_page.html";
 }
@@ -758,8 +797,6 @@ function SelectStatus(field, status, name) {
 function ToggleDropdown(name) {
 	document.getElementById(name).classList.toggle("show");
 }
-
-
 ///////////////////////////////////////
 // INITIALIZATION
 ///////////////////////////////////////
@@ -769,21 +806,19 @@ function ToggleDropdown(name) {
  * Code subject to change.
  **/
 
-
 window.onload = function() {
 	var s = Math.min(
-			window.innerWidth / document.getElementById('update_ticket').scrollWidth,
-			window.innerHeight / document.getElementById('update_ticket').scrollHeight
+			window.innerWidth / document.getElementById('update_ticket').clientWidth,
+			window.innerHeight / document.getElementById('update_ticket').clientHeight
 	);
 	console.log(s);
 	document.getElementById('update_ticket').style.setProperty("--s", s);
 	UpdateTicketStart();
-	//localStorage.clear();
 }
 window.addEventListener('resize', function() {
 	var s = Math.min(
-			window.innerWidth / document.getElementById('update_ticket').scrollWidth,
-			window.innerHeight / document.getElementById('update_ticket').scrollHeight
+			window.innerWidth / document.getElementById('update_ticket').clientWidth,
+			window.innerHeight / document.getElementById('update_ticket').clientHeight
 	);
 	console.log(s);
 	document.getElementById('update_ticket').style.setProperty("--s", s);
@@ -1149,7 +1184,7 @@ var Application = function() {
 		notification.id = notificationID;
 		notification.textContent = "PAGE UPDATED";
 		var styleRule = ""
-		styleRule = "position: fixed; padding: 7px 16px 6px 16px; font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; left: 50%;";
+		styleRule = "position: fixed; padding: 7px 16px 6px 16px; font-size: 10px; font-weight: bold; left: 50%;";
 		styleRule += "top: 20px; background-color: rgba(0,0,0,.5); border-radius: 12px; color:rgb(235, 235, 235); transition: all 2s linear;";
 		styleRule += "transform: translateX(-50%); letter-spacing: .5px; filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, .1)); cursor: pointer";
 		notification.setAttribute("style", styleRule);
@@ -3730,7 +3765,7 @@ window.application = new Application();
 		<div onclick="application.goToTargetView(event)" id="YOUR_TICKETS">
 			<span>YOUR TICKETS</span>
 		</div>
-		<div id="CREATE_TICKET_d" onclick='window.location.href="create_ticket.html"'>
+		<div id="CREATE_TICKET_d">
 			<span>CREATE TICKET</span>
 		</div>
 		<div id="LOG_OUT">
@@ -3743,7 +3778,7 @@ window.application = new Application();
 	<div id="Dashboard">
 		<span>Dashboard</span>
 	</div>
-	<div id="Create_Ticket_eb">
+	<div id="Update_Ticket_eb">
 		<span>Update Ticket</span>
 	</div>
 	<svg class="Rectangle_1094">
@@ -3763,7 +3798,7 @@ window.application = new Application();
 			<span id="ticketNum">9381203</span>
 		</div>
 		<div id="TICKET_ID">
-			<span>TICKET</span>
+			<span>TICKET ID</span>
 		</div>
 	</div>
 	<div id="Input_-_Required_Field_ei">
@@ -3855,7 +3890,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="Type_something">
-			<textarea font-family="Arial" rows="12" cols="95" name="description" id="description" placeholder="Describe your problem"></textarea>
+			<textarea font-family="Montserrat" rows="11" cols="95" name="description" id="description" placeholder="Describe your problem"></textarea>
 		</div>
 		<svg class="Rectangle_589">
 			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">
@@ -3865,14 +3900,8 @@ window.application = new Application();
 			<span>DESCRIBE THE PROBLEM</span>
 		</div>
 	</div>
-	<div id="Textbox_-_Empty2">
-		<svg class="Rectangle_5892">
-			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">
-			</rect>
-		</svg>
-		<div id="DESCRIBE_THE_PROBLEM2" onclick=SubmitNewTicket()>
-			<span>SUBMIT</span>
-		</div>
+	<div class="container">
+		<button class="material-bubble" onclick=SubmitNewTicket()>SUBMIT</button>
 	</div>
 </div>
 </body>
