@@ -10,6 +10,7 @@ document.addEventListener("load", () => {
 const ticketsBody = document.querySelector(".paleBlueRows > tbody");
 const table = document.querySelector(".paleBlueRows");
 const headers = table.querySelectorAll('th');
+const loading = document.getElementById("loadingMessage");
 
 [].forEach.call(headers, function (header, index) {
     header.addEventListener('click', function () {
@@ -68,8 +69,6 @@ const directions = Array.from(headers).map(function (header) {
 });
 
 
-
-
 function loadTickets() {
     const request = new XMLHttpRequest();
     request.open("GET", "api/Tickets");
@@ -119,6 +118,9 @@ function populateTickets(json) {
     });
     tableBody = table.querySelector('tbody');
     rows = tableBody.querySelectorAll('tr');
+    loading.style.opacity = 0;
+    
+    
     document.querySelector(".paleBlueRows tbody").addEventListener("click", function(event) {
         var t = event.target;
         if(t.textContent == "Click to View") {
