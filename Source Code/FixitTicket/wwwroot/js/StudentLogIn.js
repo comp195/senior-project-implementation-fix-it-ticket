@@ -10,7 +10,7 @@ loginButton.addEventListener("click", (e) => {
     const password = pass.value.trim(" ");
 
     if (username === "user" && password === "web_dev") {
-        window.location.href = "resident_landing_page.html";
+        window.location.href = "employee_landing_page.html";
     } else {
         loginErrorMsg.opacity = 1;
         loginErrorMsgText.style.opacity = 1;
