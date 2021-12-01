@@ -142,7 +142,7 @@ function populateTickets(json) {
 function GrabUpdateTicket(row) {
     var data = row.children;
     
-    window.location.href = "/update_ticket.html?" + data[0].innerText;
+    window.location.href = "/update_ticket.html?" + data[0].innerText + "|resident";
 }
 
 

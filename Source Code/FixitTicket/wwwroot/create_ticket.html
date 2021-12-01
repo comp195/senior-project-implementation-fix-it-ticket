@@ -38,6 +38,20 @@
 		padding-left: 315px;
 		padding-bottom: 19px;
 	}
+	.dropbtn3 {
+		background-color: rgba(255, 255, 255, 0);
+		color: white;
+		font-size: 16px;
+		border: none;
+		cursor: pointer;
+		position: relative;
+		right: -8px;
+		bottom: 0px;
+		padding-right: 19px;
+		padding-top: 19px;
+		padding-left: 315px;
+		padding-bottom: 19px;
+	}
 	input { outline: none; }
 	.dropbtn2 {
 		background-color: rgba(255, 255, 255, 0);
@@ -60,6 +74,9 @@
 	.dropbtn2:hover, .dropbtn2:focus {
 		background-color: rgba(212, 212, 212, 0.2);
 	}
+	.dropbtn3:hover, .dropbtn3:focus {
+		background-color: rgba(212, 212, 212, 0.2);
+	}
 	/* Dropdown Content (Hidden by Default) */
 	.dropdown-content {
 		display: none;
@@ -73,6 +90,16 @@
 	}
 	
 	.dropdown-content2 {
+		display: none;
+		position: absolute;
+		background-color: #ffffff;
+		min-width: 160px;
+		right: 112px;
+		top: 37px;
+		z-index: 1;
+		font-size: 14px;
+	}
+	.dropdown-content3 {
 		display: none;
 		position: absolute;
 		background-color: #ffffff;
@@ -98,10 +125,19 @@
 		display: block;
 	}
 
+	.dropdown-content3 a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
 	/* Change color of dropdown links on hover */
 	.dropdown-content a:hover {background-color: #f1f1f1}
 
 	.dropdown-content2 a:hover {background-color: #f1f1f1}
+
+	.dropdown-content3 a:hover {background-color: #f1f1f1}
 
 	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 	.show {display:block;}
@@ -398,6 +434,14 @@
 		top: -1448px;
 		overflow: visible;
 	}
+	#Dropdown_-_Empty2 {
+		position: relative;
+		width: 353px;
+		height: 38px;
+		left: 425px;
+		top: -1448px;
+		overflow: visible;
+	}
 	#Rectangle_563 {
 		fill: rgba(255,255,255,1);
 		stroke: rgba(188,224,253,1);
@@ -423,7 +467,19 @@
 		width: 73px;
 		white-space: nowrap;
 		text-align: left;
-		;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(0,0,0,1);
+	}
+	#Select_an_option2 {
+		left: 92px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 73px;
+		white-space: nowrap;
+		text-align: left;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 14px;
@@ -463,6 +519,18 @@
 	#REPAIR_CATEGORY {
 		left: 6px;
 		top: 12px;
+		position: relative;
+		overflow: visible;
+		width: 40px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-size: 12px;
+		color: rgba(255,255,255,1);
+	}
+	#Location {
+		left: 8px;
+		top: -24px;
 		position: relative;
 		overflow: visible;
 		width: 40px;
@@ -663,7 +731,7 @@
 		box-shadow: none;
 		width: 125px;
 		height: 50px;
-		top: -1710px;
+		top: -1733px;
 		left: 737px;
 		font-size: 13px;
 	}
@@ -726,10 +794,15 @@ function loadNewTicket(ticket) {
 	})
 		.then(response => response.json())
         .catch(error => console.error('Unable to add ticket.', error));
-
+	if(location.search.substring(1) === "employee") {
+		window.location.href = "employee_landing_page.html";
+	}
+	else {
+		window.location.href = "resident_landing_page.html";
+	}
 }
 
-	function SubmitNewTicket() {
+function SubmitNewTicket() {
 	const d = new Date();
 	//const ticketNum = document.getElementById("ticketNum").textContent;
 	var residentId = document.getElementById("resid").value
@@ -739,14 +812,13 @@ function loadNewTicket(ticket) {
 	const date = d.getDate();
 	const assID = document.getElementById("assignedid").value
 	const description = document.getElementById("description").value
-    const ticket = {
-        ResidentId: residentId,
+	const ticket = {
+		ResidentId: residentId,
 		RepairCategory: repairCategory,
 		Description: description
-    };
+	};
 	console.log(ticket);
 	loadNewTicket(ticket);
-	//window.location.href = "resident_landing_page.html";
 }
 
 function SelectStatus(field, status, name) {
@@ -3703,12 +3775,31 @@ toggle between hiding and showing the dropdown content */
 				}
 			}
 		}
+		if(!event.target.matches('.dropbtn3')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content3");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
 	}
 	
 	// initialize on load
 	// sometimes the body size is 0 so we call this now and again later
 	window.addEventListener("load", self.onloadHandler);
 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
+}
+
+let isEmployee = null;
+if(location.search.substring(1) === "employee") {
+	isEmployee = true;
+}
+else {
+	isEmployee = false;
 }
 
 window.application = new Application();
@@ -3721,7 +3812,7 @@ window.application = new Application();
 			<rect id="Base" rx="0" ry="0" x="0" y="0" width="220" height="900">
 			</rect>
 		</svg>
-		<div onclick="window.location.href='employee_landing_page.html'" id="YOUR_TICKETS">
+		<div onclick="window.location.href= (isEmployee) ? 'employee_landing_page.html' : 'resident_landing_page.html'" id="YOUR_TICKETS">
 			<span>YOUR TICKETS</span>
 		</div>
 		<div id="CREATE_TICKET_d">
@@ -3782,9 +3873,9 @@ window.application = new Application();
 				<div id="Dropdown" class="Dropdown" >
 					<button onclick="ToggleDropdown('myDropdown')" class="dropbtn2"></button>
 					<div id="myDropdown" class="dropdown-content">
-						<a onclick=SelectStatus("Select_an_option","Plumbing","myDropdown")>Plumbing</a>
-						<a onclick=SelectStatus("Select_an_option","Replacement","myDropdown")>Replacement</a>
-						<a onclick=SelectStatus("Select_an_option","WallDamage","myDropdown")>Wall Damage</a>
+						<a onclick=SelectStatus("Select_an_option",this.textContent,"myDropdown")>Plumbing</a>
+						<a onclick=SelectStatus("Select_an_option",this.textContent,"myDropdown")>Replacement</a>
+						<a onclick=SelectStatus("Select_an_option",this.textContent,"myDropdown")>Wall Damage</a>
 					</div>
 				</div>
 			</rect>
@@ -3801,16 +3892,47 @@ window.application = new Application();
 			<span>CATEGORY</span>
 		</div>
 	</div>
+	<div id="Dropdown_-_Empty2">
+		<svg class="Rectangle_563">
+			<rect id="Rectangle_563" rx="0" ry="0" x="0" y="0" width="276" height="38">
+				<div id="Dropdown3" class="Dropdown" >
+					<button onclick="ToggleDropdown('myDropdown3')" class="dropbtn3"></button>
+					<div id="myDropdown3" class="dropdown-content3">
+						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Monagan Hall</a>
+						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Chan Hall</a>
+						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>John Ballentyne</a>
+						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Jessie Ballentyne</a>
+						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Carter</a>
+						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Ritter</a>
+						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Casa Jackson</a>
+						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Calaveras Hall</a>
+						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Greek Housing</a>
+					</div>
+				</div>
+			</rect>
+		</svg>
+		<div id="Select_an_option2">
+			<span>Select an option</span>
+		</div>
+
+		<svg class="Rectangle_587">
+			<rect id="Rectangle_587" rx="0" ry="0" x="0" y="0" width="77" height="38">
+			</rect>
+		</svg>
+		<div id="Location">
+			<span>LOCATION</span>
+		</div>
+	</div>
 	<div id="Dropdown_-_Empty_eu">
 		<svg class="Rectangle_563_ev">
 			<rect id="Rectangle_563_ev" rx="0" ry="0" x="0" y="0" width="276" height="38">
 				<div id="Dropdown2" class="Dropdown" >
 					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn"></button>
 					<div id="myDropdown2" class="dropdown-content2">
-						<a onclick=SelectStatus("Select_an_option_ew","Open","myDropdown2")>Open</a>
-						<a onclick=SelectStatus("Select_an_option_ew","InProgress","myDropdown2")>In Progress</a>
-						<a onclick=SelectStatus("Select_an_option_ew","Closed(Resolved)","myDropdown2")>Closed (Resolved)</a>
-						<a onclick=SelectStatus("Select_an_option_ew","Closed(Workaround)","myDropdown2")>Closed (Workaround)</a>
+						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Open</a>
+						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>In Progress</a>
+						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Closed (Resolved)</a>
+						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Closed (Workaround)</a>
 					</div>
 				</div>
 			</rect>

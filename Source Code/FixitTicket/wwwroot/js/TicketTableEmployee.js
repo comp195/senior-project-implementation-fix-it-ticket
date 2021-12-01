@@ -168,8 +168,9 @@ function populateTickets(json) {
         noTicketsMsg.style.opacity = 0;
     }
     
-    document.querySelector(".allpaleBlueRows tbody").addEventListener("click", function(event) {
+    allTicketsBody.addEventListener("click", function(event) {
         var t = event.target;
+        console.log("ick")
         if(t.textContent == "Click to View") {
             console.log("BLAH BLAH")
             return;
@@ -184,7 +185,7 @@ function populateTickets(json) {
         }
     });
 
-    document.querySelector(".yourpaleBlueRows tbody").addEventListener("click", function(event) {
+    yourTicketsBody.addEventListener("click", function(event) {
         var t = event.target;
         if(t.textContent == "Click to View") {
             console.log("BLAH BLAH")
@@ -204,8 +205,8 @@ function populateTickets(json) {
 
 function GrabUpdateTicket(row) {
     var data = row.children;
-    
-    window.location.href = "/update_ticket.html?" + data[0].innerText;
+    console.log("hello");
+    window.location.href = "/update_ticket.html?" + data[0].innerText + "|employee";
 }
 
 

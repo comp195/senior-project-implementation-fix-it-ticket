@@ -8,7 +8,7 @@ async function UpdateTicketStart() {
     const description = document.getElementById("description");
     var ticketNum = document.getElementById("ticketNum");
     let json = null;
-    let id = location.search.substring(1);
+    let id = location.search.substring(1).split("|")[0];
     const request = new XMLHttpRequest();
     request.open("GET", "api/Tickets/" + id);
     request.onload = ()=>{

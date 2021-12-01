@@ -3755,6 +3755,9 @@ toggle between hiding and showing the dropdown content */
 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
 }
 
+let isEmployee = null;
+isEmployee = location.search.substring(1).split("|")[1] === "employee";
+
 window.application = new Application();
 </script>
 </head>
@@ -3765,7 +3768,7 @@ window.application = new Application();
 			<rect id="Base" rx="0" ry="0" x="0" y="0" width="220" height="900">
 			</rect>
 		</svg>
-		<div onclick="application.goToTargetView(event)" id="YOUR_TICKETS">
+		<div onclick="window.location.href= (isEmployee) ? 'employee_landing_page.html' : 'resident_landing_page.html'" id="YOUR_TICKETS">
 			<span>YOUR TICKETS</span>
 		</div>
 		<div id="CREATE_TICKET_d">
@@ -3904,7 +3907,7 @@ window.application = new Application();
 		</div>
 	</div>
 	<div class="container">
-		<button class="material-bubble" onclick="console.log('blah')">SUBMIT</button>
+		<button class="material-bubble" onclick="window.location.href= (isEmployee) ? 'employee_landing_page.html' : 'resident_landing_page.html'">SUBMIT</button>
 	</div>
 </div>
 </body>
