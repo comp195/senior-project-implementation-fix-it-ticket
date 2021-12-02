@@ -66,6 +66,7 @@ namespace FixitTicket.Controllers
                 return BadRequest(new { title = "One or more validation errors occurred.", status = 400, errors = errors });
             }
             ticket.CreationDate = DateTime.Now;
+            ticket.Status = RepairStatus.Open;
             _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
 
@@ -98,9 +99,9 @@ namespace FixitTicket.Controllers
             return repairCategory != RepairCategory.None;
         }
 
-        private bool IsValidStatus(RepairStatus status) 
+        private bool IsValidStatus(RepairStatus? status) 
         {
-            return status != RepairStatus.None;
+            return status == null;
         }
 
         private bool IsValidCreationDate(DateTime? creationDate) 
@@ -129,7 +130,7 @@ namespace FixitTicket.Controllers
 
             if (!IsValidStatus(ticket.Status)) 
             {
-                ticketErrors.Add(TicketValidationErrors.StatusNotSetError());
+                ticketErrors.Add(TicketValidationErrors.StatusSetError());
             }
 
             if (!IsValidCreationDate(ticket.CreationDate)) 
