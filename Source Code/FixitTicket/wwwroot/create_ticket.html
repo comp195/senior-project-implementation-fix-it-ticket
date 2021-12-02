@@ -15,6 +15,8 @@
 	button {
 		position: relative;
 		font-size: 18px;
+		float: initial;
+		display: inline-block;
 		transition: color 0.5s, transform 0.2s, background-color 0.2s;
 		outline: none;
 		border-radius: 3px;
@@ -719,8 +721,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		height: 100vh;
-		width: 100vw;
 		text-align: center; }
 	
 	.material-bubble {
@@ -731,7 +731,7 @@
 		box-shadow: none;
 		width: 125px;
 		height: 50px;
-		top: -1733px;
+		top: -1364px;
 		left: 737px;
 		font-size: 13px;
 	}
@@ -838,19 +838,33 @@ function ToggleDropdown(name) {
  * Code subject to change.
  **/
 
+function calcResize() {
+	let x;
+	let y;
+	if (window.innerWidth > document.getElementById('create_ticket').clientWidth) {
+		x = document.getElementById('create_ticket').clientWidth / window.innerWidth;
+	}
+	else {
+		x = window.innerWidth / document.getElementById('create_ticket').clientWidth;
+	}
+	if (window.innerHeight > document.getElementById('create_ticket').clientHeight) {
+		y = document.getElementById('create_ticket').clientHeight / window.innerHeight;
+	}
+	else {
+		y = window.innerHeight / document.getElementById('create_ticket').clientHeight;
+	}
+	return Math.min(x, y);
+}
+
+
+
 window.onload = function() {
-	var s = Math.min(
-			window.innerWidth / document.getElementById('create_ticket').clientWidth,
-			window.innerHeight / document.getElementById('create_ticket').clientHeight
-	);
+	var s = calcResize()
 	console.log(s);
 	document.getElementById('create_ticket').style.setProperty("--s", s);
 }
 window.addEventListener('resize', function() {
-	var s = Math.min(
-			window.innerWidth / document.getElementById('create_ticket').clientWidth,
-			window.innerHeight / document.getElementById('create_ticket').clientHeight
-	);
+	var s = calcResize()
 	console.log(s);
 	document.getElementById('create_ticket').style.setProperty("--s", s);
 });
@@ -3861,7 +3875,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958">
-			<textarea rows="1" cols="30" name="resid" id="resid" placeholder="( empty )"></textarea>
+			<textarea rows="1" cols="20" name="resid" id="resid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="RESIDENT_ID">
 			<span>RESIDENT</span>
@@ -3959,7 +3973,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958_e">
-			<textarea rows="1" cols="30" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
+			<textarea rows="1" cols="20" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="ASSIGNED_TO">
 			<span>ASSIGNED</span>

@@ -22,3 +22,20 @@ loginButton.addEventListener("click", (e) => {
         loginErrorMsgText.style.opacity = 1;
     }
 })
+
+document.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = user.value.trim(" ");
+    const password = pass.value.trim(" ");
+
+    if (username in studentIDs && password === studentIDs[username]) {
+        window.location.href = "resident_landing_page.html";
+    }
+    else if (username in employeeIDs && password === employeeIDs[username]) {
+        window.location.href = "employee_landing_page.html";
+    }
+    else {
+        loginErrorMsg.opacity = 1;
+        loginErrorMsgText.style.opacity = 1;
+    }
+})

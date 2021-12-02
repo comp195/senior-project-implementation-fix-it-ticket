@@ -22,8 +22,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		height: 100vh;
-		width: 100vw;
 		text-align: center; }
 
 	.material-bubble {
@@ -34,7 +32,7 @@
 		box-shadow: none;
 		width: 125px;
 		height: 50px;
-		top: -842px;
+		top: -461px;
 		left: 644px;
 		font-size: 13px;
 	}
@@ -303,7 +301,7 @@
 	}
 	#Log_in_to_access_your_tickets {
 		left: 595px;
-		top: -1605px;
+		top: -871px;
 		position: relative;
 		overflow: visible;
 		width: 252px;
@@ -322,7 +320,7 @@
 		width: 50px;
 		height: 50px;
 		left: 85px;
-		top: -1834px;
+		top: -1098px;
 		overflow: visible;
 		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
@@ -379,18 +377,34 @@
  * Code subject to change.
  **/
 
+function calcResize() {
+	let x;
+	let y;
+	if (window.innerWidth > document.getElementById('login').clientWidth) {
+		x = document.getElementById('login').clientWidth / window.innerWidth;
+	}
+	else {
+		x = window.innerWidth / document.getElementById('login').clientWidth;
+	}
+	if (window.innerHeight > document.getElementById('login').clientHeight) {
+		y = document.getElementById('login').clientHeight / window.innerHeight;
+	}
+	else {
+		y = window.innerHeight / document.getElementById('login').clientHeight;
+	}
+	return Math.min(x, y);
+}
+
+
+
 window.onload = function() {
-	var s = Math.min(
-			window.innerWidth / document.getElementById('login').clientWidth,
-			window.innerHeight / document.getElementById('login').clientHeight
-	);
+	var s = calcResize()
+	console.log(s);
 	document.getElementById('login').style.setProperty("--s", s);
 }
 window.addEventListener('resize', function() {
-	var s = Math.min(
-			window.innerWidth / document.getElementById('login').clientWidth,
-			window.innerHeight / document.getElementById('login').clientHeight
-	);
+	var s = calcResize()
+	console.log(s);
 	document.getElementById('login').style.setProperty("--s", s);
 });
 
