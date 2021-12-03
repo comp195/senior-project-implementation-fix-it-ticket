@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FixitTicket.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace FixitTicket.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TicketsController : ControllerBase
     {
         private readonly TicketContext _context;
@@ -53,6 +55,7 @@ namespace FixitTicket.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
+            var currentUser = HttpContext.User;
             var resident = await _context.User.FindAsync(ticket.ResidentId);
             //if (resident == null)
             //{
