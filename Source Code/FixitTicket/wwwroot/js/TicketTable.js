@@ -11,6 +11,7 @@ const ticketsBody = document.querySelector(".paleBlueRows > tbody");
 const table = document.querySelector(".paleBlueRows");
 const headers = table.querySelectorAll('th');
 const loading = document.getElementById("loadingMessage");
+const noTicketsMsg = document.getElementById("noTicketsMessage");
 
 [].forEach.call(headers, function (header, index) {
     header.addEventListener('click', function () {
@@ -121,7 +122,9 @@ function populateTickets(json) {
     tableBody = table.querySelector('tbody');
     rows = tableBody.querySelectorAll('tr');
     loading.style.opacity = 0;
-    
+    if (tableBody.querySelectorAll('tr').length === 0) {
+        noTicketsMsg.style.opacity = 1;
+    }
     
     document.querySelector(".paleBlueRows tbody").addEventListener("click", function(event) {
         var t = event.target;

@@ -14,25 +14,23 @@ const allTable = document.querySelector(".allpaleBlueRows");
 const yourHeaders = yourTable.querySelectorAll('th');
 const allHeaders = allTable.querySelectorAll('th');
 const loading = document.getElementById("loadingMessage");
+const loading2 = document.getElementById("loadingMessage2");
 const noTicketsMsg = document.getElementById("noTicketsMessage");
+const noTicketsMsg2 = document.getElementById("noTicketsMessage2");
 
 [].forEach.call(yourHeaders, function (header, index) {
     header.addEventListener('click', function () {
-        sortColumn(index, yourHeaders);
+        sortColumn(index, yourHeaders, yourTicketsBody);
     });
 });
 [].forEach.call(allHeaders, function (header, index) {
     header.addEventListener('click', function () {
-        sortColumn(index, allHeaders);
+        sortColumn(index, allHeaders, allTicketsBody);
     });
 });
 
 
-
-let tableBody = null;
-let rows = null;
-
-const sortColumn = function (index, headers) {
+const sortColumn = function (index, headers, body) {
     const directions = Array.from(headers).map(function (header) {
         return '';
     });
@@ -41,7 +39,7 @@ const sortColumn = function (index, headers) {
 
     // A factor based on the direction
     const multiplier = (direction === 'asc') ? 1 : -1;
-    const newRows = Array.from(rows);
+    const newRows = Array.from(body.querySelectorAll('tr'));
     // Sort rows by the content of cells
     newRows.sort(function (rowA, rowB) {
         // Get the content of cells
@@ -57,13 +55,13 @@ const sortColumn = function (index, headers) {
     });
 
     // Remove old rows
-    [].forEach.call(rows, function (row) {
-        tableBody.removeChild(row);
+    [].forEach.call(body.querySelectorAll('tr'), function (row) {
+        body.removeChild(row);
     });
 
     // Append new row
     newRows.forEach(function (newRow) {
-        tableBody.appendChild(newRow);
+        body.appendChild(newRow);
     });
     directions[index] = direction === 'asc' ? 'desc' : 'asc';
 };
@@ -130,8 +128,9 @@ function populateTickets(json) {
         tr.appendChild(comments);
         allTicketsBody.appendChild(tr);
     });
+    loading.style.opacity = 0;
     json.forEach((row) => {
-        if (employeeID == row.assignedId) {
+        if (employeeID === row.assignedId) {
             const tr = document.createElement("tr");
 
             var id = document.createElement("td");
@@ -160,18 +159,18 @@ function populateTickets(json) {
             yourTicketsBody.appendChild(tr);
         }
     });
-    
-    tableBody = allTable.querySelector('tbody');
-    rows = tableBody.querySelectorAll('tr');
-    loading.style.opacity = 0;
-    if (yourTicketsBody.querySelectorAll('tr').length > 0) {
-        noTicketsMsg.style.opacity = 0;
+    loading2.style.opacity = 0;
+    if (yourTicketsBody.querySelectorAll('tr').length === 0) {
+        noTicketsMsg.style.opacity = 1;
+    }
+    if (allTicketsBody.querySelectorAll('tr').length === 0) {
+        noTicketsMsg2.style.opacity = 1;
     }
     
     allTicketsBody.addEventListener("click", function(event) {
         var t = event.target;
         console.log("ick")
-        if(t.textContent == "Click to View") {
+        if(t.textContent === "Click to View") {
             console.log("BLAH BLAH")
             return;
         }
@@ -187,7 +186,7 @@ function populateTickets(json) {
 
     yourTicketsBody.addEventListener("click", function(event) {
         var t = event.target;
-        if(t.textContent == "Click to View") {
+        if(t.textContent === "Click to View") {
             console.log("BLAH BLAH")
             return;
         }

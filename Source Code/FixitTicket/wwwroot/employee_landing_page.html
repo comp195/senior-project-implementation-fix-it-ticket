@@ -9,7 +9,16 @@
 	#loadingMessage {
 		font-size: 50px;
 		position: relative;
-		top: 94px;
+		top: -255px;
+		left: 595px;
+		color: #2699FB;
+		font-style: oblique;
+		opacity: 1;
+	}
+	#loadingMessage2 {
+		font-size: 50px;
+		position: relative;
+		top: 45px;
 		left: 595px;
 		color: #2699FB;
 		font-style: oblique;
@@ -18,11 +27,20 @@
 	#noTicketsMessage {
 		font-size: 50px;
 		position: relative;
-		top: -325px;
+		top: -371px;
 		left: 530px;
 		color: #2699FB;
 		font-style: oblique;
-		opacity: 1;
+		opacity: 0;
+	}
+	#noTicketsMessage2 {
+		font-size: 50px;
+		position: relative;
+		top: -71px;
+		left: 514px;
+		color: #2699FB;
+		font-style: oblique;
+		opacity: 0;
 	}
 	table.allpaleBlueRows {
 		font-family: 'Montserrat', Helvetica, sans-serif;
@@ -283,7 +301,7 @@
 		left: 369px;
 		top: 524px;
 	}
-	#Your_Tickets {
+	#Your_Ticketsl {
 		left: 760px;
 		top: 141px;
 		position: absolute;
@@ -3257,7 +3275,7 @@ window.application = new Application();
 		<div onclick="window.location.href = 'create_ticket.html?employee'" id="CREATE_TICKET">
 			<span>CREATE TICKET</span>
 		</div>
-		<div id="LOG_OUT">
+		<div id="LOG_OUT" onclick="window.location.href = 'fixit_ticket_landing.html'">
 			<span>LOG OUT</span>
 		</div>
 		<div id="Fixit_Ticket">
@@ -3278,7 +3296,7 @@ window.application = new Application();
 		<rect id="Rectangle_1096" rx="10" ry="10" x="0" y="0" width="899" height="335">
 		</rect>
 	</svg>
-	<div id="Your_Tickets">
+	<div id="Your_Ticketsl">
 		<span>Your Tickets</span>
 	</div>
 	<table class="yourpaleBlueRows" style="position: relative; top: 172px; left: 390px;">
@@ -3321,8 +3339,14 @@ window.application = new Application();
 	<div id="loadingMessage">
 		<span>LOADING TICKETS...</span>
 	</div>
+	<div id="loadingMessage2">
+		<span>LOADING TICKETS...</span>
+	</div>
 	<div id="noTicketsMessage">
 		<span>YOU HAVE NO TICKETS</span>
+	</div>
+	<div id="noTicketsMessage2">
+		<span>THERE ARE NO TICKETS</span>
 	</div>
 </div>
 </body>
