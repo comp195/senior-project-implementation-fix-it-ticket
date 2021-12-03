@@ -129,7 +129,7 @@ function populateTickets(json) {
     document.querySelector(".paleBlueRows tbody").addEventListener("click", function(event) {
         var t = event.target;
         if(t.textContent === "Click to View") {
-            console.log("BLAH BLAH")
+            window.location.href = "/view_comments.html?" + t.parentNode.children[0].innerText + "|resident";
             return;
         }
         while (t !== this && !t.matches("tr")) {

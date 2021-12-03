@@ -169,9 +169,8 @@ function populateTickets(json) {
     
     allTicketsBody.addEventListener("click", function(event) {
         var t = event.target;
-        console.log("ick")
         if(t.textContent === "Click to View") {
-            console.log("BLAH BLAH")
+            window.location.href = "/view_comments.html?" + t.parentNode.children[0].innerText + "|employee";
             return;
         }
         while (t !== this && !t.matches("tr")) {
@@ -187,7 +186,7 @@ function populateTickets(json) {
     yourTicketsBody.addEventListener("click", function(event) {
         var t = event.target;
         if(t.textContent === "Click to View") {
-            console.log("BLAH BLAH")
+            window.location.href = "/view_comments.html?" + t.parentNode.children[0].innerText + "|employee";
             return;
         }
         while (t !== this && !t.matches("tr")) {
@@ -204,7 +203,6 @@ function populateTickets(json) {
 
 function GrabUpdateTicket(row) {
     var data = row.children;
-    console.log("hello");
     window.location.href = "/update_ticket.html?" + data[0].innerText + "|employee";
 }
 

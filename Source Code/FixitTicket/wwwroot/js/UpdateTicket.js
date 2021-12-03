@@ -20,6 +20,7 @@ async function UpdateTicketStart() {
             status.textContent = json.repairStatus;
             assID.value = json.assignedId;
             description.textContent = json.description;
+            console.log(ticketNum.textContent);
         }
         catch(e) {
             console.warn("Could not load ticket!");
