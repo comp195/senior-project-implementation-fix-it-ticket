@@ -204,7 +204,7 @@
 		white-space: nowrap;
 		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: resident_landing_page.html;
+		--web-action-target: 'resident_landing_page.html';
 		cursor: pointer;
 		line-height: 12px;
 		margin-top: -1px;
@@ -779,7 +779,7 @@
 		color: rgba(255,255,255,1);
 	}
 </style>
-<script src="require.js"></script>
+<script src="js/require.js"></script>
 <script id="applicationScript">
 const tempDataHolder = "http://localhost:8000/temp-data.json"
 function loadNewTicket(ticket) {
@@ -862,6 +862,22 @@ window.onload = function() {
 	var s = calcResize()
 	console.log(s);
 	document.getElementById('create_ticket').style.setProperty("--s", s);
+	if(!isEmployee) {
+		try {
+			let assigned = document.getElementsByName("assignedid")[0];
+			let abox = document.getElementById("Rectangle_555_e");
+			let status = document.getElementById("status-dropdown");
+			let bbox = document.getElementById("Rectangle_563_ev");
+			assigned.disabled=true;
+			status.disabled=true;
+			abox.style.fill = "rgba(236,237,238,1)";
+			bbox.style.fill = "rgba(236,237,238,1)";
+		}
+		catch {
+			console.warn("Crying and screaming rn.")
+		}
+	}
+	document.getElementById("Rectangle_555").style.fill = "rgba(236,237,238,1)";
 }
 window.addEventListener('resize', function() {
 	var s = calcResize()
@@ -3808,13 +3824,8 @@ toggle between hiding and showing the dropdown content */
 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
 }
 
-let isEmployee = null;
-if(location.search.substring(1) === "employee") {
-	isEmployee = true;
-}
-else {
-	isEmployee = false;
-}
+isEmployee = location.search.substring(1) === "employee";
+
 
 window.application = new Application();
 </script>
@@ -3940,8 +3951,8 @@ window.application = new Application();
 	<div id="Dropdown_-_Empty_eu">
 		<svg class="Rectangle_563_ev">
 			<rect id="Rectangle_563_ev" rx="0" ry="0" x="0" y="0" width="276" height="38">
-				<div id="Dropdown2" class="Dropdown" >
-					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn"></button>
+				<div id="Dropdown2" class="Dropdown">
+					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn" id="status-dropdown"></button>
 					<div id="myDropdown2" class="dropdown-content2">
 						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Open</a>
 						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>In Progress</a>

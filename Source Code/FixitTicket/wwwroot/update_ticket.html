@@ -106,12 +106,6 @@
 	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 	.show {display:block;}
 	
-	.mediaViewInfo {
-		--web-view-name: Update Your Ticket;
-		--web-view-id: update_ticket;
-		--web-scale-on-resize: true;
-		--web-enable-deep-linking: true;
-	}
 	:root {
 		--web-view-ids: update_ticket;
 	}
@@ -172,7 +166,7 @@
 		white-space: nowrap;
 		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: resident_landing_page.html;
+		--web-action-target: 'resident_landing_page.html';
 		cursor: pointer;
 		line-height: 12px;
 		margin-top: -1px;
@@ -520,26 +514,6 @@
 		font-size: 14px;
 		color: rgba(0,0,0,1);
 	}
-	#Dropdown_ex {
-		position: absolute;
-		width: 7.213px;
-		height: 4.681px;
-		left: 329.211px;
-		top: 16.884px;
-		overflow: visible;
-	}
-	#Path_36_ey {
-		fill: rgba(38,153,251,1);
-	}
-	.Path_36_ey {
-		overflow: visible;
-		position: absolute;
-		width: 7.213px;
-		height: 4.681px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
 	#Rectangle_587_ez {
 		fill: rgba(38,153,251,1);
 	}
@@ -751,7 +725,7 @@
 		color: rgba(255,255,255,1);
 	}
 </style>
-<script src="require.js"></script>
+<script src="js/require.js"></script>
 <script defer src="js/UpdateTicket.js"></script>
 <script id="applicationScript">
 const tempDataHolder = "http://localhost:8000/temp-data.json"
@@ -831,6 +805,22 @@ window.onload = function() {
 	var s = calcResize()
 	console.log(s);
 	document.getElementById('update_ticket').style.setProperty("--s", s);
+	if(!isEmployee) {
+		try {
+			let assigned = document.getElementsByName("assignedid")[0];
+			let abox = document.getElementById("Rectangle_555_e");
+			let status = document.getElementById("status-dropdown");
+			let bbox = document.getElementById("Rectangle_563_ev");
+			assigned.disabled=true;
+			status.disabled=true;
+			abox.style.fill = "rgba(236,237,238,1)";
+			bbox.style.fill = "rgba(236,237,238,1)";
+		}
+		catch {
+			console.warn("Crying and screaming rn.")
+		}
+	}
+	document.getElementById("Rectangle_555").style.fill = "rgba(236,237,238,1)";
 }
 window.addEventListener('resize', function() {
 	var s = calcResize()
@@ -3863,7 +3853,7 @@ window.application = new Application();
 		<svg class="Rectangle_563_ev">
 			<rect id="Rectangle_563_ev" rx="0" ry="0" x="0" y="0" width="276" height="38">
 				<div id="Dropdown2" class="Dropdown" >
-					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn"></button>
+					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn" id="status-dropdown"></button>
 					<div id="myDropdown2" class="dropdown-content2">
 						<a onclick=SelectStatus("Select_an_option_ew","Open","myDropdown2")>Open</a>
 						<a onclick=SelectStatus("Select_an_option_ew","InProgress","myDropdown2")>In Progress</a>
