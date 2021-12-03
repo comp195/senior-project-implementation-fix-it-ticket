@@ -8,9 +8,10 @@
 <style id="applicationStylesheet" type="text/css">
 	/* Dropdown Button */
 	textarea {
-		outline: none;
 		resize: none;
 		font-size: 14px;
+		background-color: rgba(255, 255, 255, 0);
+		outline: none;
 	}
 	button {
 		position: relative;
@@ -369,13 +370,13 @@
 	}
 	#n_89306958 {
 		left: 92px;
-		top: 13px;
+		top: 9px;
 		position: absolute;
 		overflow: visible;
-		width: 51px;
+		width: 199px;
+		height: 26px;
 		white-space: nowrap;
 		text-align: left;
-		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 10px;
@@ -575,13 +576,13 @@
 	}
 	#n_89306958_e {
 		left: 92px;
-		top: 13px;
+		top: 9px;
 		position: absolute;
 		overflow: visible;
-		width: 51px;
+		width: 199px;
+		height: 26px;
 		white-space: nowrap;
 		text-align: left;
-		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 10px;
@@ -629,10 +630,10 @@
 		top: 64px;
 		position: absolute;
 		overflow: visible;
-		width: 114px;
+		width: 683px;
+		height: 173px;
 		white-space: nowrap;
 		text-align: left;
-		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 14px;
@@ -649,19 +650,6 @@
 		background-color: rgb(37 153 251);
 		left: 0px;
 		top: 0px;
-	}
-	.Rectangle_5892 {
-		position: absolute;
-		width: 165px;
-		background-color: #04AA6D;
-		height: 46px;
-		left: 755px;
-		top: 839px;
-		-webkit-transition-duration: 0.4s; /* Safari */
-		transition-duration: 0.4s;
-		text-decoration: none;
-		overflow: hidden;
-		cursor: pointer;
 	}
 	.container {
 		display: flex;
@@ -782,27 +770,16 @@ function ToggleDropdown(name) {
  **/
 
 function calcResize() {
-	let x;
-	let y;
-	if (window.innerWidth > document.getElementById('update_ticket').clientWidth) {
-		x = document.getElementById('update_ticket').clientWidth / window.innerWidth;
-	}
-	else {
-		x = window.innerWidth / document.getElementById('update_ticket').clientWidth;
-	}
-	if (window.innerHeight > document.getElementById('update_ticket').clientHeight) {
-		y = document.getElementById('update_ticket').clientHeight / window.innerHeight;
-	}
-	else {
-		y = window.innerHeight / document.getElementById('update_ticket').clientHeight;
-	}
-	return Math.min(x, y);
+	return Math.min(
+				window.innerWidth / document.getElementById('update_ticket').clientWidth,
+				window.innerHeight / document.getElementById('update_ticket').clientHeight
+		);
 }
 
 
 
 window.onload = function() {
-	var s = calcResize()
+	var s = calcResize();
 	console.log(s);
 	document.getElementById('update_ticket').style.setProperty("--s", s);
 	if(!isEmployee) {
@@ -823,7 +800,7 @@ window.onload = function() {
 	document.getElementById("Rectangle_555").style.fill = "rgba(236,237,238,1)";
 }
 window.addEventListener('resize', function() {
-	var s = calcResize()
+	var s = calcResize();
 	console.log(s);
 	document.getElementById('update_ticket').style.setProperty("--s", s);
 });
@@ -3772,7 +3749,7 @@ window.application = new Application();
 		<div onclick="window.location.href= (isEmployee) ? 'employee_landing_page.html' : 'resident_landing_page.html'" id="YOUR_TICKETS">
 			<span>YOUR TICKETS</span>
 		</div>
-		<div id="CREATE_TICKET_d">
+		<div onclick="window.location.href= (isEmployee) ? 'create_ticket.html?employee' : 'create_ticket.html?resident'" id="CREATE_TICKET_d">
 			<span>CREATE TICKET</span>
 		</div>
 		<div id="LOG_OUT" onclick="window.location.href='fixit_ticket_landing.html'">
@@ -3818,7 +3795,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958">
-			<textarea rows="1" cols="30" name="resid" id="resid" placeholder="( empty )"></textarea>
+			<textarea style= "height: 100%; width: 100%" name="resid" id="resid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="RESIDENT_ID">
 			<span>RESIDENT</span>
@@ -3885,7 +3862,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958_e">
-			<textarea rows="1" cols="30" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
+			<textarea style= "height: 100%; width: 100%" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="ASSIGNED_TO">
 			<span>ASSIGNED</span>
@@ -3897,7 +3874,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="Type_something">
-			<textarea font-family="Montserrat" rows="11" cols="95" name="description" id="description" placeholder="Describe your problem"></textarea>
+			<textarea font-family="Montserrat" style= "height: 100%; width: 100%" name="description" id="description" placeholder="Describe your problem"></textarea>
 		</div>
 		<svg class="Rectangle_589">
 			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">

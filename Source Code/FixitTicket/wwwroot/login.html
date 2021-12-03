@@ -264,41 +264,6 @@
 		font-size: 60px;
 		color: rgba(38,153,251,1);
 	}
-	#Button_Submit {
-		position: absolute;
-		width: 148px;
-		height: 48px;
-		left: 646px;
-		top: 617px;
-		overflow: visible;
-	}
-	#Rectangle_1090 {
-		fill: rgba(38,153,251,1);
-	}
-	.Rectangle_1090 {
-		position: absolute;
-		overflow: visible;
-		width: 148px;
-		height: 48px;
-		left: 0px;
-		top: 0px;
-	}
-	#SUBMIT {
-		left: 51px;
-		top: 17px;
-		position: absolute;
-		overflow: visible;
-		width: 47px;
-		white-space: nowrap;
-		line-height: 30px;
-		margin-top: -9px;
-		text-align: center;
-		font-family: Arial;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 12px;
-		color: rgba(255,255,255,1);
-	}
 	#Log_in_to_access_your_tickets {
 		left: 595px;
 		top: -871px;
@@ -324,7 +289,7 @@
 		overflow: visible;
 		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: 'fixit_ticket_landing.html';
+		--web-action-target: fixit_ticket_landing.html;
 		cursor: pointer;
 	}
 	#Rectangle_1067 {
@@ -378,21 +343,10 @@
  **/
 
 function calcResize() {
-	let x;
-	let y;
-	if (window.innerWidth > document.getElementById('login').clientWidth) {
-		x = document.getElementById('login').clientWidth / window.innerWidth;
-	}
-	else {
-		x = window.innerWidth / document.getElementById('login').clientWidth;
-	}
-	if (window.innerHeight > document.getElementById('login').clientHeight) {
-		y = document.getElementById('login').clientHeight / window.innerHeight;
-	}
-	else {
-		y = window.innerHeight / document.getElementById('login').clientHeight;
-	}
-	return Math.min(x, y);
+	return Math.min(
+			window.innerWidth / document.getElementById('login').clientWidth,
+			window.innerHeight / document.getElementById('login').clientHeight
+	);
 }
 
 

@@ -11,6 +11,7 @@
 		outline: none;
 		resize: none;
 		font-size: 14px;
+		background-color: rgba(255, 255, 255, 0);
 	}
 	button {
 		position: relative;
@@ -404,13 +405,13 @@
 	}
 	#n_89306958 {
 		left: 92px;
-		top: 13px;
+		top: 9px;
 		position: absolute;
 		overflow: visible;
-		width: 51px;
+		width: 199px;
+		height: 26px;
 		white-space: nowrap;
 		text-align: left;
-		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 10px;
@@ -642,13 +643,13 @@
 	}
 	#n_89306958_e {
 		left: 92px;
-		top: 13px;
+		top: 9px;
 		position: absolute;
 		overflow: visible;
-		width: 51px;
+		width: 199px;
+		height: 26px;
 		white-space: nowrap;
 		text-align: left;
-		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 10px;
@@ -696,10 +697,10 @@
 		top: 64px;
 		position: absolute;
 		overflow: visible;
-		width: 114px;
+		width: 683px;
+		height: 173px;
 		white-space: nowrap;
 		text-align: left;
-		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 14px;
@@ -839,21 +840,10 @@ function ToggleDropdown(name) {
  **/
 
 function calcResize() {
-	let x;
-	let y;
-	if (window.innerWidth > document.getElementById('create_ticket').clientWidth) {
-		x = document.getElementById('create_ticket').clientWidth / window.innerWidth;
-	}
-	else {
-		x = window.innerWidth / document.getElementById('create_ticket').clientWidth;
-	}
-	if (window.innerHeight > document.getElementById('create_ticket').clientHeight) {
-		y = document.getElementById('create_ticket').clientHeight / window.innerHeight;
-	}
-	else {
-		y = window.innerHeight / document.getElementById('create_ticket').clientHeight;
-	}
-	return Math.min(x, y);
+	return Math.min(
+			window.innerWidth / document.getElementById('create_ticket').clientWidth,
+			window.innerHeight / document.getElementById('create_ticket').clientHeight
+	);
 }
 
 
@@ -3886,7 +3876,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958">
-			<textarea rows="1" cols="20" name="resid" id="resid" placeholder="( empty )"></textarea>
+			<textarea style="height: 100%; width: 100%;" name="resid" id="resid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="RESIDENT_ID">
 			<span>RESIDENT</span>
@@ -3984,7 +3974,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958_e">
-			<textarea rows="1" cols="20" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
+			<textarea style="height: 100%; width: 100%;" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="ASSIGNED_TO">
 			<span>ASSIGNED</span>
@@ -3996,7 +3986,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="Type_something">
-			<textarea font-family="Montserrat" rows="11" cols="95" name="description" id="description" placeholder="Describe your problem"></textarea>
+			<textarea font-family="Montserrat" style="height: 100%; width: 100%;" name="description" id="description" placeholder="Describe your problem"></textarea>
 		</div>
 		<svg class="Rectangle_589">
 			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">
