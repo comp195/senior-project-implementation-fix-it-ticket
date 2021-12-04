@@ -257,6 +257,7 @@ window.onload = function() {
 	var s = calcResize()
 	console.log(s);
 	document.getElementById('view_comments').style.setProperty("--s", s);
+	document.getElementById("Ticket_").textContent += location.search.substring(1).split("|")[0];
 }
 window.addEventListener('resize', function() {
 	var s = calcResize()
@@ -3168,7 +3169,6 @@ isEmployee = location.search.substring(1) === "employee";
 
 window.application = new Application();
 </script>
-	<!–– <script src="js/ViewComments.js"></script> -->
 </head>
 <body>
 <div id="view_comments">
