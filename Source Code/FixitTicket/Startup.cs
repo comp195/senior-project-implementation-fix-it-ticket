@@ -21,7 +21,7 @@ namespace FixitTicket
 {
     public class Startup
     {
-        string connectionString = "Server=3.89.248.79;" +
+        readonly string connectionString = "Server=3.89.248.79;" +
                                   "Initial Catalog=FixitTicket;" +
                                   "User ID=sa;Password=v28j09A02a19!v28";
         public Startup(IConfiguration configuration)
@@ -54,13 +54,12 @@ namespace FixitTicket
 
             services.AddDbContext<TicketContext>(opt => opt.UseSqlServer(connectionString));
 
-            services.AddCors(options =>
+            services.AddCors(options => // TODO make sure the CORS policy is right
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder.AllowAnyOrigin()
                       .AllowAnyMethod()
                       .AllowAnyHeader()
-                      .AllowCredentials()
                 .Build());
             });
         }
@@ -68,7 +67,7 @@ namespace FixitTicket
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            DefaultFilesOptions DefaultFile = new DefaultFilesOptions();
+            DefaultFilesOptions DefaultFile = new();
             DefaultFile.DefaultFileNames.Clear();
             DefaultFile.DefaultFileNames.Add("fixit_ticket_landing.html");
 

@@ -16,7 +16,7 @@ namespace FixitTicket.Controllers
     [Route("api/[controller]")]
     public class TokenController : Controller
     {
-        private IConfiguration _config;
+        private readonly IConfiguration _config;
 
         public TokenController(IConfiguration config) 
         {
@@ -62,7 +62,7 @@ namespace FixitTicket.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private User Authenticate(LoginModel login) 
+        private static User Authenticate(LoginModel login) 
         {
             User user = null;
 

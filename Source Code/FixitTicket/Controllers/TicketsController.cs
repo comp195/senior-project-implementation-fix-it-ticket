@@ -78,7 +78,7 @@ namespace FixitTicket.Controllers
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
             var currentUser = HttpContext.User;
-            if (ticket.ResidentId == null)
+            if (ticket.ResidentId == 0)
             {
                 var id = GetId(currentUser);
                 ticket.ResidentId = id;
@@ -86,7 +86,7 @@ namespace FixitTicket.Controllers
             var errors = await ValidateTicket(ticket);
             if (errors.Count != 0) 
             {
-                return BadRequest(new { title = "One or more validation errors occurred.", status = 400, errors = errors });
+                return BadRequest(new { title = "One or more validation errors occurred.", status = 400, errors });
             }
             ticket.CreationDate = DateTime.Now;
             _context.Ticket.Add(ticket);
@@ -124,24 +124,24 @@ namespace FixitTicket.Controllers
             return await _context.User.FindAsync(residentId) != null;
         }
 
-        private bool IsValidCategory(RepairCategory repairCategory) 
+        private static bool IsValidCategory(RepairCategory repairCategory) 
         {
             return repairCategory != RepairCategory.None;
         }
 
-        private bool IsValidStatus(RepairStatus status) 
+        private static bool IsValidStatus(RepairStatus status) 
         {
             return status != RepairStatus.None;
         }
 
-        private bool IsValidCreationDate(DateTime? creationDate) 
+        private static bool IsValidCreationDate(DateTime? creationDate) 
         {
             return creationDate == null;
         }
 
         private async Task<List<string>> ValidateTicket(Ticket ticket) 
         {
-            List<string> ticketErrors = new List<string>();
+            List<string> ticketErrors = new();
 
             if (!await IsValidUser(ticket.ResidentId)) 
             {

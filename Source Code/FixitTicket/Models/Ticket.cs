@@ -5,7 +5,7 @@ namespace FixitTicket.Models
     public class Ticket
     {
         public int Id { get; set; }
-        public int? ResidentId { get; set; }
+        public int ResidentId { get; set; }
         public RepairCategory RepairCategory { get; set; }
         public RepairStatus Status { get; set; }
         public DateTime? CreationDate { get; set; }
