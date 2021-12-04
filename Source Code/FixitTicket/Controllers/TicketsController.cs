@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FixitTicket.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using static Microsoft.AspNetCore.Http.StatusCodes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -26,14 +27,14 @@ namespace FixitTicket.Controllers
 
         // GET: api/Tickets
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(Status200OK)]
+        [ProducesResponseType(Status401Unauthorized)]
+        [ProducesResponseType(Status403Forbidden)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets()
         {
             var currentUser = HttpContext.User;
-            var userId = int.Parse(currentUser.Claims.FirstOrDefault(c => c.Type == "Id").Value);
-            if (currentUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value == "Resident") 
+            var userId = GetId(currentUser);
+            if (IsResident(currentUser)) 
             {
                 return await _context.Ticket.Where(t => t.ResidentId == userId).ToListAsync();
             }
@@ -44,13 +45,24 @@ namespace FixitTicket.Controllers
 
         // GET: api/Tickets/5
         [HttpGet("{id}")]
+        [ProducesResponseType(Status200OK)]
+        [ProducesResponseType(Status403Forbidden)]
+        [ProducesResponseType(Status404NotFound)]
         public async Task<ActionResult<Ticket>> GetTicket(int id)
         {
+            var currentUser = HttpContext.User;
+            var userId = GetId(currentUser);
+
             var ticket = await _context.Ticket.FindAsync(id);
 
             if (ticket == null)
             {
                 return NotFound();
+            }
+
+            if (IsResident(currentUser) && userId != ticket.ResidentId) 
+            {
+                return Forbid();
             }
 
             return ticket;
@@ -60,19 +72,17 @@ namespace FixitTicket.Controllers
         // POST: api/Tickets
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(Status201Created)]
+        [ProducesResponseType(Status400BadRequest)]
+        [ProducesResponseType(Status401Unauthorized)]
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
             var currentUser = HttpContext.User;
-            var resident = await _context.User.FindAsync(ticket.ResidentId);
-            //if (resident == null)
-            //{
-            //    // for testing purposes
-            //    _context.User.Add(new User() { Id = ticket.ResidentId, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = UserRole.Resident});
-            //    //return BadRequest("User ID must belong to an existing user");
-            //}
+            if (ticket.ResidentId == null)
+            {
+                var id = GetId(currentUser);
+                ticket.ResidentId = id;
+            }
             var errors = await ValidateTicket(ticket);
             if (errors.Count != 0) 
             {
@@ -87,8 +97,16 @@ namespace FixitTicket.Controllers
 
         // DELETE: api/Tickets/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(Status204NoContent)]
+        [ProducesResponseType(Status403Forbidden)]
+        [ProducesResponseType(Status404NotFound)]
         public async Task<IActionResult> DeleteTicket(int id)
         {
+            var currentUser = HttpContext.User;
+            if (IsResident(currentUser)) 
+            {
+                return Forbid();
+            }
             var ticket = await _context.Ticket.FindAsync(id);
             if (ticket == null)
             {
@@ -152,5 +170,17 @@ namespace FixitTicket.Controllers
 
             return ticketErrors;
         }
+
+        private static bool IsResident(ClaimsPrincipal user)
+        {
+            return user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value == "Resident";
+        }
+
+        private static int GetId(ClaimsPrincipal user) 
+        {
+            return int.Parse(user.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+        }
     }
+
+
 }
