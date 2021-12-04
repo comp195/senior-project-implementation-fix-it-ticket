@@ -105,6 +105,7 @@ function populateTickets(json) {
 
         var id = document.createElement("td");
         var residentId = document.createElement("td");
+        var location = document.createElement("td");
         var repairCategory = document.createElement("td");
         var status = document.createElement("td");
         var creationDate = document.createElement("td");
@@ -112,6 +113,7 @@ function populateTickets(json) {
         var comments = document.createElement("td");
         id.textContent = row.id;
         residentId.textContent = row.residentId;
+        location.textContent = 'location';
         repairCategory.textContent = row.repairCategory;
         status.textContent = row.status;
         comments.textContent = "Click to View";
@@ -121,6 +123,7 @@ function populateTickets(json) {
         assignedId.textContent = row.assignedId ?? "";
         tr.appendChild(id);
         tr.appendChild(residentId);
+        tr.appendChild(location);
         tr.appendChild(repairCategory);
         tr.appendChild(status);
         tr.appendChild(creationDate);
@@ -135,6 +138,7 @@ function populateTickets(json) {
 
             var id = document.createElement("td");
             var residentId = document.createElement("td");
+            var location = document.createElement("td");
             var repairCategory = document.createElement("td");
             var status = document.createElement("td");
             var creationDate = document.createElement("td");
@@ -143,6 +147,7 @@ function populateTickets(json) {
             id.textContent = row.id;
             residentId.textContent = row.residentId;
             assignedId.textContent = row.assignedId ?? "";
+            location.textContent = 'location';
             repairCategory.textContent = row.repairCategory;
             status.textContent = row.status;
             comments.textContent = "Click to View";
@@ -151,6 +156,7 @@ function populateTickets(json) {
             creationDate.textContent = date;
             tr.appendChild(id);
             tr.appendChild(residentId);
+            tr.appendChild(location);
             tr.appendChild(repairCategory);
             tr.appendChild(status);
             tr.appendChild(creationDate);
