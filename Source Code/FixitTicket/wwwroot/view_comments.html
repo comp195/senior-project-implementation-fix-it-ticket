@@ -189,6 +189,50 @@
 		font-size: 20px;
 		color: rgba(127,127,127,1);
 	}
+	table.paleBlueRows {
+		font-family: 'Montserrat', Helvetica, sans-serif;
+		text-align: center;
+		table-layout: fixed;
+		overflow-y:scroll;
+		height:420px;
+		display:block;
+	}
+	table.paleBlueRows td, table.paleBlueRows th {
+		border: 0px solid #AAAAAA;
+		padding: 3px 2px;
+	}
+	table.paleBlueRows th:hover {
+		color: rgba(248, 131, 121, 1);
+	}
+	table.paleBlueRows td:last-child:hover {
+		color: #2699FB;
+	}
+	table.paleBlueRows tbody td {
+		font-size: 14px;
+	}
+	table.paleBlueRows tr:nth-child(even) {
+		background: #FFFFFF;
+	}
+	table.paleBlueRows tr:hover {
+		background-color: rgba(38, 153, 251, 0.3);
+	}
+	table.paleBlueRows thead {
+		background: #2699FB;
+	}
+	table.paleBlueRows thead th {
+		font-size: 14px;
+		font-weight: bold;
+		color: #FFFFFF;
+		text-align: center;
+		border-left: 1px solid #D0E4F5;
+	}
+	table.paleBlueRows thead th:first-child {
+		border-left: none;
+	}
+
+	table.paleBlueRows tfoot td {
+		font-size: 14px;
+	}
 </style>
 <script id="applicationScript">
 ///////////////////////////////////////
@@ -3120,8 +3164,11 @@ var Application = function() {
 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
 }
 
+isEmployee = location.search.substring(1) === "employee";
+
 window.application = new Application();
 </script>
+	<!–– <script src="js/ViewComments.js"></script> -->
 </head>
 <body>
 <div id="view_comments">
@@ -3130,13 +3177,13 @@ window.application = new Application();
 			<rect id="Base" rx="0" ry="0" x="0" y="0" width="220" height="900">
 			</rect>
 		</svg>
-		<div id="YOUR_TICKETS">
+		<div id="YOUR_TICKETS" onclick="window.location.href= (isEmployee) ? 'employee_landing_page.html' : 'resident_landing_page.html'">
 			<span>YOUR TICKETS</span>
 		</div>
-		<div id="CREATE_TICKET" onclick="">
+		<div id="CREATE_TICKET" onclick="window.location.href= (isEmployee) ? 'create_ticket.html?employee' : 'create_ticket.html?resident'">
 			<span>CREATE TICKET</span>
 		</div>
-		<div id="LOG_OUT">
+		<div id="LOG_OUT" onclick="window.location.href='fixit_ticket_landing.html'">
 			<span>LOG OUT</span>
 		</div>
 		<div id="Fixit_Ticket">
@@ -3153,6 +3200,19 @@ window.application = new Application();
 		<rect id="Rectangle_1094" rx="10" ry="10" x="0" y="0" width="899" height="460">
 		</rect>
 	</svg>
+	<table class="paleBlueRows" style="position: relative; top: 190px; left: 394px; width: 851px">
+		<thead>
+		<tr>
+			<th style="width: 142px">Author</th>
+			<th style="width: 142px">Date</th>
+			<th style="width: 567px">Comment</th>
+		</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+		</tr>
+	</table>
 	<svg class="Rectangle_1097">
 		<rect id="Rectangle_1097" rx="10" ry="10" x="0" y="0" width="899" height="190">
 		</rect>

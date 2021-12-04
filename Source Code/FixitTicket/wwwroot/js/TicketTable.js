@@ -1,6 +1,4 @@
 let residentID = 989271487;
-let path = window.location.pathname;
-let page = path.split("/").pop();
 document.addEventListener("DOMContentLoaded", () => {
     loadTickets(); });
 document.addEventListener("load", () => {
