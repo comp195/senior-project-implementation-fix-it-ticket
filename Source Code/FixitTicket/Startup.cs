@@ -53,16 +53,16 @@ namespace FixitTicket
             services.AddControllers();
 
             services.AddDbContext<TicketContext>(opt => opt.UseSqlServer(connectionString));
-            //services.AddAuthentication()
-            //        .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", options => { });
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("BasicAuthentication", new AuthorizationPolicyBuilder("BasicAuthentication").RequireAuthenticatedUser().Build());
-            //});
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SeniorProjectTest", Version = "v1" });
-            //});
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader()
+                      .AllowCredentials()
+                .Build());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,6 +95,9 @@ namespace FixitTicket
             {
                 endpoints.MapControllers();
             });
+
+            app.UseCors("CorsPolicy");
+
         }
     }
 }
