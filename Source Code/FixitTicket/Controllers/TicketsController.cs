@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace FixitTicket.Controllers
 {
@@ -25,9 +27,16 @@ namespace FixitTicket.Controllers
         // GET: api/Tickets
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets()
         {
+            var currentUser = HttpContext.User;
+            var userId = int.Parse(currentUser.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+            if (currentUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value == "Resident") 
+            {
+                return await _context.Ticket.Where(t => t.ResidentId == userId).ToListAsync();
+            }
 
             return await _context.Ticket.ToListAsync();
         }
@@ -52,6 +61,7 @@ namespace FixitTicket.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
