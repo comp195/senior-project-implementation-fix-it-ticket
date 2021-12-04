@@ -16,6 +16,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IO;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace FixitTicket
 {
@@ -50,7 +53,11 @@ namespace FixitTicket
                 });
 
 
-            services.AddControllers();
+            services.AddControllers()
+                    .AddNewtonsoftJson(jsonOptions => 
+                    {
+                        jsonOptions.SerializerSettings.Converters.Add(new StringEnumConverter());
+                    });
 
             services.AddDbContext<TicketContext>(opt => opt.UseSqlServer(connectionString));
 
