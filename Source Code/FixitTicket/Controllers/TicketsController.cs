@@ -46,6 +46,7 @@ namespace FixitTicket.Controllers
         // GET: api/Tickets/5
         [HttpGet("{id}")]
         [ProducesResponseType(Status200OK)]
+        [ProducesResponseType(Status401Unauthorized)]
         [ProducesResponseType(Status403Forbidden)]
         [ProducesResponseType(Status404NotFound)]
         public async Task<ActionResult<Ticket>> GetTicket(int id)
@@ -99,6 +100,7 @@ namespace FixitTicket.Controllers
         // DELETE: api/Tickets/5
         [HttpDelete("{id}")]
         [ProducesResponseType(Status204NoContent)]
+        [ProducesResponseType(Status401Unauthorized)]
         [ProducesResponseType(Status403Forbidden)]
         [ProducesResponseType(Status404NotFound)]
         public async Task<IActionResult> DeleteTicket(int id)
@@ -119,6 +121,42 @@ namespace FixitTicket.Controllers
 
             return NoContent();
         }
+
+        // GET: api/Tickets/5/location
+        [HttpGet("{id}/location")]
+        [ProducesResponseType(Status200OK)]
+        [ProducesResponseType(Status401Unauthorized)]
+        [ProducesResponseType(Status403Forbidden)]
+        [ProducesResponseType(Status404NotFound)]
+        public async Task<ActionResult<RoomModel>> GetTicketLocation(int id) 
+        {
+            var response = await GetTicket(id);
+            var currentUser = HttpContext.User;
+            var userId = GetId(currentUser);
+
+            if (!(response.Value is Ticket)) 
+            {
+                return response.Result;
+            }
+            var ticket = response.Value;
+            var residentId = ticket.ResidentId;
+
+            var user = await _context.User.FindAsync(residentId);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            if (IsResident(currentUser) && userId != user.Id)
+            {
+                return Forbid();
+            }
+
+            return new RoomModel { RoomNumber = user.RoomNumber, Building = user.Building };
+
+        }
+
 
         private async Task<bool> IsValidUser(int residentId) 
         {
