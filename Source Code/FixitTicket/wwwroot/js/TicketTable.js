@@ -93,6 +93,7 @@ function populateTickets(json) {
 
             var id = document.createElement("td");
             var residentId = document.createElement("td");
+            var location = document.createElement("td");
             var repairCategory = document.createElement("td");
             var status = document.createElement("td");
             var creationDate = document.createElement("td");
@@ -103,12 +104,14 @@ function populateTickets(json) {
             repairCategory.textContent = row.repairCategory;
             status.textContent = row.status;
             comments.textContent = "Click to View";
+            location.textContent = 'location';
             var dateDiff = Date.parse(row.creationDate);
             var date = new Date(dateDiff).toLocaleDateString('en-US');
             creationDate.textContent = date;
             assignedId.textContent = row.assignedId ?? "";
             tr.appendChild(id);
             tr.appendChild(residentId);
+            tr.appendChild(location)
             tr.appendChild(repairCategory);
             tr.appendChild(status);
             tr.appendChild(creationDate);
