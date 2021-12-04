@@ -17,11 +17,21 @@
 		overflow-y:scroll;
 		height:691px;
 		display:block;
+		border-collapse: collapse; 
+		border-spacing: 0;
 	}
-	table.paleBlueRows td, table.paleBlueRows th {
+	table.paleBlueRows td {
 		border: 0px solid #AAAAAA;
 		padding: 3px 2px;
 		width: 120px;
+	}
+	table.paleBlueRows th {
+		position: sticky;
+		padding: 6px 2px;
+		top: -1px;
+	}
+	tr.blue th {
+		background: #2699FB;
 	}
 	table.paleBlueRows th:hover {
 		color: rgba(248, 131, 121, 1);
@@ -38,13 +48,11 @@
 	table.paleBlueRows tr:hover {
 		background-color: rgba(38, 153, 251, 0.3);
 	}
-	table.paleBlueRows thead {
-		background: #2699FB;
-	}
 	table.paleBlueRows thead th {
 		font-size: 14px;
 		font-weight: bold;
 		color: #FFFFFF;
+		width: 122px;
 		text-align: center;
 		border-left: 1px solid #D0E4F5;
 	}
@@ -3202,7 +3210,7 @@ window.application = new Application();
 	</svg>
 	<table class="paleBlueRows" style="position: relative; top: -1476px; left: 390px;">
 		<thead>
-		<tr>
+		<tr class="blue">
 			<th>Ticket ID</th>
 			<th>Resident ID</th>
 			<th>Repair Category</th>

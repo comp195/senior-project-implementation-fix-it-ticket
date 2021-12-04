@@ -53,11 +53,21 @@
 		overflow-y:scroll;
 		height:289px;
 		display:block;
+		border-collapse: collapse;
+		border-spacing: 0;
 	}
-	table.allpaleBlueRows td, table.allpaleBlueRows th {
+	table.allpaleBlueRows td {
 		border: 0px solid #AAAAAA;
 		padding: 3px 2px;
 		width: 120px;
+	}
+	table.allpaleBlueRows th {
+		position: sticky;
+		padding: 6px 2px;
+		top: -1px;
+	}
+	tr.blue th {
+		background: #2699FB;
 	}
 	table.allpaleBlueRows th:hover {
 		color: rgba(248, 131, 121, 1);
@@ -74,13 +84,11 @@
 	table.allpaleBlueRows tr:hover {
 		background-color: rgba(38, 153, 251, 0.3);
 	}
-	table.allpaleBlueRows thead {
-		background: #2699FB;
-	}
 	table.allpaleBlueRows thead th {
 		font-size: 14px;
 		font-weight: bold;
 		color: #FFFFFF;
+		width: 122px;
 		text-align: center;
 		border-left: 1px solid #D0E4F5;
 	}
@@ -101,11 +109,18 @@
 		overflow-y:scroll;
 		height:289px;
 		display:block;
+		border-collapse: collapse;
+		border-spacing: 0;
 	}
-	table.yourpaleBlueRows td, table.yourpaleBlueRows th {
+	table.yourpaleBlueRows td {
 		border: 0px solid #AAAAAA;
 		padding: 3px 2px;
 		width: 120px;
+	}
+	table.yourpaleBlueRows th {
+		position: sticky;
+		padding: 6px 2px;
+		top: -1px;
 	}
 	table.yourpaleBlueRows th:hover {
 		color: rgba(248, 131, 121, 1);
@@ -122,13 +137,11 @@
 	table.yourpaleBlueRows tr:hover {
 		background-color: rgba(38, 153, 251, 0.3);
 	}
-	table.yourpaleBlueRows thead {
-		background: #2699FB;
-	}
 	table.yourpaleBlueRows thead th {
 		font-size: 14px;
 		font-weight: bold;
 		color: #FFFFFF;
+		width: 122px;
 		text-align: center;
 		border-left: 1px solid #D0E4F5;
 	}
@@ -3305,7 +3318,7 @@ window.application = new Application();
 	</div>
 	<table class="yourpaleBlueRows" style="position: relative; top: 172px; left: 390px;">
 		<thead>
-		<tr>
+		<tr class="blue">
 			<th>Ticket ID</th>
 			<th>Resident ID</th>
 			<th>Repair Category</th>
@@ -3325,7 +3338,7 @@ window.application = new Application();
 	</div>
 	<table class="allpaleBlueRows" style="position: relative; top: 258px; left: 390px;">
 		<thead>
-		<tr>
+		<tr class="blue">
 			<th>Ticket ID</th>
 			<th>Resident ID</th>
 			<th>Repair Category</th>
