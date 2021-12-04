@@ -7,17 +7,8 @@ using System.Security.Principal;
 
 namespace FixitTicket.Models
 {
-    public class User : IIdentity
+    public class User
     {
-        public User(string authenticationType, bool isAuthenticated, string name) 
-        {
-            AuthenticationType = authenticationType;
-            IsAuthenticated = isAuthenticated;
-            Name = name;
-        }
-        public string AuthenticationType { get;  }
-
-        public bool IsAuthenticated { get;  }
         public int Id { get; set; }
         public string Name { get; set; }
         [DataType(DataType.EmailAddress)]
