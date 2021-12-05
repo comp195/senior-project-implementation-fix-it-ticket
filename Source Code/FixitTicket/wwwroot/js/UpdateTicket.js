@@ -11,6 +11,7 @@ async function UpdateTicketStart() {
     let id = location.search.substring(1).split("|")[0];
     const request = new XMLHttpRequest();
     request.open("GET", "api/Tickets/" + id);
+    request.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("token"));
     request.onload = ()=>{
         try {
             json = JSON.parse(request.responseText);

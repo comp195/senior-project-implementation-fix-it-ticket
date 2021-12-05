@@ -34,7 +34,12 @@ namespace FixitTicket.Controllers
             var userId = TicketsController.GetId(currentUser);
 
             var oldTicket = await _context.Ticket.FindAsync(id);
-
+            Console.WriteLine(ticket.CreationDate);
+            if (ticket.CreationDate == null)
+            {
+                ticket.CreationDate = oldTicket.CreationDate;
+            }
+            
             if (oldTicket == null)
             {
                 return NotFound();
@@ -42,7 +47,8 @@ namespace FixitTicket.Controllers
 
             if (id != ticket.Id)
             {
-                return BadRequest();
+                ModelState.AddModelError(id.ToString(), "Ticket id does not match id");
+                return BadRequest(new { title = "Ticket id does not match id"});
             }
 
             if (TicketsController.IsResident(currentUser) && userId != ticket.ResidentId)
@@ -52,7 +58,7 @@ namespace FixitTicket.Controllers
 
             if (!await ValidUpdate(oldTicket, ticket, TicketsController.IsResident(currentUser))) 
             {
-                return BadRequest();
+                return BadRequest(new { title = "update not vlid"});
             }
 
             var description = AddDescription(oldTicket, ticket);
@@ -150,8 +156,8 @@ namespace FixitTicket.Controllers
             {
                 return false;
             }
-
-            if (await _context.User.FindAsync(newTicket.AssignedId) == null) 
+            
+            if (newTicket.AssignedId != null && await _context.User.FindAsync(newTicket.AssignedId) == null) 
             {
                 return false;
             }

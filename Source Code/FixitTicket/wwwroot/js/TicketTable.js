@@ -71,6 +71,7 @@ const directions = Array.from(headers).map(function (header) {
 function loadTickets() {
     const request = new XMLHttpRequest();
     request.open("GET", "api/Tickets");
+    request.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("token"));
     request.onload = ()=>{
         try {
             const json = JSON.parse(request.responseText);

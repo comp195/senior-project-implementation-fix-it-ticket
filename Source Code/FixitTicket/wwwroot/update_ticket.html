@@ -720,40 +720,42 @@
 <script src="js/require.js"></script>
 <script defer src="js/UpdateTicket.js"></script>
 <script id="applicationScript">
-const tempDataHolder = "http://localhost:8000/temp-data.json"
-function loadNewTicket(ticket) {
-    const uri = 'api/Tickets';
+function UpdateNewTicket(ticket, id) {
+    const uri = 'api/Tickets/' + id;
     fetch(uri, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+			"Authorization": "Bearer " + localStorage.getItem("token")
         },
         body: JSON.stringify(ticket)
 	})
 		.then(response => response.json())
-        .catch(error => console.error('Unable to add ticket.', error));
+        .catch(error => console.error('Unable to update ticket.', error));
 
 }
 
-	function SubmitNewTicket() {
-	const d = new Date();
-	//const ticketNum = document.getElementById("ticketNum").textContent;
-	var residentId = document.getElementById("resid").value
+function UpdateTicket() {
+	var residentId = document.getElementById("resid").value;
 	residentId = residentId.toString();
-	const repairCategory = document.getElementById("Select_an_option").textContent
-	const status = document.getElementById("Select_an_option_ew").textContent
-	const date = d.getDate();
-	const assID = document.getElementById("assignedid").value
-	const description = document.getElementById("description").value
+	const repairCategory = document.getElementById("Select_an_option").textContent;
+	const status = document.getElementById("Select_an_option_ew").textContent;
+	const assID = document.getElementById("assignedid").value.toString();
+	const description = document.getElementById("description").value.toString();
+	const id = document.getElementById("ticketNum").textContent;
     const ticket = {
         ResidentId: residentId,
 		RepairCategory: repairCategory,
-		Description: description
+		Description: description,
+		Status: status,
+		AssignedId: assID,
+		Id: id,
+		CreationDate: null
     };
-	console.log(ticket);
-	loadNewTicket(ticket);
-	//window.location.href = "resident_landing_page.html";
+	console.log(JSON.stringify(ticket));
+	UpdateNewTicket(ticket, id);
+	//window.location.href= (isEmployee) ? 'employee_landing_page.html' : 'resident_landing_page.html'
 }
 
 function SelectStatus(field, status, name) {
@@ -3812,9 +3814,9 @@ window.application = new Application();
 				<div id="Dropdown" class="Dropdown" >
 					<button onclick="ToggleDropdown('myDropdown')" class="dropbtn2"></button>
 					<div id="myDropdown" class="dropdown-content">
-						<a onclick=SelectStatus("Select_an_option","Plumbing","myDropdown")>Plumbing</a>
-						<a onclick=SelectStatus("Select_an_option","Replacement","myDropdown")>Replacement</a>
-						<a onclick=SelectStatus("Select_an_option","WallDamage","myDropdown")>Wall Damage</a>
+						<a onclick=SelectStatus("Select_an_option",this.textContent,"myDropdown")>Plumbing</a>
+						<a onclick=SelectStatus("Select_an_option",this.textContent,"myDropdown")>Replacement</a>
+						<a onclick=SelectStatus("Select_an_option",this.textContent,"myDropdown")>Wall Damage</a>
 					</div>
 				</div>
 			</rect>
@@ -3837,10 +3839,10 @@ window.application = new Application();
 				<div id="Dropdown2" class="Dropdown" >
 					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn" id="status-dropdown"></button>
 					<div id="myDropdown2" class="dropdown-content2">
-						<a onclick=SelectStatus("Select_an_option_ew","Open","myDropdown2")>Open</a>
-						<a onclick=SelectStatus("Select_an_option_ew","InProgress","myDropdown2")>In Progress</a>
-						<a onclick=SelectStatus("Select_an_option_ew","Closed(Resolved)","myDropdown2")>Closed (Resolved)</a>
-						<a onclick=SelectStatus("Select_an_option_ew","Closed(Workaround)","myDropdown2")>Closed (Workaround)</a>
+						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Open</a>
+						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>In Progress</a>
+						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Closed (Resolved)</a>
+						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Closed (Workaround)</a>
 					</div>
 				</div>
 			</rect>
@@ -3890,7 +3892,7 @@ window.application = new Application();
 		</div>
 	</div>
 	<div class="container">
-		<button class="material-bubble" onclick="window.location.href= (isEmployee) ? 'employee_landing_page.html' : 'resident_landing_page.html'">SUBMIT</button>
+		<button class="material-bubble" onclick="UpdateTicket()">SUBMIT</button>
 	</div>
 </div>
 </body>

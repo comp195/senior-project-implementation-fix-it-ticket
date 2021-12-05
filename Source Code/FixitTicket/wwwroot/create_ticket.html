@@ -786,7 +786,6 @@
 </style>
 <script src="js/require.js"></script>
 <script id="applicationScript">
-const tempDataHolder = "http://localhost:8000/temp-data.json"
 function loadNewTicket(ticket) {
     const uri = 'api/Tickets';
     fetch(uri, {
@@ -813,9 +812,6 @@ function SubmitNewTicket() {
 	var residentId = document.getElementById("resid").value
 	residentId = residentId.toString();
 	const repairCategory = document.getElementById("Select_an_option").textContent
-	const status = document.getElementById("Select_an_option_ew").textContent
-	const date = d.getDate();
-	const assID = document.getElementById("assignedid").value
 	const description = document.getElementById("description").value
 	const ticket = {
 		ResidentId: residentId,

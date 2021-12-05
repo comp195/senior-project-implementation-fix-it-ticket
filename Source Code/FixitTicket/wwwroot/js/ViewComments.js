@@ -5,6 +5,7 @@ document.addEventListener("load", () => {
 
 function loadComments() {
     const request = new XMLHttpRequest();
+    request.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("token"));
     request.open("GET", "api/Tickets");
     request.onload = ()=>{
         try {
