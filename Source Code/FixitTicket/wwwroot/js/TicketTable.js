@@ -107,7 +107,9 @@ function populateTickets(json) {
             comments.textContent = "Click to View";
             location.textContent = 'location';
             var dateDiff = Date.parse(row.creationDate);
+            console.log(dateDiff);
             var date = new Date(dateDiff).toLocaleDateString('en-US');
+            console.log(date);
             creationDate.textContent = date;
             assignedId.textContent = row.assignedId ?? "";
             tr.appendChild(id);
