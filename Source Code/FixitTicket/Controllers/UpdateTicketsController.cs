@@ -100,7 +100,7 @@ namespace FixitTicket.Controllers
             var userId = TicketsController.GetId(currentUser);
 
             var ticket = await _context.Ticket.FindAsync(id);
-
+            Console.WriteLine(ticket);
             if (ticket == null)
             {
                 return NotFound();
