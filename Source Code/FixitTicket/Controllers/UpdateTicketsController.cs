@@ -109,6 +109,80 @@ namespace FixitTicket.Controllers
 
         }
 
+        // POST: api/Tickets/Updates
+        [HttpPost("updates")]
+        [ProducesResponseType(Status201Created)]
+        [ProducesResponseType(Status400BadRequest)]
+        [ProducesResponseType(Status401Unauthorized)]
+        [ProducesResponseType(Status403Forbidden)]
+        public async Task<ActionResult<TicketUpdate>> PostTicket(TicketUpdate ticketUpdate)
+        {
+            var currentUser = HttpContext.User;
+            var userId = TicketsController.GetId(currentUser);
+
+            var ticket = await _context.Ticket.FindAsync(ticketUpdate.TicketId);
+
+            if (ticket == null)
+            {
+                return BadRequest();
+            }
+
+            if (TicketsController.IsResident(currentUser) && userId != ticket.ResidentId)
+            {
+                return Forbid();
+            }
+
+            if (ticketUpdate.UpdaterId != 0) 
+            {
+                return BadRequest();
+            }
+
+            var id = TicketsController.GetId(currentUser);
+            ticketUpdate.UpdaterId = id;
+
+            if (ticketUpdate.CreationDate != null) 
+            {
+                ModelState.AddModelError("CreationDate", "Creation date may not be set.");
+                return BadRequest(ModelState);
+            }
+
+            ticketUpdate.CreationDate = DateTime.Now;
+            _context.TicketUpdate.Add(ticketUpdate);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetTicketUpdateById), new { id = ticketUpdate.Id }, ticketUpdate);
+        }
+
+        // GET: api/Tickets/updates/5
+        [HttpGet("updates/{id}")]
+        [ProducesResponseType(Status200OK)]
+        [ProducesResponseType(Status401Unauthorized)]
+        [ProducesResponseType(Status403Forbidden)]
+        [ProducesResponseType(Status404NotFound)]
+        public async Task<ActionResult<TicketUpdate>> GetTicketUpdateById(int id)
+        {
+            var currentUser = HttpContext.User;
+            var userId = TicketsController.GetId(currentUser);
+
+            var ticketUpdate = await _context.TicketUpdate.FindAsync(id);
+
+            if (ticketUpdate == null)
+            {
+                return NotFound();
+            }
+
+            var ticket = await _context.Ticket.FindAsync(ticketUpdate.TicketId);
+
+            if (TicketsController.IsResident(currentUser) && userId != ticket.ResidentId)
+            {
+                return Forbid();
+            }
+
+            return ticketUpdate;
+
+        }
+
+
 
         private bool TicketExists(int id)
         {
