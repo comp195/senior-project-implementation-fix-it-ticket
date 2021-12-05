@@ -210,12 +210,12 @@ namespace FixitTicket.Controllers
             return ticketErrors;
         }
 
-        private static bool IsResident(ClaimsPrincipal user)
+        public static bool IsResident(ClaimsPrincipal user)
         {
             return user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value == "Resident";
         }
 
-        private static int GetId(ClaimsPrincipal user) 
+        public static int GetId(ClaimsPrincipal user) 
         {
             return int.Parse(user.Claims.FirstOrDefault(c => c.Type == "Id").Value);
         }

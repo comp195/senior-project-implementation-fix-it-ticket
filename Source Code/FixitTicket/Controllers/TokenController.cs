@@ -14,6 +14,7 @@ using FixitTicket.Models;
 namespace FixitTicket.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class TokenController : Controller
     {
         private readonly IConfiguration _config;
