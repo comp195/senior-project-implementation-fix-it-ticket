@@ -50,7 +50,7 @@ namespace FixitTicket.Controllers
                 return Forbid();
             }
 
-            if (!await ValidUpdate(oldTicket, ticket, TicketsController.IsResident(currentUser))) 
+            if (!await ValidUpdate(oldTicket, ticket, TicketsController.IsResident(currentUser)))
             {
                 return BadRequest();
             }
@@ -80,6 +80,33 @@ namespace FixitTicket.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        // GET: api/Tickets/5/updates
+        [HttpGet("{id}/updates")]
+        [ProducesResponseType(Status200OK)]
+        [ProducesResponseType(Status401Unauthorized)]
+        [ProducesResponseType(Status403Forbidden)]
+        [ProducesResponseType(Status404NotFound)]
+        public async Task<ActionResult<IEnumerable<TicketUpdate>>> GetTicketUpdates(int id) 
+        {
+            var currentUser = HttpContext.User;
+            var userId = TicketsController.GetId(currentUser);
+
+            var ticket = await _context.Ticket.FindAsync(id);
+
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            if (TicketsController.IsResident(currentUser) && userId != ticket.ResidentId)
+            {
+                return Forbid();
+            }
+
+            return await _context.TicketUpdate.Where(t => t.TicketId == id).ToListAsync();
+
         }
 
 
