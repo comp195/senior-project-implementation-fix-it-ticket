@@ -67,9 +67,13 @@ namespace FixitTicket.Controllers
         {
             User user = null;
 
-            if (login.Username == "user" && login.Password == "web_dev") 
+            if (login.Username == "user" && login.Password == "web_dev")
             {
-                user = new User { Id = 989271487, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = UserRole.Resident};
+                user = new User { Id = 989271487, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = UserRole.Resident };
+            }
+            else if (login.Username == "Employee" && login.Password == "Arshita") 
+            {
+                user = new User { Id = 989304608, Name = "Name", Email = "a_sandhiparthi@u.pacific.edu", UserRole = UserRole.Employee };
             }
 
             return user;
