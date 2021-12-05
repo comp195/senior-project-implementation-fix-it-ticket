@@ -50,6 +50,11 @@ namespace FixitTicket.Controllers
                 return Forbid();
             }
 
+            if (!await ValidUpdate(oldTicket, ticket, TicketsController.IsResident(currentUser))) 
+            {
+                return BadRequest();
+            }
+
             var description = AddDescription(oldTicket, ticket);
 
             _context.Entry(oldTicket).CurrentValues.SetValues(ticket);
@@ -112,6 +117,52 @@ namespace FixitTicket.Controllers
                 changeString += change + "\n";
             }
             return changeString;
+        }
+
+        private async Task<bool> ValidUpdate(Ticket oldTicket, Ticket newTicket, bool isResident) 
+        {
+            if (newTicket.Id != oldTicket.Id) 
+            {
+                return false;
+            }
+
+            if (newTicket.ResidentId != oldTicket.ResidentId) 
+            {
+                return false;
+            }
+
+            if (newTicket.CreationDate != oldTicket.CreationDate) 
+            {
+                return false;
+            }
+
+            if (newTicket.Status == RepairStatus.None) 
+            {
+                return false;
+            }
+
+            if (newTicket.Status != oldTicket.Status && isResident)
+            {
+                return false;
+            }
+
+            if (newTicket.RepairCategory == RepairCategory.None) 
+            {
+                return false;
+            }
+
+            if (await _context.User.FindAsync(newTicket.AssignedId) == null) 
+            {
+                return false;
+            }
+
+            if (oldTicket.AssignedId != newTicket.AssignedId && isResident)
+            {
+                return false;
+            }
+
+
+            return true;
         }
     }
 }
