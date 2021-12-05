@@ -1,15 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1"/>
 <title>View Comments</title>
 <style id="applicationStylesheet" type="text/css">
+	button {
+		position: relative;
+		font-size: 18px;
+		float: initial;
+		display: inline-block;
+		transition: color 0.5s, transform 0.2s, background-color 0.2s;
+		outline: none;
+		border-radius: 3px;
+		margin: 0 10px;
+		border: 3px solid transparent; }
+	button:active {
+		transform: translateY(3px); }
+	button::after, button::before {
+		border-radius: 3px; }
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center; }
+
+	.material-bubble {
+		background-color: #2599fb;
+		color: #ffffff;
+		border: none;
+		overflow: hidden;
+		box-shadow: none;
+		width: 125px;
+		height: 50px;
+		top: 248px;
+		left: 737px;
+		font-size: 13px;
+	}
+	.material-bubble:hover {
+		color: #e6e6e6; }
+	.material-bubble::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: transparent;
+		transition: opacity 0.3s, border 0.3s; }
+	.material-bubble:hover::before {
+		opacity: 0; }
+	.material-bubble::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 200px;
+		height: 200px;
+		background-color: #494958;
+		border-color: transparent;
+		border-radius: 50%;
+		transform: translate(-10px, -70px) scale(0.1);
+		opacity: 0;
+		z-index: -1;
+		transition: transform 0.3s, opacity 0.3s, background-color 0.3s; }
+	.material-bubble:hover::after {
+		opacity: 1;
+		transform-origin: 100px 100px;
+		transform: scale(1) translate(-10px, -70px); }
 	:root {
 		--web-view-ids: view_comments;
 	}
@@ -31,7 +93,7 @@
 		width: 721px;
 		height: 134px;
 		left: 460px;
-		top: 246px;
+		top: 220px;
 		overflow: hidden;
 	}
 	#Rectangle_581 {
@@ -217,11 +279,11 @@
 		width: 899px;
 		height: 190px;
 		left: 431px;
-		top: 677px;
+		top: 658px;
 	}
 	#Write_a_New_Comment {
 		left: 715px;
-		top: 669px;
+		top: 649px;
 		position: absolute;
 		overflow: visible;
 		width: 212px;
@@ -277,7 +339,31 @@
 	}
 </style>
 <script defer src="js/ViewComments.js"></script>
-<script id="applicationScript">
+<script id="applicationScript">function SubmitComment() {
+
+	const id = location.search.substring(1).split("|")[0];
+	const text = document.getElementById("description").value;
+	console.log(text);
+	const ticket = {
+		TicketId: id,
+		Description: text
+	}
+	const uri = 'api/Tickets/updates';
+	fetch(uri, {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"Authorization": "Bearer " + localStorage.getItem("token")
+		},
+		body: JSON.stringify(ticket)
+	})
+			.then(response => response.json())
+			.catch(error => console.error('Unable to add comment.', error));
+	
+	location.reload();
+}
+
 ///////////////////////////////////////
 // INITIALIZATION
 ///////////////////////////////////////
@@ -3271,6 +3357,9 @@ window.application = new Application();
 		<div id="Type_something">
 			<textarea font-family="Montserrat" style= "height: 100%; width: 100%" name="description" id="description" placeholder="Write your comment here"></textarea>
 		</div>
+	</div>
+	<div class="container">
+		<button class="material-bubble" onclick=SubmitComment()>SUBMIT</button>
 	</div>
 </div>
 </body>
