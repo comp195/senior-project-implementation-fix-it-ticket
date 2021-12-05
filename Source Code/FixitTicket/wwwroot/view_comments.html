@@ -20,6 +20,51 @@
 		border: none;
 		font-family: 'Montserrat', sans-serif;
 	}
+	textarea {
+		resize: none;
+		font-size: 14px;
+		background-color: rgba(255, 255, 255, 0);
+		outline: none;
+	}
+	#Textbox_-_Empty {
+		position: relative;
+		width: 721px;
+		height: 134px;
+		left: 460px;
+		top: 256px;
+		overflow: hidden;
+	}
+	#Rectangle_581 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(188,224,253,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_581 {
+		position: absolute;
+		overflow: visible;
+		width: 721px;
+		height: 207px;
+		left: 0px;
+		top: 46px;
+	}
+	#Type_something {
+		left: 17px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 687px;
+		height: 63px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(0,0,0,1);
+	}
 	#view_comments {
 		position: absolute;
 		width: 1440px;
@@ -3214,11 +3259,20 @@ window.application = new Application();
 		</tr>
 	</table>
 	<svg class="Rectangle_1097">
-		<rect id="Rectangle_1097" rx="10" ry="10" x="0" y="0" width="899" height="190">
+		<rect id="Rectangle_1097" rx="10" ry="10" x="0" y="0" width="899" height="220">
 		</rect>
 	</svg>
 	<div id="Write_a_New_Comment">
 		<span>Write a New Comment</span>
+	</div>
+	<div id="Textbox_-_Empty">
+		<svg class="Rectangle_581">
+			<rect id="Rectangle_581" rx="0" ry="0" x="1" y="1" width="719" height="87">
+			</rect>
+		</svg>
+		<div id="Type_something">
+			<textarea font-family="Montserrat" style= "height: 100%; width: 100%" name="description" id="description" placeholder="Write your comment here"></textarea>
+		</div>
 	</div>
 </div>
 </body>
