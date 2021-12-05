@@ -1,4 +1,3 @@
-let residentID = 989271487;
 document.addEventListener("DOMContentLoaded", () => {
     loadTickets(); });
 document.addEventListener("load", () => {
@@ -89,37 +88,36 @@ function populateTickets(json) {
         ticketsBody.removeChild(ticketsBody.firstChild);
     }
     json.forEach((row) => {
-        if(row.residentId === residentID) {
-            const tr = document.createElement("tr");
+        const tr = document.createElement("tr");
 
-            var id = document.createElement("td");
-            var residentId = document.createElement("td");
-            var location = document.createElement("td");
-            var repairCategory = document.createElement("td");
-            var status = document.createElement("td");
-            var creationDate = document.createElement("td");
-            var assignedId = document.createElement("td");
-            var comments = document.createElement("td");
-            id.textContent = row.id;
-            residentId.textContent = row.residentId;
-            repairCategory.textContent = row.repairCategory;
-            status.textContent = row.status;
-            comments.textContent = "Click to View";
-            location.textContent = 'location';
-            var dateDiff = Date.parse(row.creationDate);
-            var date = new Date(dateDiff).toLocaleDateString('en-US');
-            creationDate.textContent = date;
-            assignedId.textContent = row.assignedId ?? "";
-            tr.appendChild(id);
-            tr.appendChild(residentId);
-            tr.appendChild(location)
-            tr.appendChild(repairCategory);
-            tr.appendChild(status);
-            tr.appendChild(creationDate);
-            tr.appendChild(assignedId);
-            tr.appendChild(comments);
-            ticketsBody.appendChild(tr);
-        }
+        var id = document.createElement("td");
+        var residentId = document.createElement("td");
+        var location = document.createElement("td");
+        var repairCategory = document.createElement("td");
+        var status = document.createElement("td");
+        var creationDate = document.createElement("td");
+        var assignedId = document.createElement("td");
+        var comments = document.createElement("td");
+        id.textContent = row.id;
+        residentId.textContent = row.residentId;
+        repairCategory.textContent = row.repairCategory;
+        status.textContent = row.status;
+        comments.textContent = "Click to View";
+        location.textContent = "";
+        var dateDiff = Date.parse(row.creationDate);
+        var date = new Date(dateDiff).toLocaleDateString('en-US');
+        creationDate.textContent = date;
+        assignedId.textContent = row.assignedId ?? "";
+        tr.appendChild(id);
+        tr.appendChild(residentId);
+        tr.appendChild(location)
+        tr.appendChild(repairCategory);
+        tr.appendChild(status);
+        tr.appendChild(creationDate);
+        tr.appendChild(assignedId);
+        tr.appendChild(comments);
+        GetTicketLocation(row.id, tr);
+        ticketsBody.appendChild(tr);
     });
     tableBody = table.querySelector('tbody');
     rows = tableBody.querySelectorAll('tr');
@@ -150,6 +148,23 @@ function GrabUpdateTicket(row) {
     var data = row.children;
     
     window.location.href = "/update_ticket.html?" + data[0].innerText + "|resident";
+}
+
+function GetTicketLocation(ticketId, tr) {
+    const request = new XMLHttpRequest();
+    request.open("GET", "api/Tickets/" + ticketId + "/location");
+    request.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("token"));
+    request.onload = () => {
+        try {
+            const json = JSON.parse(request.responseText);
+            tr.children[2].textContent = json.building;
+        }
+        catch (e) {
+            console.warn("Could not load tickets!");
+        }
+    };
+    request.send();
+    return location;
 }
 
 
