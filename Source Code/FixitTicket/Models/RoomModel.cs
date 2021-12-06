@@ -8,6 +8,6 @@ namespace FixitTicket.Models
     public class RoomModel
     {
         public int? RoomNumber { get; set; }
-        public Building Building { get; set; }
+        public Building? Building { get; set; }
     }
 }

@@ -31,11 +31,15 @@ const noTicketsMsg2 = document.getElementById("noTicketsMessage2");
 
 
 const sortColumn = function (index, headers, body) {
-    const directions = Array.from(headers).map(function (header) {
-        return '';
-    });
     // Get the current direction
-    const direction = directions[index] || 'asc';
+    let direction;
+    if (headers === allHeaders) {
+        direction = directions2[index] || 'asc';
+    }
+    else if(headers === yourHeaders) {
+        direction = directions1[index] || 'asc';
+    }
+    
 
     // A factor based on the direction
     const multiplier = (direction === 'asc') ? 1 : -1;
@@ -63,7 +67,12 @@ const sortColumn = function (index, headers, body) {
     newRows.forEach(function (newRow) {
         body.appendChild(newRow);
     });
-    directions[index] = direction === 'asc' ? 'desc' : 'asc';
+    if (headers === allHeaders) {
+        directions2[index] = direction === 'asc' ? 'desc' : 'asc';
+    }
+    else if(headers === yourHeaders) {
+        directions1[index] = direction === 'asc' ? 'desc' : 'asc';
+    }
 };
 
 const transform = function (index, content, headers) {
@@ -76,6 +85,13 @@ const transform = function (index, content, headers) {
             return content;
     }
 };
+
+const directions1 = Array.from(yourHeaders).map(function (header) {
+    return '';
+});
+const directions2 = Array.from(allHeaders).map(function (header) {
+    return '';
+});
 
 function loadTickets() {
     const request = new XMLHttpRequest();
@@ -114,7 +130,6 @@ function populateTickets(json) {
         var comments = document.createElement("td");
         id.textContent = row.id;
         residentId.textContent = row.residentId;
-        location.textContent = 'location';
         repairCategory.textContent = row.repairCategory;
         status.textContent = row.status;
         comments.textContent = "Click to View";
@@ -130,6 +145,7 @@ function populateTickets(json) {
         tr.appendChild(creationDate);
         tr.appendChild(assignedId);
         tr.appendChild(comments);
+        GetTicketLocation(row.id, tr);
         allTicketsBody.appendChild(tr);
     });
     loading.style.opacity = 0;
@@ -148,7 +164,6 @@ function populateTickets(json) {
             id.textContent = row.id;
             residentId.textContent = row.residentId;
             assignedId.textContent = row.assignedId ?? "";
-            location.textContent = 'location';
             repairCategory.textContent = row.repairCategory;
             status.textContent = row.status;
             comments.textContent = "Click to View";
@@ -163,6 +178,7 @@ function populateTickets(json) {
             tr.appendChild(creationDate);
             tr.appendChild(assignedId);
             tr.appendChild(comments);
+            GetTicketLocation(row.id, tr);
             yourTicketsBody.appendChild(tr);
         }
     });
@@ -211,6 +227,23 @@ function populateTickets(json) {
 function GrabUpdateTicket(row) {
     var data = row.children;
     window.location.href = "/update_ticket.html?" + data[0].innerText + "|employee";
+}
+
+function GetTicketLocation(ticketId, tr) {
+    const request = new XMLHttpRequest();
+    request.open("GET", "api/Tickets/" + ticketId + "/location");
+    request.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("token"));
+    request.onload = () => {
+        try {
+            const json = JSON.parse(request.responseText);
+            tr.children[2].textContent = json.building;
+        }
+        catch (e) {
+            console.warn("Could not load tickets!");
+        }
+    };
+    request.send();
+    return location;
 }
 
 
