@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace FixitTicket.Models
 {
     public enum Building
     {
+        [EnumMember(Value = "John Ballantyne")]
         JohnBallantyne,
         JessieBallantyne,
         Jackson,

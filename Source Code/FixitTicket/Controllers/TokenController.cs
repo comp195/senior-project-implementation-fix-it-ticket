@@ -10,6 +10,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using FixitTicket.Models;
+using System.ComponentModel.DataAnnotations;
+using static BCrypt.Net.BCrypt;
 
 namespace FixitTicket.Controllers
 {
@@ -18,10 +20,12 @@ namespace FixitTicket.Controllers
     public class TokenController : Controller
     {
         private readonly IConfiguration _config;
+        private readonly TicketContext _context;
 
-        public TokenController(IConfiguration config) 
+        public TokenController(IConfiguration config, TicketContext context) 
         {
             _config = config;
+            _context = context;
         }
 
         [AllowAnonymous]
@@ -31,7 +35,7 @@ namespace FixitTicket.Controllers
             IActionResult response = Unauthorized();
             var user = Authenticate(login);
 
-            if (user != null) 
+            if (user != null)
             {
                 var tokenString = BuildToken(user);
                 response = Ok(new { token = tokenString });
@@ -63,17 +67,19 @@ namespace FixitTicket.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private static User Authenticate(LoginModel login) 
+        private User Authenticate(LoginModel login) 
         {
-            User user = null;
+            User user = _context.User.SingleOrDefault(u => u.Email == login.Email);
 
-            if (login.Username == "user" && login.Password == "web_dev")
+
+            if (user == null) 
             {
-                user = new User { Id = 989271487, Name = "Name", Email = "g_bick@u.pacific.edu", UserRole = UserRole.Resident };
+                return user;
             }
-            else if (login.Username == "Employee" && login.Password == "Arshita") 
+
+            if (!Verify(login.Password, user.PasswordHash)) 
             {
-                user = new User { Id = 989271234, Name = "Name", Email = "a_sandhiparthi@u.pacific.edu", UserRole = UserRole.Employee };
+                return null;
             }
 
             return user;
@@ -81,7 +87,8 @@ namespace FixitTicket.Controllers
 
         public class LoginModel 
         {
-            public string Username { get; set; }
+            [EmailAddress]
+            public string Email { get; set; }
             public string Password { get; set; }
         }
 
