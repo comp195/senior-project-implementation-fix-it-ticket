@@ -496,6 +496,31 @@
 		left: 0px;
 		top: 0px;
 	}
+	#Input_-_Focused_Field_ee {
+		position: absolute;
+		width: 360px;
+		height: 50px;
+		left: 540px;
+		top: 697px;
+		overflow: visible;
+	}
+	#Rectangle_528_ee {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(38,153,251,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_528_ee {
+		position: absolute;
+		overflow: visible;
+		width: 360px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+	}
 	#n_89_ID_Number {
 		left: 20px;
 		top: 17px;
@@ -595,17 +620,19 @@ function SubmitNewUser() {
 	}
 	const building = document.getElementById("Residence_Hall").textContent;
 	const room = document.getElementById("room").value;
+	const pass = document.getElementById("pass").value;
 	const user = {
-		Id: id,
+		Id: parseInt(id, 10),
 		FirstName: fn,
 		LastName: ln,
 		UserRole: role,
 		Email: email,
 		Building: building,
-		RoomNumber: room
+		RoomNumber: room,
+		Password: pass
 	}
 	console.log(JSON.stringify(user));
-	/*const uri = '';
+	const uri = 'api/Register';
 	fetch(uri, {
 		method: 'POST',
 		headers: {
@@ -616,9 +643,9 @@ function SubmitNewUser() {
 		body: JSON.stringify(user)
 	})
 			.then(response => response.json())
-			.catch(error => console.error('Unable to add ticket.', error));*/
+			.catch(error => console.error('Unable to add account.', error));
 	
-	//window.alert("Your account has successfully been created!");
+	window.alert("Your account has successfully been created!");
 	//window.location.href = "fixit_ticket_landing.html";
 }
 
@@ -631,6 +658,7 @@ function SelectRole(name) {
 	const reshall = document.getElementById("Dropdown_-_Empty");
 	const room = document.getElementById("Input_-_Filled_Value_Focused");
 	const signup = document.getElementById("sign");
+	const pass = document.getElementById("Input_-_Focused_Field_ee");
 	if(name === "Rectangle_1098" && res.style.opacity === '0') {
 		if(emp.style.opacity === '1') {
 			emp.style.opacity = 0;
@@ -641,7 +669,9 @@ function SelectRole(name) {
 		idfield.style.opacity = 1;
 		reshall.style.opacity = 1;
 		room.style.opacity = 1;
-		signup.style.top = "731px";
+		signup.style.top = "791px";
+		pass.style.top = "697px";
+		pass.style.opacity = 1;
 		signup.style.visibility = 'visible';
 	}
 	else if(name === "Rectangle_1099" && emp.style.opacity === '0') {
@@ -654,7 +684,9 @@ function SelectRole(name) {
 		email.pattern = ".+@pacific\\.edu";
 		efield.style.opacity = 1;
 		idfield.style.opacity = 1;
-		signup.style.top = "635px";
+		signup.style.top = "710px";
+		pass.style.top = "616px";
+		pass.style.opacity = 1;
 		signup.style.visibility = 'visible';
 	}
 }
@@ -3756,8 +3788,14 @@ window.application = new Application();
 	<div class="container">
 		<button type="submit" class="material-bubble" id="sign" style="visibility: hidden" onclick="SubmitNewUser()">SIGN UP</button>
 	</div>
-	<div id="notify" style="display:none;">
-		
+	<div id="Input_-_Focused_Field_ee" style="opacity:0;">
+		<svg class="Rectangle_528_ee">
+			<rect id="Rectangle_528_ee" rx="25" ry="25" x="0" y="0" width="360" height="50">
+			</rect>
+		</svg>
+		<div id="pa">
+			<input type="password" id="pass" placeholder="Enter a password" style="width: 269px; position: relative; top: 16px; left: 20px;">
+		</div>
 	</div>
 </div>
 </body>
