@@ -1,5 +1,8 @@
 # Fixit Ticket
 
+### Website URL
+http://ec2-3-89-248-79.compute-1.amazonaws.com/
+
 Team Members:
 Arshita Sandhiparthi (a_sandhiparthi@u.pacific.edu)
 Gabriel Bick (g_bick@u.pacific.edu)
@@ -18,4 +21,4 @@ Fixit Ticket is a ticketing system that allows residents in University of the Pa
 
 ## Documents
 
-[System Design Document](https://github.com/comp195/senior-project-implementation-fix-it-ticket/tree/master/Design%20Documents)
+[System Design Document](Design%20Documents/Fixit%20Ticket%20-%20System%20Design%20Document.pdf)
