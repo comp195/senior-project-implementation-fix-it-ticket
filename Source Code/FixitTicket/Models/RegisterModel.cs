@@ -13,7 +13,7 @@ namespace FixitTicket.Models
         public string LastName { get; set; }
         [EmailAddress]
         public string Email { get; set; }
-        public Building Building { get; set; }
+        public Building? Building { get; set; }
         public int? RoomNumber { get; set; }
         public UserRole UserRole { get; set; }
         [MinLength(6)]

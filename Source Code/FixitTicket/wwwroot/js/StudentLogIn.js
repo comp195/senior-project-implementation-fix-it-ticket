@@ -3,14 +3,12 @@ const user = document.getElementById("username-field");
 const pass = document.getElementById("password-field")
 const loginButton = document.getElementById("login-form-submit");
 const loginErrorMsgText = document.getElementById("Your_username_andor_password__");
-let employeeIDs = {"employee": "Arshita"};
-let studentIDs = {"user": "web_dev"};
 
 loginButton.addEventListener("click", (e) => {
     e.preventDefault();
     const username = user.value.trim(" ");
     const password = pass.value.trim(" ");
-    
+    Token(username, password);
 })
 
 document.addEventListener("submit", (e) => {
@@ -34,7 +32,7 @@ document.addEventListener("submit", (e) => {
 function Token(username, password) {
     const uri = 'api/Token';
     const log = {
-        Username: username,
+        Email: username,
         Password: password
     }
     fetch(uri, {

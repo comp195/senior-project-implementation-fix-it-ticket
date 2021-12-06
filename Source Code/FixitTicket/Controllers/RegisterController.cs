@@ -50,7 +50,7 @@ namespace FixitTicket.Controllers
                 return BadRequest();
             }
 
-            if (!roomRegex.IsMatch(model.RoomNumber?.ToString())) // TODO make sure this works with null
+            if (model.RoomNumber != null && !roomRegex.IsMatch(model.RoomNumber?.ToString())) 
             {
                 return BadRequest();
             }
