@@ -115,7 +115,7 @@ namespace FixitTicket.Controllers
         [ProducesResponseType(Status400BadRequest)]
         [ProducesResponseType(Status401Unauthorized)]
         [ProducesResponseType(Status403Forbidden)]
-        public async Task<ActionResult<TicketUpdate>> PostTicket(TicketUpdate ticketUpdate)
+        public async Task<ActionResult<TicketUpdate>> PostTicketUpdate(TicketUpdate ticketUpdate)
         {
             var currentUser = HttpContext.User;
             var userId = TicketsController.GetId(currentUser);
@@ -252,9 +252,13 @@ namespace FixitTicket.Controllers
                 return false;
             }
 
-            if (await _context.User.FindAsync(newTicket.AssignedId) == null) 
+            if (newTicket.AssignedId != null) 
             {
-                return false;
+                var assigned = await _context.User.FindAsync(newTicket.AssignedId);
+                if (assigned == null || assigned.UserRole == UserRole.Resident) 
+                {
+                    return false;
+                }
             }
 
             if (oldTicket.AssignedId != newTicket.AssignedId && isResident)
