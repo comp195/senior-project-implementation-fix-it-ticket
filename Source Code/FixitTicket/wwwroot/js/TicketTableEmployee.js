@@ -1,4 +1,4 @@
-let employeeID = '989306958';
+let employeeID = 989271234;
 let path = window.location.pathname;
 let page = path.split("/").pop();
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,25 +14,23 @@ const allTable = document.querySelector(".allpaleBlueRows");
 const yourHeaders = yourTable.querySelectorAll('th');
 const allHeaders = allTable.querySelectorAll('th');
 const loading = document.getElementById("loadingMessage");
+const loading2 = document.getElementById("loadingMessage2");
 const noTicketsMsg = document.getElementById("noTicketsMessage");
+const noTicketsMsg2 = document.getElementById("noTicketsMessage2");
 
 [].forEach.call(yourHeaders, function (header, index) {
     header.addEventListener('click', function () {
-        sortColumn(index, yourHeaders);
+        sortColumn(index, yourHeaders, yourTicketsBody);
     });
 });
 [].forEach.call(allHeaders, function (header, index) {
     header.addEventListener('click', function () {
-        sortColumn(index, allHeaders);
+        sortColumn(index, allHeaders, allTicketsBody);
     });
 });
 
 
-
-let tableBody = null;
-let rows = null;
-
-const sortColumn = function (index, headers) {
+const sortColumn = function (index, headers, body) {
     const directions = Array.from(headers).map(function (header) {
         return '';
     });
@@ -41,7 +39,7 @@ const sortColumn = function (index, headers) {
 
     // A factor based on the direction
     const multiplier = (direction === 'asc') ? 1 : -1;
-    const newRows = Array.from(rows);
+    const newRows = Array.from(body.querySelectorAll('tr'));
     // Sort rows by the content of cells
     newRows.sort(function (rowA, rowB) {
         // Get the content of cells
@@ -57,13 +55,13 @@ const sortColumn = function (index, headers) {
     });
 
     // Remove old rows
-    [].forEach.call(rows, function (row) {
-        tableBody.removeChild(row);
+    [].forEach.call(body.querySelectorAll('tr'), function (row) {
+        body.removeChild(row);
     });
 
     // Append new row
     newRows.forEach(function (newRow) {
-        tableBody.appendChild(newRow);
+        body.appendChild(newRow);
     });
     directions[index] = direction === 'asc' ? 'desc' : 'asc';
 };
@@ -82,6 +80,7 @@ const transform = function (index, content, headers) {
 function loadTickets() {
     const request = new XMLHttpRequest();
     request.open("GET", "api/Tickets");
+    request.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("token"));
     request.onload = ()=>{
         try {
             const json = JSON.parse(request.responseText);
@@ -107,6 +106,7 @@ function populateTickets(json) {
 
         var id = document.createElement("td");
         var residentId = document.createElement("td");
+        var location = document.createElement("td");
         var repairCategory = document.createElement("td");
         var status = document.createElement("td");
         var creationDate = document.createElement("td");
@@ -114,6 +114,7 @@ function populateTickets(json) {
         var comments = document.createElement("td");
         id.textContent = row.id;
         residentId.textContent = row.residentId;
+        location.textContent = 'location';
         repairCategory.textContent = row.repairCategory;
         status.textContent = row.status;
         comments.textContent = "Click to View";
@@ -123,6 +124,7 @@ function populateTickets(json) {
         assignedId.textContent = row.assignedId ?? "";
         tr.appendChild(id);
         tr.appendChild(residentId);
+        tr.appendChild(location);
         tr.appendChild(repairCategory);
         tr.appendChild(status);
         tr.appendChild(creationDate);
@@ -130,12 +132,14 @@ function populateTickets(json) {
         tr.appendChild(comments);
         allTicketsBody.appendChild(tr);
     });
+    loading.style.opacity = 0;
     json.forEach((row) => {
-        if (employeeID == row.assignedId) {
+        if (employeeID === row.assignedId) {
             const tr = document.createElement("tr");
 
             var id = document.createElement("td");
             var residentId = document.createElement("td");
+            var location = document.createElement("td");
             var repairCategory = document.createElement("td");
             var status = document.createElement("td");
             var creationDate = document.createElement("td");
@@ -144,6 +148,7 @@ function populateTickets(json) {
             id.textContent = row.id;
             residentId.textContent = row.residentId;
             assignedId.textContent = row.assignedId ?? "";
+            location.textContent = 'location';
             repairCategory.textContent = row.repairCategory;
             status.textContent = row.status;
             comments.textContent = "Click to View";
@@ -152,6 +157,7 @@ function populateTickets(json) {
             creationDate.textContent = date;
             tr.appendChild(id);
             tr.appendChild(residentId);
+            tr.appendChild(location);
             tr.appendChild(repairCategory);
             tr.appendChild(status);
             tr.appendChild(creationDate);
@@ -160,19 +166,18 @@ function populateTickets(json) {
             yourTicketsBody.appendChild(tr);
         }
     });
-    
-    tableBody = allTable.querySelector('tbody');
-    rows = tableBody.querySelectorAll('tr');
-    loading.style.opacity = 0;
-    if (yourTicketsBody.querySelectorAll('tr').length > 0) {
-        noTicketsMsg.style.opacity = 0;
+    loading2.style.opacity = 0;
+    if (yourTicketsBody.querySelectorAll('tr').length === 0) {
+        noTicketsMsg.style.opacity = 1;
+    }
+    if (allTicketsBody.querySelectorAll('tr').length === 0) {
+        noTicketsMsg2.style.opacity = 1;
     }
     
     allTicketsBody.addEventListener("click", function(event) {
         var t = event.target;
-        console.log("ick")
-        if(t.textContent == "Click to View") {
-            console.log("BLAH BLAH")
+        if(t.textContent === "Click to View") {
+            window.location.href = "/view_comments.html?" + t.parentNode.children[0].innerText + "|employee";
             return;
         }
         while (t !== this && !t.matches("tr")) {
@@ -187,8 +192,8 @@ function populateTickets(json) {
 
     yourTicketsBody.addEventListener("click", function(event) {
         var t = event.target;
-        if(t.textContent == "Click to View") {
-            console.log("BLAH BLAH")
+        if(t.textContent === "Click to View") {
+            window.location.href = "/view_comments.html?" + t.parentNode.children[0].innerText + "|employee";
             return;
         }
         while (t !== this && !t.matches("tr")) {
@@ -205,7 +210,6 @@ function populateTickets(json) {
 
 function GrabUpdateTicket(row) {
     var data = row.children;
-    console.log("hello");
     window.location.href = "/update_ticket.html?" + data[0].innerText + "|employee";
 }
 

@@ -11,13 +11,14 @@ async function UpdateTicketStart() {
     let id = location.search.substring(1).split("|")[0];
     const request = new XMLHttpRequest();
     request.open("GET", "api/Tickets/" + id);
+    request.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("token"));
     request.onload = ()=>{
         try {
             json = JSON.parse(request.responseText);
             ticketNum.textContent = json.id;
             residentId.value = json.residentId;
             repairCategory.textContent = json.repairCategory;
-            status.textContent = json.repairStatus;
+            status.textContent = json.status;
             assID.value = json.assignedId;
             description.textContent = json.description;
         }

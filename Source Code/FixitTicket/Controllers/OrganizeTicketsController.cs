@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FixitTicket.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using static Microsoft.AspNetCore.Http.StatusCodes;
 using Microsoft.EntityFrameworkCore;
 
 namespace FixitTicket.Controllers
 {
     [Route("api/Tickets")]
     [ApiController]
+    [Authorize]
     public class OrganizeTicketsController : ControllerBase
     {
         private readonly TicketContext _context;
@@ -24,7 +27,7 @@ namespace FixitTicket.Controllers
         // gets tickets assigned to an employee id
 
         [HttpGet("assigned/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(Status200OK)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsAssigned(int id)
         {
             return await _context.Ticket.Where(ticket => ticket.ResidentId == id).ToListAsync();
@@ -34,7 +37,7 @@ namespace FixitTicket.Controllers
         // sorts tickets by assigned employee
 
         [HttpGet("assigned")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(Status200OK)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsByAssigned()
         {
             return await _context.Ticket.OrderBy(ticket => ticket.AssignedId).ToListAsync();
@@ -45,7 +48,7 @@ namespace FixitTicket.Controllers
         // gets tickets for a particular building
 
         [HttpGet("location/{location}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(Status200OK)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsLocation(Building location)
         {
             var tickets = await _context.Ticket.ToListAsync();
@@ -60,7 +63,7 @@ namespace FixitTicket.Controllers
         // GET: api/Tickets/location
         // orders tickets by location
         [HttpGet("location")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(Status200OK)]
         public ActionResult<IEnumerable<Ticket>> GetTicketsByLocation()
         {
             IEnumerable<Ticket> tickets = from ticket in _context.Ticket
@@ -78,7 +81,7 @@ namespace FixitTicket.Controllers
         // get tickets with a certain status
 
         [HttpGet("status/{status}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(Status200OK)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsWithStatus(RepairStatus status)
         {
             return await _context.Ticket.Where(ticket => ticket.Status == status).ToListAsync();
@@ -88,7 +91,7 @@ namespace FixitTicket.Controllers
         // orders tickets by status
 
         [HttpGet("status")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(Status200OK)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsStatus()
         {
             return await _context.Ticket.OrderBy(ticket => ticket.Status).ToListAsync();
@@ -98,7 +101,7 @@ namespace FixitTicket.Controllers
         // get tickets with a certain category
 
         [HttpGet("category/{category}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(Status200OK)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsWithCategory(RepairCategory category)
         {
             return await _context.Ticket.Where(ticket => ticket.RepairCategory == category).ToListAsync();
@@ -108,7 +111,7 @@ namespace FixitTicket.Controllers
         // orders tickets by category
 
         [HttpGet("category")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(Status200OK)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsCategory()
         {
             return await _context.Ticket.OrderBy(ticket => ticket.RepairCategory).ToListAsync();
@@ -118,7 +121,7 @@ namespace FixitTicket.Controllers
         // orders tickets by creation date
 
         [HttpGet("date")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(Status200OK)]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsCreationDate()
         {
             return await _context.Ticket.OrderBy(ticket => ticket.CreationDate).ToListAsync();

@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Security.Principal;
+using System.ComponentModel.DataAnnotations;
 
 namespace FixitTicket.Models
 {
-    public class User
+    public class RegisterModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         [EmailAddress]
         public string Email { get; set; }
         public Building Building { get; set; }
         public int? RoomNumber { get; set; }
         public UserRole UserRole { get; set; }
-        public string PasswordHash { get; set; }
+        [MinLength(6)]
+        public string Password { get; set; }
     }
 }

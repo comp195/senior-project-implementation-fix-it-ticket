@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>create ticket</title>
+<title>Create Ticket</title>
 <style id="applicationStylesheet" type="text/css">
 	/* Dropdown Button */
 	textarea {
 		outline: none;
 		resize: none;
 		font-size: 14px;
+		background-color: rgba(255, 255, 255, 0);
 	}
 	button {
 		position: relative;
 		font-size: 18px;
+		float: initial;
+		display: inline-block;
 		transition: color 0.5s, transform 0.2s, background-color 0.2s;
 		outline: none;
 		border-radius: 3px;
@@ -77,7 +84,7 @@
 	.dropbtn3:hover, .dropbtn3:focus {
 		background-color: rgba(212, 212, 212, 0.2);
 	}
-	/* Dropdown Content (Hidden by Default) */
+	
 	.dropdown-content {
 		display: none;
 		position: absolute;
@@ -202,7 +209,7 @@
 		white-space: nowrap;
 		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: resident_landing_page.html;
+		--web-action-target: 'resident_landing_page.html';
 		cursor: pointer;
 		line-height: 12px;
 		margin-top: -1px;
@@ -311,7 +318,7 @@
 		overflow: visible;
 	}
 	#Rectangle_555 {
-		fill: rgba(255,255,255,1);
+		fill: rgba(236,237,238,1);
 		stroke: rgba(188,224,253,1);
 		stroke-width: 1px;
 		stroke-linejoin: miter;
@@ -402,13 +409,13 @@
 	}
 	#n_89306958 {
 		left: 92px;
-		top: 13px;
+		top: 9px;
 		position: absolute;
 		overflow: visible;
-		width: 51px;
+		width: 199px;
+		height: 26px;
 		white-space: nowrap;
 		text-align: left;
-		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 10px;
@@ -493,18 +500,7 @@
 		top: 16.884px;
 		overflow: visible;
 	}
-	#Path_36 {
-		fill: rgba(38,153,251,1);
-	}
-	.Path_36 {
-		overflow: visible;
-		position: absolute;
-		width: 7.213px;
-		height: 4.681px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
+	
 	#Rectangle_587 {
 		fill: rgba(38,153,251,1);
 	}
@@ -640,13 +636,13 @@
 	}
 	#n_89306958_e {
 		left: 92px;
-		top: 13px;
+		top: 9px;
 		position: absolute;
 		overflow: visible;
-		width: 51px;
+		width: 199px;
+		height: 26px;
 		white-space: nowrap;
 		text-align: left;
-		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 10px;
@@ -694,10 +690,10 @@
 		top: 64px;
 		position: absolute;
 		overflow: visible;
-		width: 114px;
+		width: 683px;
+		height: 173px;
 		white-space: nowrap;
 		text-align: left;
-		;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 14px;
@@ -719,8 +715,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		height: 100vh;
-		width: 100vw;
 		text-align: center; }
 	
 	.material-bubble {
@@ -731,7 +725,7 @@
 		box-shadow: none;
 		width: 125px;
 		height: 50px;
-		top: -1733px;
+		top: -1364px;
 		left: 737px;
 		font-size: 13px;
 	}
@@ -779,16 +773,16 @@
 		color: rgba(255,255,255,1);
 	}
 </style>
-<script src="require.js"></script>
+<script src="js/require.js"></script>
 <script id="applicationScript">
-const tempDataHolder = "http://localhost:8000/temp-data.json"
 function loadNewTicket(ticket) {
     const uri = 'api/Tickets';
     fetch(uri, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+			"Authorization": "Bearer " + localStorage.getItem("token")
         },
         body: JSON.stringify(ticket)
 	})
@@ -808,9 +802,6 @@ function SubmitNewTicket() {
 	var residentId = document.getElementById("resid").value
 	residentId = residentId.toString();
 	const repairCategory = document.getElementById("Select_an_option").textContent
-	const status = document.getElementById("Select_an_option_ew").textContent
-	const date = d.getDate();
-	const assID = document.getElementById("assignedid").value
 	const description = document.getElementById("description").value
 	const ticket = {
 		ResidentId: residentId,
@@ -838,19 +829,37 @@ function ToggleDropdown(name) {
  * Code subject to change.
  **/
 
-window.onload = function() {
-	var s = Math.min(
+function calcResize() {
+	return Math.min(
 			window.innerWidth / document.getElementById('create_ticket').clientWidth,
 			window.innerHeight / document.getElementById('create_ticket').clientHeight
 	);
+}
+
+
+
+window.onload = function() {
+	var s = calcResize()
 	console.log(s);
 	document.getElementById('create_ticket').style.setProperty("--s", s);
+	if(!isEmployee) {
+		try {
+			let assigned = document.getElementsByName("assignedid")[0];
+			let abox = document.getElementById("Rectangle_555_e");
+			let status = document.getElementById("status-dropdown");
+			let bbox = document.getElementById("Rectangle_563_ev");
+			assigned.disabled=true;
+			status.disabled=true;
+			abox.style.fill = "rgba(236,237,238,1)";
+			bbox.style.fill = "rgba(236,237,238,1)";
+		}
+		catch {
+			console.warn("Crying and screaming rn.")
+		}
+	}
 }
 window.addEventListener('resize', function() {
-	var s = Math.min(
-			window.innerWidth / document.getElementById('create_ticket').clientWidth,
-			window.innerHeight / document.getElementById('create_ticket').clientHeight
-	);
+	var s = calcResize()
 	console.log(s);
 	document.getElementById('create_ticket').style.setProperty("--s", s);
 });
@@ -3794,13 +3803,8 @@ toggle between hiding and showing the dropdown content */
 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
 }
 
-let isEmployee = null;
-if(location.search.substring(1) === "employee") {
-	isEmployee = true;
-}
-else {
-	isEmployee = false;
-}
+isEmployee = location.search.substring(1) === "employee";
+
 
 window.application = new Application();
 </script>
@@ -3845,7 +3849,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_381203103820193">
-			<span id="ticketNum">9381203</span>
+			<span id="ticketNum">—</span>
 		</div>
 		<div id="TICKET_ID">
 			<span>TICKET ID</span>
@@ -3861,7 +3865,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958">
-			<textarea rows="1" cols="30" name="resid" id="resid" placeholder="( empty )"></textarea>
+			<textarea style="height: 100%; width: 100%;" name="resid" id="resid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="RESIDENT_ID">
 			<span>RESIDENT</span>
@@ -3892,42 +3896,11 @@ window.application = new Application();
 			<span>CATEGORY</span>
 		</div>
 	</div>
-	<div id="Dropdown_-_Empty2">
-		<svg class="Rectangle_563">
-			<rect id="Rectangle_563" rx="0" ry="0" x="0" y="0" width="276" height="38">
-				<div id="Dropdown3" class="Dropdown" >
-					<button onclick="ToggleDropdown('myDropdown3')" class="dropbtn3"></button>
-					<div id="myDropdown3" class="dropdown-content3">
-						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Monagan Hall</a>
-						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Chan Hall</a>
-						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>John Ballentyne</a>
-						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Jessie Ballentyne</a>
-						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Carter</a>
-						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Ritter</a>
-						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Casa Jackson</a>
-						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Calaveras Hall</a>
-						<a onclick=SelectStatus("Select_an_option2",this.textContent,"myDropdown3")>Greek Housing</a>
-					</div>
-				</div>
-			</rect>
-		</svg>
-		<div id="Select_an_option2">
-			<span>Select an option</span>
-		</div>
-
-		<svg class="Rectangle_587">
-			<rect id="Rectangle_587" rx="0" ry="0" x="0" y="0" width="77" height="38">
-			</rect>
-		</svg>
-		<div id="Location">
-			<span>LOCATION</span>
-		</div>
-	</div>
 	<div id="Dropdown_-_Empty_eu">
 		<svg class="Rectangle_563_ev">
 			<rect id="Rectangle_563_ev" rx="0" ry="0" x="0" y="0" width="276" height="38">
-				<div id="Dropdown2" class="Dropdown" >
-					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn"></button>
+				<div id="Dropdown2" class="Dropdown">
+					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn" id="status-dropdown"></button>
 					<div id="myDropdown2" class="dropdown-content2">
 						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Open</a>
 						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>In Progress</a>
@@ -3959,7 +3932,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="n_89306958_e">
-			<textarea rows="1" cols="30" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
+			<textarea style="height: 100%; width: 100%;" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
 		</div>
 		<div id="ASSIGNED_TO">
 			<span>ASSIGNED</span>
@@ -3971,7 +3944,7 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="Type_something">
-			<textarea font-family="Montserrat" rows="11" cols="95" name="description" id="description" placeholder="Describe your problem"></textarea>
+			<textarea font-family="Montserrat" style="height: 100%; width: 100%;" name="description" id="description" placeholder="Describe your problem"></textarea>
 		</div>
 		<svg class="Rectangle_589">
 			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">

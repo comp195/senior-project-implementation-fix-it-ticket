@@ -1,118 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Update Your Ticket</title>
+<title>Sign Up</title>
 <style id="applicationStylesheet" type="text/css">
-	/* Dropdown Button */
-	textarea {
-		resize: none;
-		font-size: 14px;
-		background-color: rgba(255, 255, 255, 0);
-		outline: none;
-	}
-	button {
-		position: relative;
-		font-size: 18px;
-		transition: color 0.5s, transform 0.2s, background-color 0.2s;
-		outline: none;
-		border-radius: 3px;
-		margin: 0 10px;
-		border: 3px solid transparent; }
-	button:active {
-		transform: translateY(3px); }
-	button::after, button::before {
-		border-radius: 3px; }
-	.dropbtn {
-		background-color: rgba(255, 255, 255, 0);
-		color: white;
-		font-size: 16px;
-		border: none;
-		cursor: pointer;
-		position: relative;
-		right: -8px;
-		bottom: 0px;
-		padding-right: 19px;
-		padding-top: 19px;
-		padding-left: 315px;
-		padding-bottom: 19px;
-	}
 	input { outline: none; }
-	.dropbtn2 {
-		background-color: rgba(255, 255, 255, 0);
-		color: white;
-		font-size: 16px;
-		border: none;
-		cursor: pointer;
-		position: relative;
-		right: 320px;
-		bottom: 16px;
-		padding-right: 19px;
-		padding-top: 19px;
-		padding-left: 315px;
-		padding-bottom: 19px;
+	input:invalid {
+		color: lightcoral;
 	}
-	/* Dropdown button on hover & focus */
-	.dropbtn:hover, .dropbtn:focus {
-		background-color: rgba(212, 212, 212, 0.2);
-	}
-	.dropbtn2:hover, .dropbtn2:focus {
-		background-color: rgba(212, 212, 212, 0.2);
-	}
-	/* Dropdown Content (Hidden by Default) */
-	.dropdown-content {
-		display: none;
-		position: absolute;
-		background-color: #ffffff;
-		min-width: 160px;
-		right: 98px;
-		top: 20px;
-		z-index: 1;
-		font-size: 14px;
-	}
-	
-	.dropdown-content2 {
-		display: none;
-		position: absolute;
-		background-color: #ffffff;
-		min-width: 160px;
-		right: 112px;
-		top: 37px;
-		z-index: 1;
-		font-size: 14px;
-	}
-
-	/* Links inside the dropdown */
-	.dropdown-content a {
-		color: black;
-		padding: 12px 16px;
-		text-decoration: none;
-		display: block;
-	}
-
-	.dropdown-content2 a {
-		color: black;
-		padding: 12px 16px;
-		text-decoration: none;
-		display: block;
-	}
-
-	/* Change color of dropdown links on hover */
-	.dropdown-content a:hover {background-color: #f1f1f1}
-
-	.dropdown-content2 a:hover {background-color: #f1f1f1}
-
-	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-	.show {display:block;}
-	
 	:root {
-		--web-view-ids: update_ticket;
+		--web-view-ids: register_form;
 	}
 	* {
 		margin: 0;
@@ -121,546 +20,64 @@
 		border: none;
 		font-family: 'Montserrat', sans-serif;
 	}
-	#update_ticket {
-		position: absolute;
-		width: 1440px;
-		height: 900px;
-		background-color: rgba(255,255,255,1);
-		overflow: hidden;
-		--web-view-name: update ticket;
-		--web-view-id: update_ticket;
-		--web-scale-on-resize: true;
-		--web-enable-deep-linking: true;
-		transform: scale(var(--s))
-	}
-	@keyframes fadein {
 	
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	
-	}
-	#Navigation_Bar {
-		position: relative;
-		width: 220px;
-		height: 900px;
-		left: 0px;
-		top: 0px;
-		overflow: visible;
-	}
-	#Base {
-		fill: rgba(38,153,251,1);
-	}
-	.Base {
-		position: absolute;
-		overflow: visible;
-		width: 220px;
-		height: 900px;
-		left: 0px;
-		top: 0px;
-	}
-	#YOUR_TICKETS {
-		left: 40px;
-		top: 116px;
-		position: absolute;
-		overflow: visible;
-		width: 75px;
-		white-space: nowrap;
-		--web-animation: fadein 0.3s ease-out;
-		--web-action-type: page;
-		--web-action-target: 'resident_landing_page.html';
+	.dropbtn {
+		background-color: rgba(255, 255, 255, 0);
+		color: white;
+		font-size: 16px;
+		border: none;
 		cursor: pointer;
-		line-height: 12px;
-		margin-top: -1px;
-		text-align: left;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 13px;
-		color: rgba(255,255,255,1);
+		position: relative;
+		right: 9px;
+		bottom: 0.5px;
+		padding-right: 19px;
+		padding-top: 19px;
+		border-radius: 25%;
+		padding-left: 212px;
+		padding-bottom: 32px;
 	}
-	#YOUR_TICKETS:hover {
-		color: #494958;
+	.dropbtn:hover, .dropbtn:focus {
+		background-color: rgba(212, 212, 212, 0.2);
 	}
-	#CREATE_TICKET_d {
-		left: 41px;
-		top: 157px;
-		position: absolute;
-		overflow: visible;
-		width: 79px;
-		white-space: nowrap;
-		line-height: 12px;
-		margin-top: -1px;
-		text-align: left;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 13px;
-		color: rgba(255,255,255,1);
+	.dropdown-content {
+		display: none;
+		position: relative;
+		background-color: #ffffff;
+		min-width: 160px;
+		width: 215px;
+		right: -8px;
+		top: -10px;
+		z-index: 2;
+		font-size: 14px;
+		max-height: 200px;
+		overflow-y: scroll;
 	}
-	#CREATE_TICKET_d:hover {
-		color: #494958;
+	.dropdown-content a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
 	}
-	#LOG_OUT {
-		left: 40px;
-		top: 239px;
-		position: absolute;
-		overflow: visible;
-		width: 46px;
-		white-space: nowrap;
-		line-height: 12px;
-		margin-top: -1px;
-		text-align: left;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 13px;
-		color: rgba(255,255,255,1);
-	}
-	#LOG_OUT:hover {
-		color: #494958;
-	}
-	#Fixit_Ticket {
-		left: 40px;
-		top: 42px;
-		position: absolute;
-		overflow: visible;
-		width: 95px;
-		white-space: nowrap;
-		line-height: 24px;
-		margin-top: -3px;
-		text-align: left;
-		font-style: normal;
-		font-weight: bold;
+	.dropdown-content a:hover {background-color: #f1f1f1}
+	button {
+		position: relative;
 		font-size: 18px;
-		color: rgba(255,255,255,1);
-	}
-	#Dashboard {
-		left: 312px;
-		top: -875px;
-		position: relative;
-		overflow: visible;
-		width: 210px;
-		white-space: nowrap;
-		text-align: left;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 40px;
-		color: rgba(38,153,251,1);
-	}
-	#Update_Ticket_eb {
-		left: 312px;
-		top: -861px;
-		position: relative;
-		overflow: visible;
-		width: 126px;
-		white-space: nowrap;
-		line-height: 30px;
-		margin-top: -5px;
-		text-align: left;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 20px;
-		color: rgba(127,127,127,1);
-	}
-	#Rectangle_1094 {
-		fill: rgba(232,244,255,1);
-	}
-	.Rectangle_1094 {
-		position: relative;
-		overflow: visible;
-		width: 899px;
-		height: 732px;
-		left: 371px;
-		top: -801px;
-	}
-	#Input_-_Required_Field {
-		position: relative;
-		width: 353px;
-		height: 38px;
-		left: 425px;
-		top: -1494px;
-		overflow: visible;
-	}
-	#Rectangle_555 {
-		fill: rgba(255,255,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_555 {
-		position: absolute;
-		overflow: visible;
-		width: 276px;
-		height: 38px;
-		left: 77px;
-		top: 0px;
-	}
-	#Rectangle_582 {
-		fill: rgba(38,153,251,1);
-	}
-	.Rectangle_582 {
-		position: absolute;
-		overflow: visible;
-		width: 77px;
-		height: 38px;
-		left: 0px;
-		top: 0px;
-	}
-	#n_381203103820193 {
-		left: 92px;
-		top: 13px;
-		position: absolute;
-		overflow: visible;
-		width: 90px;
-		white-space: nowrap;
-		text-align: left;
-		;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 13px;
-		color: rgba(0,0,0,1);
-	}
-	#TICKET_ID {
-		left: 10px;
-		top: 12px;
-		position: relative;
-		overflow: visible;
-		width: 35px;
-		white-space: nowrap;
-		text-align: left;
-		font-style: normal;
-		font-size: 12px;
-		color: rgba(255,255,255,1);
-	}
-	#Input_-_Required_Field_ei {
-		position: relative;
-		width: 353px;
-		height: 38px;
-		left: 425px;
-		top: -1461px;
-		overflow: visible;
-	}
-	#Rectangle_555_ej {
-		fill: rgba(255,255,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_555_ej {
-		position: absolute;
-		overflow: visible;
-		width: 276px;
-		height: 38px;
-		left: 77px;
-		top: 0px;
-	}
-	#Rectangle_582_ek {
-		fill: rgba(38,153,251,1);
-	}
-	.Rectangle_582_ek {
-		position: absolute;
-		overflow: visible;
-		width: 77px;
-		height: 38px;
-		left: 0px;
-		top: 0px;
-	}
-	#n_89306958 {
-		left: 92px;
-		top: 9px;
-		position: absolute;
-		overflow: visible;
-		width: 199px;
-		height: 26px;
-		white-space: nowrap;
-		text-align: left;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 10px;
-		color: rgba(0,0,0,1);
-	}
-	#RESIDENT_ID {
-		left: 8px;
-		top: 12px;
-		position: relative;
-		overflow: visible;
-		width: 45px;
-		white-space: nowrap;
-		text-align: left;
-		font-style: normal;
-		font-size: 12px;
-		color: rgba(255,255,255,1);
-	}
-	#Dropdown_-_Empty {
-		position: relative;
-		width: 353px;
-		height: 38px;
-		left: 854px;
-		top: -1448px;
-		overflow: visible;
-	}
-	#Rectangle_563 {
-		fill: rgba(255,255,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_563 {
-		position: absolute;
-		overflow: visible;
-		width: 276px;
-		height: 38px;
-		left: 77px;
-		top: 0px;
-	}
-	#Select_an_option {
-		left: 92px;
-		top: 13px;
-		position: absolute;
-		overflow: visible;
-		width: 73px;
-		white-space: nowrap;
-		text-align: left;
-		;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		color: rgba(0,0,0,1);
-	}
-	#Dropdown {
-		position: absolute;
-		width: 7.213px;
-		height: 4.681px;
-		left: 329.211px;
-		top: 16.884px;
-		overflow: visible;
-	}
-	#Path_36 {
-		fill: rgba(38,153,251,1);
-	}
-	.Path_36 {
-		overflow: visible;
-		position: absolute;
-		width: 7.213px;
-		height: 4.681px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Rectangle_587 {
-		fill: rgba(38,153,251,1);
-	}
-	.Rectangle_587 {
-		position: absolute;
-		overflow: visible;
-		width: 77px;
-		height: 38px;
-		left: 0px;
-		top: 0px;
-	}
-	#REPAIR_CATEGORY {
-		left: 6px;
-		top: 12px;
-		position: relative;
-		overflow: visible;
-		width: 40px;
-		white-space: nowrap;
-		text-align: left;
-		font-style: normal;
-		font-size: 12px;
-		color: rgba(255,255,255,1);
-	}
-	#Dropdown_-_Empty_eu {
-		position: relative;
-		width: 353px;
-		height: 38px;
-		left: 853px;
-		top: -1415px;
-		overflow: visible
-	}
-	#Rectangle_563_ev {
-		fill: rgba(255,255,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_563_ev {
-		position: absolute;
-		overflow: visible;
-		width: 276px;
-		height: 38px;
-		left: 77px;
-		top: 0px;
-	}
-	#Select_an_option_ew {
-		left: 92px;
-		top: 13px;
-		position: absolute;
-		overflow: visible;
-		width: 73px;
-		white-space: nowrap;
-		text-align: left;
-		;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		color: rgba(0,0,0,1);
-	}
-	#Rectangle_587_ez {
-		fill: rgba(38,153,251,1);
-	}
-	.Rectangle_587_ez {
-		position: absolute;
-		overflow: visible;
-		width: 77px;
-		height: 38px;
-		left: 0px;
-		top: 0px;
-	}
-	#STATUS {
-		left: 15px;
-		top: -25px;
-		position: relative;
-		overflow: visible;
-		width: 28px;
-		white-space: nowrap;
-		text-align: left;
-		font-style: normal;
-		font-size: 12px;
-		color: rgba(255,255,255,1);
-	}
-	#Input_-_Required_Field_e {
-		position: relative;
-		width: 353px;
-		height: 38px;
-		left: 425px;
-		top: -1454px;
-		overflow: visible;
-	}
-	#Rectangle_555_e {
-		fill: rgba(255,255,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_555_e {
-		position: absolute;
-		overflow: visible;
-		width: 276px;
-		height: 38px;
-		left: 77px;
-		top: 0px;
-	}
-	#Rectangle_582_e {
-		fill: rgba(38,153,251,1);
-	}
-	.Rectangle_582_e {
-		position: absolute;
-		overflow: visible;
-		width: 77px;
-		height: 38px;
-		left: 0px;
-		top: 0px;
-	}
-	#n_89306958_e {
-		left: 92px;
-		top: 9px;
-		position: absolute;
-		overflow: visible;
-		width: 199px;
-		height: 26px;
-		white-space: nowrap;
-		text-align: left;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 10px;
-		color: rgba(0,0,0,1);
-	}
-	#ASSIGNED_TO {
-		left: 7px;
-		top: 12px;
-		position: relative;
-		overflow: visible;
-		width: 49px;
-		white-space: nowrap;
-		text-align: left;
-		font-style: normal;
-		font-size: 12px;
-		color: rgba(255,255,255,1);
-	}
-	#Textbox_-_Empty {
-		position: relative;
-		width: 721px;
-		height: 253px;
-		left: 460px;
-		top: -1393px;
-		overflow: hidden;
-	}
-	#Rectangle_581 {
-		fill: rgba(255,255,255,1);
-		stroke: rgba(188,224,253,1);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Rectangle_581 {
-		position: absolute;
-		overflow: visible;
-		width: 721px;
-		height: 207px;
-		left: 0px;
-		top: 46px;
-	}
-	#Type_something {
-		left: 20px;
-		top: 64px;
-		position: absolute;
-		overflow: visible;
-		width: 683px;
-		height: 173px;
-		white-space: nowrap;
-		text-align: left;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		color: rgba(0,0,0,1);
-	}
-	#Rectangle_589 {
-		fill: rgba(38,153,251,1);
-	}
-	.Rectangle_589 {
-		position: absolute;
-		overflow: visible;
-		width: 203px;
-		height: 46px;
-		background-color: rgb(37 153 251);
-		left: 0px;
-		top: 0px;
-	}
+		transition: color 0.5s, transform 0.2s, background-color 0.2s;
+		outline: none;
+		border-radius: 3px;
+		margin: 0 10px;
+		border: 3px solid transparent; }
+	.show {display:block;}
+	button:active {
+		transform: translateY(3px); }
+	button::after, button::before {
+		border-radius: 3px; }
 	.container {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		text-align: center; }
-	
+
 	.material-bubble {
 		background-color: #2599fb;
 		color: #ffffff;
@@ -669,8 +86,8 @@
 		box-shadow: none;
 		width: 125px;
 		height: 50px;
-		top: -1347px;
-		left: 737px;
+		top: 749px;
+		left: 651px;
 		font-size: 13px;
 	}
 	.material-bubble:hover {
@@ -704,68 +121,585 @@
 		opacity: 1;
 		transform-origin: 100px 100px;
 		transform: scale(1) translate(-10px, -70px); }
-	#DESCRIBE_THE_PROBLEM {
-		left: 16px;
-		top: 16px;
+	#register_form {
+		position: absolute;
+		width: 1440px;
+		height: 900px;
+		background-color: rgba(241,249,255,1);
+		margin: auto;
+		overflow: hidden;
+		--web-view-name: register form;
+		--web-view-id: register_form;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+		transform: scale(var(--s))
+	}
+	#Dropdown_-_Empty {
+		position: absolute;
+		width: 232px;
+		height: 50px;
+		left: 508px;
+		top: 626px;
+		overflow: visible;
+	}
+	#Rectangle_535 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(38,153,251,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_535 {
 		position: absolute;
 		overflow: visible;
-		width: 128px;
+		width: 232px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+	}
+	#Residence_Hall {
+		left: 20px;
+		top: 17px;
+		position: absolute;
+		overflow: visible;
+		width: 95px;
 		white-space: nowrap;
-		text-align: center;
+		text-align: left;
 		font-style: normal;
-		font-size: 13px;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(130,130,130,1);
+	}
+	#Input_-_Focused_Field {
+		position: absolute;
+		width: 360px;
+		height: 50px;
+		left: 540px;
+		top: 335px;
+		overflow: visible;
+	}
+	#Rectangle_528 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(38,153,251,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_528 {
+		position: absolute;
+		overflow: visible;
+		width: 360px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+	}
+	#Last_Name {
+		left: 20px;
+		top: 17px;
+		position: absolute;
+		overflow: visible;
+		width: 69px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(188,224,253,1);
+	}
+	#Profile__2 {
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		left: 324px;
+		top: 17px;
+		overflow: visible;
+	}
+	#Union_1 {
+		fill: rgba(38,153,251,1);
+	}
+	.Union_1 {
+		overflow: visible;
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Radio_Button {
+		position: absolute;
+		width: 95px;
+		height: 30px;
+		left: 599px;
+		top: 415px;
+		overflow: visible;
+	}
+	#Rectangle_549 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(188,224,253,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_549 {
+		position: absolute;
+		overflow: visible;
+		width: 30px;
+		height: 30px;
+		left: 0px;
+		top: 0px;
+	}
+	#Resident {
+		left: 40px;
+		top: 7px;
+		position: absolute;
+		overflow: visible;
+		width: 56px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(38,153,251,1);
+	}
+	#Input_-_Focused_Field_ei {
+		position: absolute;
+		width: 360px;
+		height: 50px;
+		left: 540px;
+		top: 270px;
+		overflow: visible;
+	}
+	#Rectangle_528_ej {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(38,153,251,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_528_ej {
+		position: absolute;
+		overflow: visible;
+		width: 360px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+	}
+	#First_Name_en {
+		left: 20px;
+		top: 17px;
+		position: absolute;
+		overflow: visible;
+		width: 69px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(188,224,253,1);
+	}
+	#Profile__5 {
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		left: 324px;
+		top: 17px;
+		overflow: visible;
+	}
+	#Union_1_em {
+		fill: rgba(38,153,251,1);
+	}
+	.Union_1_em {
+		overflow: visible;
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#First_Name_en {
+		left: 20px;
+		top: 17px;
+		position: absolute;
+		overflow: visible;
+		width: 69px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(188,224,253,1);
+	}
+	#Radio_Button_eo {
+		position: absolute;
+		width: 102px;
+		height: 30px;
+		left: 740px;
+		top: 415px;
+		overflow: visible;
+	}
+	#Rectangle_549_ep {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(188,224,253,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_549_ep {
+		position: absolute;
+		overflow: visible;
+		width: 30px;
+		height: 30px;
+		left: 0px;
+		top: 0px;
+	}
+	#Employee {
+		left: 40px;
+		top: 7px;
+		position: absolute;
+		overflow: visible;
+		width: 63px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(38,153,251,1);
+	}
+	#Rectangle_1098 {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_1098 {
+		position: absolute;
+		overflow: visible;
+		width: 10px;
+		height: 10px;
+		left: 609px;
+		top: 425px;
+	}
+	#Rectangle_1099 {
+		fill: rgba(38,153,251,1);
+	}
+	.Rectangle_1099 {
+		position: absolute;
+		overflow: visible;
+		width: 10px;
+		height: 10px;
+		left: 750px;
+		top: 425px;
+	}
+	#Input_-_Focused_Field_et {
+		position: absolute;
+		width: 360px;
+		height: 50px;
+		left: 540px;
+		top: 473px;
+		overflow: visible;
+	}
+	#Rectangle_528_eu {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(38,153,251,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_528_eu {
+		position: absolute;
+		overflow: visible;
+		width: 360px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+	}
+	#University_of_the_Pacific_emai {
+		left: 20px;
+		top: 17px;
+		position: absolute;
+		overflow: visible;
+		width: 184px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(188,224,253,1);
+	}
+	#Like {
+		position: absolute;
+		width: 72.349px;
+		height: 40px;
+		left: 927.65px;
+		top: 478px;
+		overflow: visible;
+		opacity: 0;
+	}
+	#Union_33 {
+		fill: rgba(38,153,251,1);
+	}
+	.Union_33 {
+		overflow: visible;
+		position: absolute;
+		width: 72.349px;
+		height: 40px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#OOPS {
+		left: 19.35px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 40px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
+	#Input_-_Focused_Field_ez {
+		position: absolute;
+		width: 360px;
+		height: 50px;
+		left: 540px;
+		top: 538px;
+		overflow: visible;
+	}
+	#Rectangle_528_e {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(38,153,251,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_528_e {
+		position: absolute;
+		overflow: visible;
+		width: 360px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+	}
+	#Input_-_Focused_Field_ee {
+		position: absolute;
+		width: 360px;
+		height: 50px;
+		left: 540px;
+		top: 697px;
+		overflow: visible;
+	}
+	#Rectangle_528_ee {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(38,153,251,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_528_ee {
+		position: absolute;
+		overflow: visible;
+		width: 360px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+	}
+	#n_89_ID_Number {
+		left: 20px;
+		top: 17px;
+		position: absolute;
+		overflow: visible;
+		width: 96px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(188,224,253,1);
+	}
+	#Input_-_Filled_Value_Focused {
+		position: absolute;
+		width: 141px;
+		height: 50px;
+		left: 800px;
+		top: 626px;
+		overflow: visible;
+	}
+	#Rectangle_544 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(38,153,251,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_544 {
+		position: absolute;
+		overflow: visible;
+		width: 141px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+	}
+	#Room_Number {
+		left: 25px;
+		top: 17px;
+		position: absolute;
+		overflow: visible;
+		width: 92px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(188,224,253,1);
+	}
+	#SIGN_UP {
+		left: 597px;
+		top: 125px;
+		position: absolute;
+		overflow: visible;
+		width: 248px;
+		white-space: nowrap;
+		text-align: left;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 60px;
+		color: rgba(38,153,251,1);
+	}
 </style>
-<script src="js/require.js"></script>
-<script defer src="js/UpdateTicket.js"></script>
 <script id="applicationScript">
-function UpdateNewTicket(ticket, id) {
-    const uri = 'api/Tickets/' + id;
-    fetch(uri, {
-        method: 'PUT',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-			"Authorization": "Bearer " + localStorage.getItem("token")
-        },
-        body: JSON.stringify(ticket)
+	
+function SubmitNewUser() {
+	const fn = document.getElementById("first-name").value;
+	const ln = document.getElementById("last-name").value;
+	let role = null;
+	let regex = null;
+	const email = document.getElementById("email").value;
+	console.log(document.querySelector(".Rectangle_1098").style.opacity);
+	if(document.querySelector(".Rectangle_1098").style.opacity === '1') {
+		role = "Resident";
+		regex = new RegExp(".+@u.pacific\\.edu");
+		console.log(regex.test(email));
+		if(!regex.test(email)) {
+			window.alert("To make a resident account, you must have an @u.pacific.edu email.");
+			return;
+		}
+	}
+	else {
+		role = "Employee";
+		regex = new RegExp(".+@pacific\\.edu");
+		if(!regex.test(email)) {
+			window.alert("To make an employee account, you must have an @pacific.edu email.");
+			return;
+		}
+	}
+	const ireg = new RegExp("(989|988)[0-9]{6}");
+	const id = document.getElementById("989").value;
+	if(!ireg.test(id)) {
+		window.alert("You must provide a valid Pacific ID number beginning with 988 or 989.");
+		return;
+	}
+	const building = document.getElementById("Residence_Hall").textContent;
+	const room = document.getElementById("room").value;
+	const pass = document.getElementById("pass").value;
+	const user = {
+		Id: parseInt(id, 10),
+		FirstName: fn,
+		LastName: ln,
+		UserRole: role,
+		Email: email,
+		Building: building,
+		RoomNumber: room,
+		Password: pass
+	}
+	console.log(JSON.stringify(user));
+	const uri = 'api/Register';
+	fetch(uri, {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			//"Authorization": "Bearer " + localStorage.getItem("token")
+		},
+		body: JSON.stringify(user)
 	})
-		.then(response => response.json())
-        .catch(error => console.error('Unable to update ticket.', error));
-
+			.then(response => response.json())
+			.catch(error => console.error('Unable to add account.', error));
+	
+	window.alert("Your account has successfully been created!");
+	//window.location.href = "fixit_ticket_landing.html";
 }
 
-function UpdateTicket() {
-	var residentId = document.getElementById("resid").value;
-	residentId = residentId.toString();
-	const repairCategory = document.getElementById("Select_an_option").textContent;
-	const status = document.getElementById("Select_an_option_ew").textContent;
-	const assID = document.getElementById("assignedid").value.toString();
-	const description = document.getElementById("description").value.toString();
-	const id = document.getElementById("ticketNum").textContent;
-    const ticket = {
-        ResidentId: residentId,
-		RepairCategory: repairCategory,
-		Description: description,
-		Status: status,
-		AssignedId: assID,
-		Id: id,
-		CreationDate: null
-    };
-	console.log(JSON.stringify(ticket));
-	UpdateNewTicket(ticket, id);
-	window.location.href= (isEmployee) ? 'employee_landing_page.html' : 'resident_landing_page.html'
+function SelectRole(name) {
+	const res = document.querySelector(".Rectangle_1098");
+	const emp = document.querySelector(".Rectangle_1099");
+	const email = document.getElementById("email");
+	const efield = document.getElementById("Input_-_Focused_Field_et");
+	const idfield = document.getElementById("Input_-_Focused_Field_ez");
+	const reshall = document.getElementById("Dropdown_-_Empty");
+	const room = document.getElementById("Input_-_Filled_Value_Focused");
+	const signup = document.getElementById("sign");
+	const pass = document.getElementById("Input_-_Focused_Field_ee");
+	if(name === "Rectangle_1098" && res.style.opacity === '0') {
+		if(emp.style.opacity === '1') {
+			emp.style.opacity = 0;
+		}
+		res.style.opacity = 1;
+		email.pattern = ".+@u.pacific\\.edu";
+		efield.style.opacity = 1;
+		idfield.style.opacity = 1;
+		reshall.style.opacity = 1;
+		room.style.opacity = 1;
+		signup.style.top = "791px";
+		pass.style.top = "697px";
+		pass.style.opacity = 1;
+		signup.style.visibility = 'visible';
+	}
+	else if(name === "Rectangle_1099" && emp.style.opacity === '0') {
+		if(res.style.opacity === '1') {
+			res.style.opacity = 0;
+			reshall.style.opacity = 0;
+			room.style.opacity = 0;
+		}
+		emp.style.opacity = 1;
+		email.pattern = ".+@pacific\\.edu";
+		efield.style.opacity = 1;
+		idfield.style.opacity = 1;
+		signup.style.top = "710px";
+		pass.style.top = "616px";
+		pass.style.opacity = 1;
+		signup.style.visibility = 'visible';
+	}
 }
-
 function SelectStatus(field, status, name) {
 	document.getElementById(field).textContent = status;
+	document.getElementById(field).style.color = "rgba(0, 0, 0, 1)";
 	ToggleDropdown(name);
 }
 
 function ToggleDropdown(name) {
 	document.getElementById(name).classList.toggle("show");
 }
+
 ///////////////////////////////////////
 // INITIALIZATION
 ///////////////////////////////////////
@@ -775,41 +709,21 @@ function ToggleDropdown(name) {
  * Code subject to change.
  **/
 
-function calcResize() {
-	return Math.min(
-				window.innerWidth / document.getElementById('update_ticket').clientWidth,
-				window.innerHeight / document.getElementById('update_ticket').clientHeight
-		);
-}
-
-
-
 window.onload = function() {
-	var s = calcResize();
+	var s = Math.min(
+			window.innerWidth / document.getElementById('register_form').clientWidth,
+			window.innerHeight / document.getElementById('register_form').clientHeight
+	);
 	console.log(s);
-	document.getElementById('update_ticket').style.setProperty("--s", s);
-	if(!isEmployee) {
-		try {
-			let assigned = document.getElementsByName("assignedid")[0];
-			let abox = document.getElementById("Rectangle_555_e");
-			let status = document.getElementById("status-dropdown");
-			let bbox = document.getElementById("Rectangle_563_ev");
-			assigned.disabled=true;
-			status.disabled=true;
-			abox.style.fill = "rgba(236,237,238,1)";
-			bbox.style.fill = "rgba(236,237,238,1)";
-		}
-		catch {
-			console.warn("Crying and screaming rn.")
-		}
-	}
-	document.getElementById("Rectangle_555").style.fill = "rgba(236,237,238,1)";
-	UpdateTicketStart();
+	document.getElementById('register_form').style.setProperty("--s", s);
 }
 window.addEventListener('resize', function() {
-	var s = calcResize();
+	var s = Math.min(
+			window.innerWidth / document.getElementById('register_form').clientWidth,
+			window.innerHeight / document.getElementById('register_form').clientHeight
+	);
 	console.log(s);
-	document.getElementById('update_ticket').style.setProperty("--s", s);
+	document.getElementById('register_form').style.setProperty("--s", s);
 });
 
 if (window.console==null) { window["console"] = { log : function() {} } }; // some browsers do not set console
@@ -1172,7 +1086,7 @@ var Application = function() {
 		notification.id = notificationID;
 		notification.textContent = "PAGE UPDATED";
 		var styleRule = ""
-		styleRule = "position: fixed; padding: 7px 16px 6px 16px; font-size: 10px; font-weight: bold; left: 50%;";
+		styleRule = "position: fixed; padding: 7px 16px 6px 16px; font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; left: 50%;";
 		styleRule += "top: 20px; background-color: rgba(0,0,0,.5); border-radius: 12px; color:rgb(235, 235, 235); transition: all 2s linear;";
 		styleRule += "transform: translateX(-50%); letter-spacing: .5px; filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, .1)); cursor: pointer";
 		notification.setAttribute("style", styleRule);
@@ -3399,6 +3313,7 @@ var Application = function() {
 				self.scaleViewIfNeeded(view);
 			}
 		}
+
 		window.dispatchEvent(new Event(self.APPLICATION_RESIZE));
 	}
 
@@ -3702,26 +3617,10 @@ var Application = function() {
 	self.log = function(value) {
 		console.log.apply(this, [value]);
 	}
-
-	/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
 	
-
-// Close the dropdown menu if the user clicks outside of it
 	window.onclick = function(event) {
 		if (!event.target.matches('.dropbtn')) {
-			
-			var dropdowns = document.getElementsByClassName("dropdown-content2");
-			var i;
-			for (i = 0; i < dropdowns.length; i++) {
-				var openDropdown = dropdowns[i];
-				if (openDropdown.classList.contains('show')) {
-					
-					openDropdown.classList.remove('show');
-				}
-			}
-		}
-		if(!event.target.matches('.dropbtn2')) {
+
 			var dropdowns = document.getElementsByClassName("dropdown-content");
 			var i;
 			for (i = 0; i < dropdowns.length; i++) {
@@ -3733,166 +3632,170 @@ toggle between hiding and showing the dropdown content */
 			}
 		}
 	}
-	
+
 	// initialize on load
 	// sometimes the body size is 0 so we call this now and again later
 	window.addEventListener("load", self.onloadHandler);
 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
 }
+window.onload = function() {
+	let input = document.getElementById("email");
+	input.oninvalid = function(event) {
+		event.target.setCustomValidity('Username should only contain lowercase letters. e.g. john');
+	}
+}
 
-let isEmployee = null;
-isEmployee = location.search.substring(1).split("|")[1] === "employee";
 
 window.application = new Application();
 </script>
 </head>
-<body>
-<div id="update_ticket">
-	<div id="Navigation_Bar" class="Navigation_Bar">
-		<svg class="Base">
-			<rect id="Base" rx="0" ry="0" x="0" y="0" width="220" height="900">
+<body style="background-color: rgba(241,249,255,1)">
+<div id="register_form">
+	<div id="Dropdown_-_Empty" style="opacity: 0;">
+		<svg class="Rectangle_535">
+			<rect id="Rectangle_535" rx="25" ry="25" x="0" y="0" width="232" height="50">
+				<div id="Dropdown" class="Dropdown">
+					<button onclick="ToggleDropdown('myDropdown')" class="dropbtn"></button>
+					<div id="myDropdown" class="dropdown-content">
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>John Ballantyne</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Jessie Ballantyne</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Jackson</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Price</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Farley</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Wemyss</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Ritter</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Eiselen</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Carter</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Southwest</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>McCaffery</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Grace Covell</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Calaveras</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Townhouses</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Monagan</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Chan</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Theta Chi</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Alpha Phi</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Beta Theta Pi</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Sigma Chi</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Kappa Alpha Theta</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Delta Gamma</a>
+						<a onclick=SelectStatus("Residence_Hall",this.textContent,"myDropdown")>Delta Delta Delta</a>
+					</div>
+				</div>
 			</rect>
 		</svg>
-		<div onclick="window.location.href= (isEmployee) ? 'employee_landing_page.html' : 'resident_landing_page.html'" id="YOUR_TICKETS">
-			<span>YOUR TICKETS</span>
-		</div>
-		<div onclick="window.location.href= (isEmployee) ? 'create_ticket.html?employee' : 'create_ticket.html?resident'" id="CREATE_TICKET_d">
-			<span>CREATE TICKET</span>
-		</div>
-		<div id="LOG_OUT" onclick="window.location.href='fixit_ticket_landing.html'">
-			<span>LOG OUT</span>
-		</div>
-		<div id="Fixit_Ticket">
-			<span>Fixit Ticket</span>
+		<div id="Residence_Hall">
+			<span>Residence Hall</span>
 		</div>
 	</div>
-	<div id="Dashboard">
-		<span>Dashboard</span>
+	<div id="Input_-_Focused_Field">
+		<svg class="Rectangle_528">
+			<rect id="Rectangle_528" rx="25" ry="25" x="0" y="0" width="360" height="50">
+			</rect>
+		</svg>
+		<div id="Last_Name">
+			<input type="text" id="last-name" placeholder="Last Name" style="width: 269px;">
+		</div>
+		<div id="Profile__2" class="Profile___2">
+			<svg class="Union_1" viewBox="0 354 16 16">
+				<path id="Union_1" d="M 0 369.9999084472656 L 0 368.0001220703125 C 0 365.7996215820312 3.600000143051147 363.9996032714844 8.000100135803223 363.9996032714844 C 12.40019989013672 363.9996032714844 16.00020027160645 365.7996215820312 16.00020027160645 368.0001220703125 L 16.00020027160645 369.9999084472656 L 0 369.9999084472656 Z M 3.999600172042847 358.0002136230469 C 3.999600172042847 355.7907104492188 5.790600299835205 353.9996948242188 8.000100135803223 353.9996948242188 C 10.20870018005371 353.9996948242188 11.99970054626465 355.7907104492188 11.99970054626465 358.0002136230469 C 11.99970054626465 360.2088012695312 10.20870018005371 361.9998168945312 8.000100135803223 361.9998168945312 C 5.790600299835205 361.9998168945312 3.999600172042847 360.2088012695312 3.999600172042847 358.0002136230469 Z">
+				</path>
+			</svg>
+		</div>
 	</div>
-	<div id="Update_Ticket_eb">
-		<span>Update Ticket</span>
+	<div id="Radio_Button">
+		<svg class="Rectangle_549">
+			<rect id="Rectangle_549" rx="15" ry="15" x="0" y="0" width="30" height="30">
+			</rect>
+		</svg>
+		<div id="Resident">
+			<span>Resident</span>
+		</div>
+		<button onclick="SelectRole('Rectangle_1098')" style="width: 30px; height: 30px; z-index: 2; position: relative; background-color: rgba(0,0,0,0);"></button>
 	</div>
-	<svg class="Rectangle_1094">
-		<rect id="Rectangle_1094" rx="10" ry="10" x="0" y="0" width="899" height="732">
+	<div id="Input_-_Focused_Field_ei">
+		<svg class="Rectangle_528_ej">
+			<rect id="Rectangle_528_ej" rx="25" ry="25" x="0" y="0" width="360" height="50">
+			</rect>
+		</svg>
+		<div id="First_Name_en">
+			<input type="text" id="first-name" placeholder="First Name" style="width: 269px;">
+		</div>
+		<div id="Profile__5" class="Profile___5">
+			<svg class="Union_1_em" viewBox="0 354 16 16">
+				<path id="Union_1_em" d="M 0 369.9999084472656 L 0 368.0001220703125 C 0 365.7996215820312 3.600000143051147 363.9996032714844 8.000100135803223 363.9996032714844 C 12.40019989013672 363.9996032714844 16.00020027160645 365.7996215820312 16.00020027160645 368.0001220703125 L 16.00020027160645 369.9999084472656 L 0 369.9999084472656 Z M 3.999600172042847 358.0002136230469 C 3.999600172042847 355.7907104492188 5.790600299835205 353.9996948242188 8.000100135803223 353.9996948242188 C 10.20870018005371 353.9996948242188 11.99970054626465 355.7907104492188 11.99970054626465 358.0002136230469 C 11.99970054626465 360.2088012695312 10.20870018005371 361.9998168945312 8.000100135803223 361.9998168945312 C 5.790600299835205 361.9998168945312 3.999600172042847 360.2088012695312 3.999600172042847 358.0002136230469 Z">
+				</path>
+			</svg>
+		</div>
+	</div>
+	<div id="Radio_Button_eo">
+		<svg class="Rectangle_549_ep">
+			<rect id="Rectangle_549_ep" rx="15" ry="15" x="0" y="0" width="30" height="30">
+			</rect>
+		</svg>
+		<div id="Employee">
+			<span>Employee</span>
+		</div>
+		<button onclick="SelectRole('Rectangle_1099')" style="width: 30px; height: 30px; z-index: 2; position: relative; background-color: rgba(0,0,0,0);"></button>
+	</div>
+	<svg class="Rectangle_1098" style="opacity:0;">
+		<rect id="Rectangle_1098" rx="5" ry="5" x="0" y="0" width="10" height="10">
 		</rect>
 	</svg>
-	<div id="Input_-_Required_Field">
-		<svg class="Rectangle_555">
-			<rect id="Rectangle_555" rx="0" ry="0" x="0" y="0" width="276" height="38">
+	<svg class="Rectangle_1099" style="opacity:0;">
+		<rect id="Rectangle_1099" rx="5" ry="5" x="0" y="0" width="10" height="10">
+		</rect>
+	</svg>
+	<div id="Input_-_Focused_Field_et" style="opacity:0;">
+		<svg class="Rectangle_528_eu">
+			<rect id="Rectangle_528_eu" rx="25" ry="25" x="0" y="0" width="360" height="50">
 			</rect>
 		</svg>
-		<svg class="Rectangle_582">
-			<rect id="Rectangle_582" rx="0" ry="0" x="0" y="0" width="77" height="38">
-			</rect>
-		</svg>
-		<div id="n_381203103820193">
-			<span id="ticketNum">—</span>
-		</div>
-		<div id="TICKET_ID">
-			<span>TICKET ID</span>
+		<div id="University_of_the_Pacific_emai">
+			<input type="email" id="email" placeholder="Pacific Email" pattern="." title="Please enter your pacific.edu email if you are an employee or u.pacific.edu number if you are a resident." style="width: 269px;">
 		</div>
 	</div>
-	<div id="Input_-_Required_Field_ei">
-		<svg class="Rectangle_555_ej">
-			<rect id="Rectangle_555_ej" rx="0" ry="0" x="0" y="0" width="276" height="38">
-			</rect>
+	<div id="Like">
+		<svg class="Union_33" viewBox="2468 3896 72.349 40">
+			<path id="Union_33" d="M 2473.348876953125 3936.000244140625 L 2473.348876953125 3921.588623046875 L 2468 3916.240234375 L 2473.348876953125 3910.891845703125 L 2473.348876953125 3896.000244140625 L 2540.348876953125 3896.000244140625 L 2540.348876953125 3936.000244140625 L 2473.348876953125 3936.000244140625 Z">
+			</path>
 		</svg>
-		<svg class="Rectangle_582_ek">
-			<rect id="Rectangle_582_ek" rx="0" ry="0" x="0" y="0" width="77" height="38">
-			</rect>
-		</svg>
-		<div id="n_89306958">
-			<textarea style= "height: 100%; width: 100%" name="resid" id="resid" placeholder="( empty )"></textarea>
-		</div>
-		<div id="RESIDENT_ID">
-			<span>RESIDENT</span>
+		<div id="OOPS">
+			<span>OOPS!</span>
 		</div>
 	</div>
-	<div id="Dropdown_-_Empty">
-		<svg class="Rectangle_563">
-			<rect id="Rectangle_563" rx="0" ry="0" x="0" y="0" width="276" height="38">
-				<div id="Dropdown" class="Dropdown" >
-					<button onclick="ToggleDropdown('myDropdown')" class="dropbtn2"></button>
-					<div id="myDropdown" class="dropdown-content">
-						<a onclick=SelectStatus("Select_an_option",this.textContent,"myDropdown")>Plumbing</a>
-						<a onclick=SelectStatus("Select_an_option",this.textContent,"myDropdown")>Replacement</a>
-						<a onclick=SelectStatus("Select_an_option",this.textContent,"myDropdown")>Wall Damage</a>
-					</div>
-				</div>
+	<div id="Input_-_Focused_Field_ez" style="opacity:0;">
+		<svg class="Rectangle_528_e">
+			<rect id="Rectangle_528_e" rx="25" ry="25" x="0" y="0" width="360" height="50">
 			</rect>
 		</svg>
-		<div id="Select_an_option">
-			<span>Select an option</span>
-		</div>
-		
-		<svg class="Rectangle_587">
-			<rect id="Rectangle_587" rx="0" ry="0" x="0" y="0" width="77" height="38">
-			</rect>
-		</svg>
-		<div id="REPAIR_CATEGORY">
-			<span>CATEGORY</span>
+		<div id="n_89_ID_Number">
+			<input type="text" id="989" placeholder="Pacific ID Number" pattern="(989|988)[0-9]{6}" title="Your id number doesn't follow the correct format." style="width: 269px;">
 		</div>
 	</div>
-	<div id="Dropdown_-_Empty_eu">
-		<svg class="Rectangle_563_ev">
-			<rect id="Rectangle_563_ev" rx="0" ry="0" x="0" y="0" width="276" height="38">
-				<div id="Dropdown2" class="Dropdown" >
-					<button onclick="ToggleDropdown('myDropdown2')" class="dropbtn" id="status-dropdown"></button>
-					<div id="myDropdown2" class="dropdown-content2">
-						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Open</a>
-						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>In Progress</a>
-						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Closed (Resolved)</a>
-						<a onclick=SelectStatus("Select_an_option_ew",this.textContent,"myDropdown2")>Closed (Workaround)</a>
-					</div>
-				</div>
+	<div id="Input_-_Filled_Value_Focused" style="opacity:0;">
+		<svg class="Rectangle_544">
+			<rect id="Rectangle_544" rx="25" ry="25" x="0" y="0" width="141" height="50">
 			</rect>
 		</svg>
-		<div id="Select_an_option_ew">
-			<span>Select an option</span>
-		</div>
-		
-		<svg class="Rectangle_587_ez">
-			<rect id="Rectangle_587_ez" rx="0" ry="0" x="0" y="0" width="77" height="38">
-			</rect>
-		</svg>
-		<div id="STATUS">
-			<span>STATUS</span>
+		<div id="Room_Number">
+			<input type="text" id="room" placeholder="Room Number" style="width: 90px;">
 		</div>
 	</div>
-	<div id="Input_-_Required_Field_e">
-		<svg class="Rectangle_555_e">
-			<rect id="Rectangle_555_e" rx="0" ry="0" x="0" y="0" width="276" height="38">
-			</rect>
-		</svg>
-		<svg class="Rectangle_582_e">
-			<rect id="Rectangle_582_e" rx="0" ry="0" x="0" y="0" width="77" height="38">
-			</rect>
-		</svg>
-		<div id="n_89306958_e">
-			<textarea style= "height: 100%; width: 100%" name="assignedid" id="assignedid" placeholder="( empty )"></textarea>
-		</div>
-		<div id="ASSIGNED_TO">
-			<span>ASSIGNED</span>
-		</div>
-	</div>
-	<div id="Textbox_-_Empty">
-		<svg class="Rectangle_581">
-			<rect id="Rectangle_581" rx="0" ry="0" x="0" y="0" width="721" height="207">
-			</rect>
-		</svg>
-		<div id="Type_something">
-			<textarea font-family="Montserrat" style= "height: 100%; width: 100%" name="description" id="description" placeholder="Describe your problem"></textarea>
-		</div>
-		<svg class="Rectangle_589">
-			<rect id="Rectangle_589" rx="0" ry="0" x="0" y="0" width="165" height="46">
-			</rect>
-		</svg>
-		<div id="DESCRIBE_THE_PROBLEM">
-			<span>DESCRIBE THE PROBLEM</span>
-		</div>
+	<div id="SIGN_UP">
+		<span>SIGN UP</span>
 	</div>
 	<div class="container">
-		<button class="material-bubble" onclick="UpdateTicket()">SUBMIT</button>
+		<button type="submit" class="material-bubble" id="sign" style="visibility: hidden" onclick="SubmitNewUser()">SIGN UP</button>
+	</div>
+	<div id="Input_-_Focused_Field_ee" style="opacity:0;">
+		<svg class="Rectangle_528_ee">
+			<rect id="Rectangle_528_ee" rx="25" ry="25" x="0" y="0" width="360" height="50">
+			</rect>
+		</svg>
+		<div id="pa">
+			<input type="password" id="pass" placeholder="Enter a password" style="width: 269px; position: relative; top: 16px; left: 20px;">
+		</div>
 	</div>
 </div>
 </body>

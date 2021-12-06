@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>resident landing page</title>
+<title>Resident Dashboard</title>
 <style id="applicationStylesheet" type="text/css">
 	table.paleBlueRows {
 		font-family: 'Montserrat', Helvetica, sans-serif;
 		text-align: center;
 		table-layout: fixed;
 		overflow-y:scroll;
-		height:691px;
+		height:564px;
 		display:block;
+		border-collapse: collapse; 
+		border-spacing: 0;
 	}
-	table.paleBlueRows td, table.paleBlueRows th {
+	table.paleBlueRows td {
 		border: 0px solid #AAAAAA;
 		padding: 3px 2px;
 		width: 120px;
+	}
+	table.paleBlueRows th {
+		position: sticky;
+		padding: 6px 2px;
+		top: -1px;
+	}
+	tr.blue th {
+		background: #2699FB;
 	}
 	table.paleBlueRows th:hover {
 		color: rgba(248, 131, 121, 1);
@@ -34,13 +48,11 @@
 	table.paleBlueRows tr:hover {
 		background-color: rgba(38, 153, 251, 0.3);
 	}
-	table.paleBlueRows thead {
-		background: #2699FB;
-	}
 	table.paleBlueRows thead th {
 		font-size: 14px;
 		font-weight: bold;
 		color: #FFFFFF;
+		width: 120px;
 		text-align: center;
 		border-left: 1px solid #D0E4F5;
 	}
@@ -112,7 +124,7 @@
 		white-space: nowrap;
 		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: create_ticket.html;
+		--web-action-target: 'create_ticket.html';
 		cursor: pointer;
 		line-height: 12px;
 		margin-top: -1px;
@@ -131,7 +143,7 @@
 		white-space: nowrap;
 		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: create_ticket.html;
+		--web-action-target: 'create_ticket.html';
 		cursor: pointer;
 		line-height: 12px;
 		margin-top: -1px;
@@ -219,11 +231,20 @@
 	#loadingMessage {
 		font-size: 50px;
 		position: relative;
-		top: -1878px;
-		left: 595px;
+		top: -1840px;
+		left: 642px;
 		color: #2699FB;
 		font-style: oblique;
 		opacity: 1;
+	}
+	#noTicketsMessage {
+		font-size: 50px;
+		position: relative;
+		top: -1898px;
+		left: 586px;
+		color: #2699FB;
+		font-style: oblique;
+		opacity: 0;
 	}
 </style>
 <script id="applicationScript">
@@ -3184,14 +3205,15 @@ window.application = new Application();
 		<span>Your Tickets</span>
 	</div>
 	<svg class="Rectangle_1094">
-		<rect id="Rectangle_1094" rx="10" ry="10" x="0" y="0" width="899" height="732">
+		<rect id="Rectangle_1094" rx="10" ry="10" x="0" y="0" width="1000" height="600">
 		</rect>
 	</svg>
 	<table class="paleBlueRows" style="position: relative; top: -1476px; left: 390px;">
 		<thead>
-		<tr>
+		<tr class="blue">
 			<th>Ticket ID</th>
 			<th>Resident ID</th>
+			<th>Location</th>
 			<th>Repair Category</th>
 			<th>Status</th>
 			<th>Creation Date</th>
@@ -3206,6 +3228,9 @@ window.application = new Application();
 	</table>
 	<div id="loadingMessage">
 		<span>LOADING TICKETS...</span>
+	</div>
+	<div id="noTicketsMessage">
+		<span>YOU HAVE NO TICKETS</span>
 	</div>
 </div>
 </body>
